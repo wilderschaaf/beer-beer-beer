@@ -77,6 +77,8 @@ function usecallback(callback){
 
 app.use('/scrape', function(req, res){
 
+
+	res.send("Scraping Data")
 	usecallback(mycb)
 	
 })
