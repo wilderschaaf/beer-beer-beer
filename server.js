@@ -97,7 +97,7 @@ function mycb(bl){
 					$('.titleBar').filter(function(){
 						brewery = $(this).text().trim()
 					})
-					
+					console.log(++k)
 					$('#ba-content').filter(function(){
 
 						var data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
@@ -111,7 +111,7 @@ function mycb(bl){
 						 	// 	+', Avg: ' + data.eq(i).children().eq(3).text()
 						 	// 	+', Ratings: ' + data.eq(i).children().eq(4).text()
 						 	// 	+', Bros: ' + data.eq(i).children().eq(5).text())
-							console.log(++k)
+							
 						 	i++;
 						}
 
