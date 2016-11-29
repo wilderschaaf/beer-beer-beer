@@ -36,12 +36,12 @@ function usecallback(callback){
 	})
 
 	var j 
-	for(j=20;j<=700;j+=20){
+	for(j=20;j<=720;j+=20){
 		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=CA&brewery=Y&sort=name'
 		//console.log(url)
 
 		request(url, function(error, response, html){
-			console.log(++j-720)
+			console.log(++j-740)
 			if(error){
 				console.error(error)
 			}
@@ -55,6 +55,9 @@ function usecallback(callback){
 
 					var i 
 					for (i = 3; i<= 41; i+=2){
+						if(data.eq(i).children().eq(0).children("a").eq(0).attr() == undefined){
+							break;
+						}
 						brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
 					}
 
@@ -62,7 +65,7 @@ function usecallback(callback){
 				})
 
 			}
-			if(j-720==35){
+			if(j-740==36){
 				callback(brewlinks)
 			}
 			
@@ -101,7 +104,7 @@ function mycb(bl){
 					$('#ba-content').filter(function(){
 
 						var data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
-						console.log(data.eq(5000).children()[0])
+						//console.log(data.eq(5000).children()[0])
 						var i = 3
 						while (data.eq(i).children()[0] != undefined){
 						 	//brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
@@ -111,7 +114,7 @@ function mycb(bl){
 						 	// 	+', Avg: ' + data.eq(i).children().eq(3).text()
 						 	// 	+', Ratings: ' + data.eq(i).children().eq(4).text()
 						 	// 	+', Bros: ' + data.eq(i).children().eq(5).text())
-							
+
 						 	i++;
 						}
 
