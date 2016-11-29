@@ -81,6 +81,7 @@ app.use('/scrape', function(req, res){
 function mycb(bl){
 	urlbase = 'https://www.beeradvocate.com'
 	console.log('wilder' + 'dfjkd')
+	var k = 0
 	bl.forEach( function(item){
 			url = urlbase + item
 			//console.log(url)
@@ -104,12 +105,13 @@ function mycb(bl){
 						var i = 3
 						while (data.eq(i).children()[0] != undefined){
 						 	//brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
-						 	console.log('brewery: '+brewery+', name: ' + data.eq(i).children().eq(0).text() 
-						 		+', style: ' + data.eq(i).children().eq(1).text() 
-						 		+', ABV: ' + data.eq(i).children().eq(2).text() 
-						 		+', Avg: ' + data.eq(i).children().eq(3).text()
-						 		+', Ratings: ' + data.eq(i).children().eq(4).text()
-						 		+', Bros: ' + data.eq(i).children().eq(5).text())
+						 	// console.log('brewery: '+brewery+', name: ' + data.eq(i).children().eq(0).text() 
+						 	// 	+', style: ' + data.eq(i).children().eq(1).text() 
+						 	// 	+', ABV: ' + data.eq(i).children().eq(2).text() 
+						 	// 	+', Avg: ' + data.eq(i).children().eq(3).text()
+						 	// 	+', Ratings: ' + data.eq(i).children().eq(4).text()
+						 	// 	+', Bros: ' + data.eq(i).children().eq(5).text())
+							console.log(++k)
 						 	i++;
 						}
 
