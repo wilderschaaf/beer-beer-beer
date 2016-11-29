@@ -7,7 +7,7 @@ var PORT = process.env.PORT || 8081;
 
 var brewlinks = []
 
-function usecallback(callback){
+function usecallback(response, callback){
 	url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=CA&brewery=Y'
 	
 	
@@ -66,7 +66,7 @@ function usecallback(callback){
 
 			}
 			if(j-740==36){
-				callback(brewlinks)
+				callback(response, brewlinks)
 			}
 			
 		})
@@ -79,11 +79,11 @@ app.use('/scrape', function(req, res){
 
 
 	res.send("Scraping Data")
-	usecallback(mycb)
+	usecallback(res, mycb)
 	
 })
 
-function mycb(bl){
+function mycb(response, bl, donecb){
 	urlbase = 'https://www.beeradvocate.com'
 	console.log('wilder' + 'dfjkd')
 	var k = 0
@@ -128,6 +128,11 @@ function mycb(bl){
 	
 
 	})
+	donecb(response)
+}
+
+function donecb(res){
+	res.send("Finsished Scraping")
 }
 
 app.listen(PORT)
