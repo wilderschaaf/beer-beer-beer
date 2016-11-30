@@ -138,16 +138,16 @@ function mycb(bl, callback){
 									parseFloat(data.eq(i).children().eq(2).text()), 
 									parseFloat(data.eq(i).children().eq(3).text()), 
 									brenum, 
-									parseFloat(data.eq(i).children().eq(5).text())], 
-									function (err, result) {
+									parseFloat(data.eq(i).children().eq(5).text())]) 
+									// function (err, result) {
 							        
-								        console.log(++k)
-								        done()
+								 //        console.log(++k)
+								 //        done()
 								        
-								        if (err) {
-								          return console.error('error happened during query', err)
-								        }
-								     });
+								 //        if (err) {
+								 //          return console.error('error happened during query', err)
+								 //        }
+								 //     });
 
 							 	i++;
 							}
