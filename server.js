@@ -107,6 +107,7 @@ function mycb(bl, callback){
       	var data
       	var brewery
       	var $
+      	var i 
 		bl.forEach( function(item){
 				url = urlbase + item
 				//console.log(url)
@@ -126,24 +127,28 @@ function mycb(bl, callback){
 
 							data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
 							//console.log(data.eq(5000).children()[0])
-							var i = 3
+							i = 3
 							while (data.eq(i).children()[0] != undefined){
-							 	//brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
-							 	// console.log('brewery: '+brewery+', name: ' + data.eq(i).children().eq(0).text() 
-							 	// 	+', style: ' + data.eq(i).children().eq(1).text() 
-							 	// 	+', ABV: ' + data.eq(i).children().eq(2).text() 
-							 	// 	+', Avg: ' + data.eq(i).children().eq(3).text()
-							 	// 	+', Ratings: ' + data.eq(i).children().eq(4).text()
-							 	// 	+', Bros: ' + data.eq(i).children().eq(5).text())
-								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", [brewery, data.eq(i).children().eq(0).text(), data.eq(i).children().eq(1).text(), parseFloat(data.eq(i).children().eq(2).text()), parseFloat(data.eq(i).children().eq(3).text()), parseInt(data.eq(i).children().eq(4).text()), parseFloat(data.eq(i).children().eq(5).text())], function (err, result) {
+							 	
+								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
+									[brewery, data.eq(i).children().eq(0).text(), 
+									data.eq(i).children().eq(1).text(), 
+									parseFloat(data.eq(i).children().eq(2).text()), 
+									parseFloat(data.eq(i).children().eq(3).text()), 
+									parseInt(data.eq(i).children().eq(4).text()), 
+									parseFloat(data.eq(i).children().eq(5).text())], 
+									function (err, result) {
 							        
-							        console.log(++k)
-							        
-							        
-							        if (err) {
-							          return console.error('error happened during query', err)
-							        }
-							     });
+								        console.log(++k)
+								        if (k==10000){
+											done()
+											callback()
+										}
+								        
+								        if (err) {
+								          return console.error('error happened during query', err)
+								        }
+								     });
 
 							 	i++;
 							}
