@@ -98,23 +98,25 @@ io.on('connection', function(socket){
 
 function mycb(bl, callback){
 	urlbase = 'https://www.beeradvocate.com'
-	console.log('wilder' + 'dfjkd')
+	//console.log('wilder' + 'dfjkd')
 	var k = 0
 	pg.connect(conString, function (err, client, done) {  
       	if (err) {
         	return console.error('error fetching client from pool', err)
       	}
+      	var data
+      	var brewery
+      	var $
 		bl.forEach( function(item){
 				url = urlbase + item
 				//console.log(url)
 				request(url, function(error, response, html){
-					console.log(++k)
+					++k
 					if(error){
 						console.error(error)
 					}
 					else{
-						var $ = cheerio.load(html)
-						var brewery
+						$ = cheerio.load(html)
 
 						$('.titleBar').filter(function(){
 							brewery = $(this).text().trim()
@@ -122,7 +124,7 @@ function mycb(bl, callback){
 						
 						$('#ba-content').filter(function(){
 
-							var data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
+							data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
 							//console.log(data.eq(5000).children()[0])
 							var i = 3
 							while (data.eq(i).children()[0] != undefined){
@@ -135,7 +137,7 @@ function mycb(bl, callback){
 							 	// 	+', Bros: ' + data.eq(i).children().eq(5).text())
 								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", [brewery, data.eq(i).children().eq(0).text(), data.eq(i).children().eq(1).text(), parseFloat(data.eq(i).children().eq(2).text()), parseFloat(data.eq(i).children().eq(3).text()), parseInt(data.eq(i).children().eq(4).text()), parseFloat(data.eq(i).children().eq(5).text())], function (err, result) {
 							        done()
-
+							        console.log(k + ": "+i)
 							        if (err) {
 							          return console.error('error happened during query', err)
 							        }
