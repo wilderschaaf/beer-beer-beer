@@ -101,7 +101,6 @@ function mycb(bl, callback){
 	//console.log('wilder' + 'dfjkd')
 	var k = 0
 	var j = 0
-	pg.connect(conString, function (err, client, done) {  
       	if (err) {
         	return console.error('error fetching client from pool', err)
       	}
@@ -129,28 +128,29 @@ function mycb(bl, callback){
 							data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
 							//console.log(data.eq(5000).children()[0])
 							i = 3
-							while (data.eq(i).children()[0] != undefined){
-							 	var brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
-								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
-									[brewery, data.eq(i).children().eq(0).text(), 
-									data.eq(i).children().eq(1).text(), 
-									parseFloat(data.eq(i).children().eq(2).text()), 
-									parseFloat(data.eq(i).children().eq(3).text()), 
-									brenum, 
-									parseFloat(data.eq(i).children().eq(5).text())], 
-									function (err, result) {
-							        
-								        console.log(++k)
-								        done()
+							pg.connect(conString, function (err, client, done) {  
+								while (data.eq(i).children()[0] != undefined){
+								 	var brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
+									client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
+										[brewery, data.eq(i).children().eq(0).text(), 
+										data.eq(i).children().eq(1).text(), 
+										parseFloat(data.eq(i).children().eq(2).text()), 
+										parseFloat(data.eq(i).children().eq(3).text()), 
+										brenum, 
+										parseFloat(data.eq(i).children().eq(5).text())], 
+										function (err, result) {
 								        
-								        if (err) {
-								          return console.error('error happened during query', err)
-								        }
-								     });
+									        console.log(++k)
+									        done()
+									        io.Emit("brewname")
+									        if (err) {
+									          return console.error('error happened during query', err)
+									        }
+									     });
 
-							 	i++;
-							}
-
+								 	i++;
+								}
+							)}
 							
 						})
 
@@ -163,7 +163,6 @@ function mycb(bl, callback){
 		
 
 		})
-	})
 }
 
 function donecb(){
