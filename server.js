@@ -111,7 +111,7 @@ function mycb(bl, callback){
 				url = urlbase + item
 				//console.log(url)
 				request(url, function(error, response, html){
-					++k
+					
 					if(error){
 						console.error(error)
 					}
@@ -136,7 +136,8 @@ function mycb(bl, callback){
 							 	// 	+', Ratings: ' + data.eq(i).children().eq(4).text()
 							 	// 	+', Bros: ' + data.eq(i).children().eq(5).text())
 								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", [brewery, data.eq(i).children().eq(0).text(), data.eq(i).children().eq(1).text(), parseFloat(data.eq(i).children().eq(2).text()), parseFloat(data.eq(i).children().eq(3).text()), parseInt(data.eq(i).children().eq(4).text()), parseFloat(data.eq(i).children().eq(5).text())], function (err, result) {
-							        console.log(k + ": "+i)
+							        
+							        console.log(++k)
 							        done()
 							        
 							        if (err) {
