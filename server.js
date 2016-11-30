@@ -9,7 +9,7 @@ var io = require('socket.io')(http);
 
 var PORT = process.env.PORT || 8081
 
-var pgp = require('pg-promise')
+var pgp = require('pg-promise')()
 
 
 
