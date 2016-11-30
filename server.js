@@ -130,13 +130,13 @@ function mycb(bl, callback){
 							//console.log(data.eq(5000).children()[0])
 							i = 3
 							while (data.eq(i).children()[0] != undefined){
-							 	
+							 	var brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
 								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
 									[brewery, data.eq(i).children().eq(0).text(), 
 									data.eq(i).children().eq(1).text(), 
 									parseFloat(data.eq(i).children().eq(2).text()), 
 									parseFloat(data.eq(i).children().eq(3).text()), 
-									parseInt(data.eq(i).children().eq(4).text()), 
+									brenum, 
 									parseFloat(data.eq(i).children().eq(5).text())], 
 									function (err, result) {
 							        
