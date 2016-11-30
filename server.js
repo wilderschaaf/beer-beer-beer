@@ -3,11 +3,16 @@ var request = require('request')
 var cheerio = require('cheerio')
 var app = express()
 
-var PORT = process.env.PORT || 8081;
+//making socket to talk to client
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
+var PORT = process.env.PORT || 8081
 
 var brewlinks = []
 
-function usecallback(response, callback){
+
+function usecallback(callback){
 	url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=CA&brewery=Y'
 	
 	
@@ -66,7 +71,7 @@ function usecallback(response, callback){
 
 			}
 			if(j-740==36){
-				callback(response, brewlinks)
+				callback(brewlinks, donecb)
 			}
 			
 		})
@@ -78,12 +83,17 @@ function usecallback(response, callback){
 app.use('/scrape', function(req, res){
 
 
-	res.send("Scraping Data")
-	usecallback(res, mycb)
+	res.sendFile(__dirname + "/public/index.html")
+	usecallback(mycb)
 	
 })
 
-function mycb(response, bl, donecb){
+io.on('connection', function(socket){
+	console.log('connected')
+
+})
+
+function mycb(bl, callback){
 	urlbase = 'https://www.beeradvocate.com'
 	console.log('wilder' + 'dfjkd')
 	var k = 0
@@ -91,7 +101,7 @@ function mycb(response, bl, donecb){
 			url = urlbase + item
 			//console.log(url)
 			request(url, function(error, response, html){
-				
+				console.log(++k)
 				if(error){
 					console.error(error)
 				}
@@ -102,7 +112,7 @@ function mycb(response, bl, donecb){
 					$('.titleBar').filter(function(){
 						brewery = $(this).text().trim()
 					})
-					console.log(++k)
+					
 					$('#ba-content').filter(function(){
 
 						var data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
@@ -124,19 +134,25 @@ function mycb(response, bl, donecb){
 					})
 
 				}
+				if (k==bl.length){
+					callback()
+				}
 			})
 	
 
 	})
-	donecb(response)
+	
 }
 
-function donecb(res){
-	res.send("Finsished Scraping")
+function donecb(){
+	console.log("done call back")
+	io.emit('done scraping')
 }
 
-app.listen(PORT)
+//app.listen(PORT)
+http.listen(PORT, function(){
+	console.log('Got ears on', PORT)
+})
 
-console.log('Got ears on', PORT)
 
 exports = module.exports = app;
