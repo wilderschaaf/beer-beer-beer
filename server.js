@@ -156,6 +156,7 @@ function mycb(bl, callback){
 
 					}
 					if (j==bl.length){
+						console.log(j+" was called.")
 						callback()
 					}
 				})
