@@ -100,6 +100,7 @@ function mycb(bl, callback){
 	urlbase = 'https://www.beeradvocate.com'
 	//console.log('wilder' + 'dfjkd')
 	var k = 0
+	var j = 0
 	pg.connect(conString, function (err, client, done) {  
       	if (err) {
         	return console.error('error fetching client from pool', err)
@@ -112,7 +113,7 @@ function mycb(bl, callback){
 				url = urlbase + item
 				//console.log(url)
 				request(url, function(error, response, html){
-					
+					++j
 					if(error){
 						console.error(error)
 					}
@@ -140,10 +141,7 @@ function mycb(bl, callback){
 									function (err, result) {
 							        
 								        console.log(++k)
-								        if (k==10000){
-											done()
-											callback()
-										}
+								        done()
 								        
 								        if (err) {
 								          return console.error('error happened during query', err)
@@ -157,8 +155,7 @@ function mycb(bl, callback){
 						})
 
 					}
-					if (k==bl.length){
-						done()
+					if (j==bl.length){
 						callback()
 					}
 				})
