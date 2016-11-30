@@ -150,7 +150,7 @@ function mycb(bl, callback){
 
 								 	i++;
 								}
-							)}
+							})
 							
 						})
 
