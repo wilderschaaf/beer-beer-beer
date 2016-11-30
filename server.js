@@ -9,10 +9,14 @@ var io = require('socket.io')(http);
 
 var PORT = process.env.PORT || 8081
 
+var pgp = require('pg-promise')
+
+
+
 const pg = require('pg')  
 const conString = 'postgres://kgudnzufnlwdsn:RR_dmEqabj1m2Y67M745Msx3WV@ec2-54-225-246-33.compute-1.amazonaws.com:5432/d6pq465ojdv75c' // make sure to match your own database's credentials
 
-
+var db = pgp(conString)
 
 
 function usecallback(callback){
@@ -101,14 +105,11 @@ function mycb(bl, callback){
 	//console.log('wilder' + 'dfjkd')
 	var k = 0
 	var j = 0
-	pg.connect(conString, function (err, client, done) {  
-      	if (err) {
-        	return console.error('error fetching client from pool', err)
-      	}
-      	var data
-      	var brewery
-      	var $
-      	var i 
+	var data
+    var brewery
+    var $
+    var i 
+    var brenum
 		bl.forEach( function(item){
 				url = urlbase + item
 				//console.log(url)
@@ -130,8 +131,8 @@ function mycb(bl, callback){
 							//console.log(data.eq(5000).children()[0])
 							i = 3
 							while (data.eq(i).children()[0] != undefined){
-							 	var brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
-								client.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
+							 	brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
+								db.query("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
 									[brewery, data.eq(i).children().eq(0).text(), 
 									data.eq(i).children().eq(1).text(), 
 									parseFloat(data.eq(i).children().eq(2).text()), 
@@ -163,7 +164,6 @@ function mycb(bl, callback){
 		
 
 		})
-	})
 }
 
 function donecb(){
