@@ -9,13 +9,13 @@ var io = require('socket.io')(http);
 
 var PORT = process.env.PORT || 8081
 
-var brewlinks = []
+
 
 
 function usecallback(callback){
 	url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=CA&brewery=Y'
 	
-	
+	var brewlinks = []
 	request(url, function(error, response, html){
 
 		if(error){
@@ -147,6 +147,7 @@ function mycb(bl, callback){
 function donecb(){
 	console.log("done call back")
 	io.emit('done scraping')
+	
 }
 
 //app.listen(PORT)
