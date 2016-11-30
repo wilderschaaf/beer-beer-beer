@@ -3,14 +3,14 @@
 <html>
 
 <body>
-	Welcome
+	Scraping Data
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
   socket.on('done scraping', function(){
   	console.log("client connected");
-  	document.body.innerHTML = "Scraping Data";
+  	document.body.innerHTML = "Done Scraping";
   });
 </script>
 </body>
