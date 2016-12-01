@@ -173,7 +173,7 @@ app.get('/', function(req, res){
 })
 
 app.get('/bsearch/', function(req, res){
-	console.log('beer: ' + req.query('beer'))
+	console.log('beer: ' + req.query['beer'])
 })
 
 
