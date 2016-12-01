@@ -172,7 +172,7 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + "/public/home.html")
 })
 
-app.get('/bsearch/*', function(req, res){
+app.get('/bsearch/', function(req, res){
 	console.log('beer: ' + req.query('beer'))
 })
 
