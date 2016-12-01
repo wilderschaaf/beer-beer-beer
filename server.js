@@ -175,6 +175,7 @@ function mycb(bl, callback){
 								})
 								.catch(function(err){
 									++j
+									console.log(brewery)
 									console.error("Caught this chode:", err)
 								})
 						
