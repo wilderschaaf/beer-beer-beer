@@ -34,7 +34,7 @@ function usecallback(callback){
 			
 			$('#ba-content').filter(function(){
 
-				var data = $(this).children("table").children("tr")//.eq(3).children().eq(0).children("a").eq(0).attr().href
+				var data = $(this).children("table").children("tr")
 
 				var i 
 				for (i = 3; i<= 41; i+=2){
@@ -50,7 +50,6 @@ function usecallback(callback){
 	var j 
 	for(j=20;j<=720;j+=20){
 		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=CA&brewery=Y&sort=name'
-		//console.log(url)
 
 		request(url, function(error, response, html){
 			console.log(++j-740)
@@ -63,7 +62,7 @@ function usecallback(callback){
 				
 				$('#ba-content').filter(function(){
 
-					var data = $(this).children("table").children("tr")//.eq(3).children().eq(0).children("a").eq(0).attr().href
+					var data = $(this).children("table").children("tr")
 
 					var i 
 					for (i = 3; i<= 41; i+=2){
@@ -102,91 +101,63 @@ io.on('connection', function(socket){
 
 function mycb(bl, callback){
 	urlbase = 'https://www.beeradvocate.com'
-	//console.log('wilder' + 'dfjkd')
-	var k = 0
 	var j = 0
 	var data
     var brewery
     var $
     var i 
-    var brenum
     var queries
     var len = bl.length
-		bl.forEach( function(item){
-				url = urlbase + item
-				//console.log(url)
-				request(url, function(error, response, html){
-					//++j
-					if(error){
-						console.error(error)
-					}
-					else{
-						
-							
-							
-							db.tx(function(t){
-								
-								$ = cheerio.load(html)
-
-								// $('.titleBar').filter(function(){
-								// 	brewery = $(this).text().trim()
-								// })
-
-								brewery = $('.titleBar').text().trim()
-								
-								//$('#ba-content').filter(function(){
-
-									data = $('#ba-content').find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
-									//console.log(data.eq(5000).children()[0])
-									i = 3
-									queries = []
-									while (data.eq(i).children()[0] != undefined){
-									 	//brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
-									 	//console.log(brenum)
-									 	if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseFloat(data.eq(i).children().eq(4).text()) > 2){
-											queries.push(t.none("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
-												[brewery, data.eq(i).children().eq(0).text(), 
-												data.eq(i).children().eq(1).text(), 
-												parseFloat(data.eq(i).children().eq(2).text()), 
-												parseFloat(data.eq(i).children().eq(3).text()), 
-												parseFloat(data.eq(i).children().eq(4).text()), 
-												parseFloat(data.eq(i).children().eq(5).text())]))
-										}
-											// function (err, result) {
-									        
-										 //        console.log(++k)
-										 //        done()
-										        
-										 //        if (err) {
-										 //          return console.error('error happened during query', err)
-										 //        }
-										 //     });
-
-									 	i++;
-									}
-								return this.batch(queries)
-
-							})
-								.then(function(data){
-									console.log(++j)
-									if (j==len){
-										console.log(j+" was called.")
-										callback()
-									}
-								})
-								.catch(function(err){
-									++j
-									console.log(brewery)
-									console.error("Caught this chode:", err)
-								})
-						
-
-					}
-					
-				})
+	bl.forEach( function(item){
 		
-
+		url = urlbase + item
+		
+		request(url, function(error, response, html){
+			if(error){
+				console.error(error)
+			}
+			else{
+				
+					
+					
+				db.tx(function(t){
+					
+					$ = cheerio.load(html)
+					brewery = $('.titleBar').text().trim()
+					data = $('#ba-content').find("table").children()
+					queries = []
+					while (data.eq(i).children()[0] != undefined){
+						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseFloat(data.eq(i).children().eq(4).text()) > 2){
+							queries.push(t.none("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
+								[brewery, data.eq(i).children().eq(0).text(), 
+								data.eq(i).children().eq(1).text(), 
+								parseFloat(data.eq(i).children().eq(2).text()), 
+								parseFloat(data.eq(i).children().eq(3).text()), 
+								parseFloat(data.eq(i).children().eq(4).text()), 
+								parseFloat(data.eq(i).children().eq(5).text())]))
+						}
+					 	i++;
+					}
+					return this.batch(queries)
+				})
+					.then(function(data){
+						console.log(++j)
+						if (j==len){
+							console.log(j+" was called.")
+							callback()
+						}
+					})
+					.catch(function(err){
+						++j
+						console.log(brewery)
+						console.error("Caught this chode:", err)
+					})
+				
+			}
+			
 		})
+	
+	})
 }
 
 function donecb(){
@@ -195,7 +166,20 @@ function donecb(){
 
 }
 
-//app.listen(PORT)
+//code for implementing the UI portion of the app-----------------
+
+app.get('/', function(req, res){
+	res.sendFile(__dirname + "/public/home.html")
+})
+
+app.get('/bsearch/*', function(req, res){
+	console.log('beer: ' + req.query('beer'))
+})
+
+
+
+//----------------------------------------------------------------
+
 http.listen(PORT, function(){
 	console.log('Got ears on', PORT)
 })
