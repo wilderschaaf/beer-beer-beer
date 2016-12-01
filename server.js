@@ -143,7 +143,7 @@ function mycb(bl, callback){
 									while (data.eq(i).children()[0] != undefined){
 									 	//brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
 									 	//console.log(brenum)
-									 	if (!parseFloat(data.eq(i).children().eq(3).text()).isNaN() && parseFloat(data.eq(i).children().eq(4).text()) > 2){
+									 	if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseFloat(data.eq(i).children().eq(4).text()) > 2){
 											queries.push(t.none("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
 												[brewery, data.eq(i).children().eq(0).text(), 
 												data.eq(i).children().eq(1).text(), 
