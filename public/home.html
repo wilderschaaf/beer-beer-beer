@@ -6,12 +6,6 @@
 	Home Page
 
 	<script src="/socket.io/socket.io.js"></script>
-	<form action = "/bsearch/">
-		Search California Beers
-		<input type='text' name='beer'>
-		<input type="submit" value="Submit">
-	</form>	
-
 	<script>
 		var socket = io();
 		socket.on('got beer', function(msg){
@@ -19,6 +13,13 @@
 			document.body.getElementById('beerdiv').innerHTML = msg['beer']
 		})
 	</script>
+	<form action = "/bsearch/">
+		Search California Beers
+		<input type='text' name='beer'>
+		<input type="submit" value="Submit">
+	</form>	
+
+
 	<div id='beerdiv'>
 
 	</div>
