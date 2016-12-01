@@ -175,6 +175,7 @@ app.get('/', function(req, res){
 app.get('/bsearch/', function(req, res){
 	console.log('beer: ' + req.query['beer'])
 	res.sendFile(__dirname + "/public/home.html")
+	io.Emit('got beer', {beer: req.query['beer']})
 })
 
 
