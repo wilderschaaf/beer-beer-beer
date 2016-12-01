@@ -172,7 +172,7 @@ function mycb(bl, callback){
 									}
 								})
 								.catch(function(err){
-									console.error("Caught this chode:", error)
+									console.error("Caught this chode:", err)
 								})
 						
 
