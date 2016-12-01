@@ -128,13 +128,15 @@ function mycb(bl, callback){
 								
 								$ = cheerio.load(html)
 
-								$('.titleBar').filter(function(){
-									brewery = $(this).text().trim()
-								})
-								
-								$('#ba-content').filter(function(){
+								// $('.titleBar').filter(function(){
+								// 	brewery = $(this).text().trim()
+								// })
 
-									data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
+								brewery = $('.titleBar').text().trim()
+								
+								//$('#ba-content').filter(function(){
+
+									data = $('#ba-content').find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
 									//console.log(data.eq(5000).children()[0])
 									i = 3
 									queries = []
@@ -161,7 +163,6 @@ function mycb(bl, callback){
 
 									 	i++;
 									}
-								})
 								return this.batch(queries)
 
 							})
@@ -173,6 +174,7 @@ function mycb(bl, callback){
 									}
 								})
 								.catch(function(err){
+									++j
 									console.error("Caught this chode:", err)
 								})
 						
