@@ -2,6 +2,11 @@ var express = require('express')
 var request = require('request')
 var cheerio = require('cheerio')
 var app = express()
+var exphbs = require('express-handlebars')
+
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 //making socket to talk to client
 var http = require('http').createServer(app);
@@ -169,7 +174,10 @@ function donecb(){
 //code for implementing the UI portion of the app-----------------
 
 app.get('/', function(req, res){
-	res.sendFile(__dirname + "/public/home.html")
+	//res.sendFile(__dirname + "/public/home.html")
+
+	res.render('home')
+
 })
 
 app.get('/bsearch/', function(req, res){
