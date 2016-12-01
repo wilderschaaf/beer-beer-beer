@@ -111,11 +111,12 @@ function mycb(bl, callback){
     var i 
     var brenum
     var queries
+    var len = bl.length
 		bl.forEach( function(item){
 				url = urlbase + item
 				//console.log(url)
 				request(url, function(error, response, html){
-					++j
+					//++j
 					if(error){
 						console.error(error)
 					}
@@ -162,7 +163,11 @@ function mycb(bl, callback){
 
 							})
 								.then(function(data){
-									console.log(j)
+									console.log(++j)
+									if (j==len){
+										console.log(j+" was called.")
+										callback()
+									}
 								})
 								.catch(function(err){
 									console.error("Caught this chode:", error)
@@ -170,10 +175,7 @@ function mycb(bl, callback){
 						})
 
 					}
-					// if (j==bl.length){
-					// 	console.log(j+" was called.")
-					// 	callback()
-					// }
+					
 				})
 		
 
