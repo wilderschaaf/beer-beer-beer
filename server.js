@@ -121,44 +121,46 @@ function mycb(bl, callback){
 						console.error(error)
 					}
 					else{
-						$ = cheerio.load(html)
-
-						$('.titleBar').filter(function(){
-							brewery = $(this).text().trim()
-						})
 						
-						$('#ba-content').filter(function(){
-
-							data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
-							//console.log(data.eq(5000).children()[0])
 							
 							
 							db.tx(function(t){
 								i = 3
 								queries = []
-								while (data.eq(i).children()[0] != undefined){
-								 	brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
-								 	//console.log(brenum)
-									queries.push(this.none("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
-										[brewery, data.eq(i).children().eq(0).text(), 
-										data.eq(i).children().eq(1).text(), 
-										parseFloat(data.eq(i).children().eq(2).text()), 
-										parseFloat(data.eq(i).children().eq(3).text()), 
-										brenum, 
-										parseFloat(data.eq(i).children().eq(5).text())]))
-											
-										// function (err, result) {
-								        
-									 //        console.log(++k)
-									 //        done()
-									        
-									 //        if (err) {
-									 //          return console.error('error happened during query', err)
-									 //        }
-									 //     });
+								$ = cheerio.load(html)
 
-								 	i++;
-								}
+								$('.titleBar').filter(function(){
+									brewery = $(this).text().trim()
+								})
+								
+								$('#ba-content').filter(function(){
+
+									data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
+									//console.log(data.eq(5000).children()[0])
+									while (data.eq(i).children()[0] != undefined){
+									 	brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
+									 	//console.log(brenum)
+										queries.push(this.none("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
+											[brewery, data.eq(i).children().eq(0).text(), 
+											data.eq(i).children().eq(1).text(), 
+											parseFloat(data.eq(i).children().eq(2).text()), 
+											parseFloat(data.eq(i).children().eq(3).text()), 
+											brenum, 
+											parseFloat(data.eq(i).children().eq(5).text())]))
+												
+											// function (err, result) {
+									        
+										 //        console.log(++k)
+										 //        done()
+										        
+										 //        if (err) {
+										 //          return console.error('error happened during query', err)
+										 //        }
+										 //     });
+
+									 	i++;
+									}
+								})
 								return this.batch(queries)
 
 							})
@@ -172,7 +174,7 @@ function mycb(bl, callback){
 								.catch(function(err){
 									console.error("Caught this chode:", error)
 								})
-						})
+						
 
 					}
 					
