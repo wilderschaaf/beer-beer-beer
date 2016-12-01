@@ -176,14 +176,18 @@ function donecb(){
 app.get('/', function(req, res){
 	//res.sendFile(__dirname + "/public/home.html")
 
-	res.render('home')
+	res.render('home', {
+		beer: 'search for a beer'
+	})
 
 })
 
 app.get('/bsearch/', function(req, res){
 	console.log('beer: ' + req.query['beer'])
-	res.sendFile(__dirname + "/public/home.html")
-	io.emit('got beer')
+	//res.sendFile(__dirname + "/public/home.html")
+	res.render('home', {
+		beer: req.query['beer']
+	})
 })
 
 
