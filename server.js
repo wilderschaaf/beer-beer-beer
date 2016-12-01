@@ -131,10 +131,10 @@ function mycb(bl, callback){
 							data = $(this).find("table").children()//.eq(3).children().eq(0).children("a").eq(0).attr().href
 							//console.log(data.eq(5000).children()[0])
 							
-							queries = []
+							
 							db.tx(function(t){
 								i = 3
-
+								queries = []
 								while (data.eq(i).children()[0] != undefined){
 								 	brenum = (data.eq(i).children().eq(4).text() == 'NaN') ? 0 : parseInt(data.eq(i).children().eq(4).text())
 								 	//console.log(brenum)
