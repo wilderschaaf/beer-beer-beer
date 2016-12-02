@@ -121,7 +121,6 @@ function mycb(bl, callback){
     var queries
     var len = bl.length
 	bl.forEach( function(item){
-		console.log(item)
 		url = urlbase + item
 		
 		request(url, function(error, response, html){
@@ -138,6 +137,7 @@ function mycb(bl, callback){
 					brewery = $('.titleBar').text().trim()
 					data = $('#ba-content').find("table").children()
 					queries = []
+					i = 3
 					while (data.eq(i).children()[0] != undefined){
 						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseFloat(data.eq(i).children().eq(4).text()) > 2){
 							queries.push(t.none("INSERT INTO calibeers (brewery, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7)", 
@@ -145,7 +145,7 @@ function mycb(bl, callback){
 								data.eq(i).children().eq(1).text(), 
 								parseFloat(data.eq(i).children().eq(2).text()), 
 								parseFloat(data.eq(i).children().eq(3).text()), 
-								parseFloat(data.eq(i).children().eq(4).text()), 
+								parseNumRatings(data.eq(i).children().eq(4).text()), 
 								parseFloat(data.eq(i).children().eq(5).text())]))
 						}
 					 	i++;
@@ -154,7 +154,7 @@ function mycb(bl, callback){
 				})
 					.then(function(data){
 						console.log(++j)
-						console.log(data)
+						//console.log(data)
 						if (j==len){
 							console.log(j+" was called.")
 							callback()
