@@ -106,7 +106,7 @@ io.on('connection', function(socket){
 
 function parseNumRatings(s){
 	if (s.includes(",")){
-		s.replace(",","")
+		return parseFloat(s.replace(",",""))
 	}
 	return parseFloat(s)
 }
