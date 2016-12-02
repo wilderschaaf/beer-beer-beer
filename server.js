@@ -189,7 +189,7 @@ app.get('/bsearch/', function(req, res){
 		.then( function (data){
 			console.log(data)
 			res.render('home', {
-				beer: data[0]
+				beers: data
 			})
 		})
 		.catch( function (error){
