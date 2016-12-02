@@ -188,14 +188,18 @@ app.get('/bsearch/', function(req, res){
 	db.any("select * from calibeers where lower(brewery) like lower(${term}) or lower(beername) like lower(${term})", {term: '%' + req.query['beer'] + '%'})
 		.then( function (data){
 			console.log(data)
+			res.render('home', {
+				beer: data[0]
+			})
 		})
 		.catch( function (error){
 			console.error('search error:', error)
+			res.render('home', {
+				beer: "Error fetching results from database"
+			})
 		})
 
-	res.render('home', {
-		beer: req.query['beer']
-	})
+	
 })
 
 
