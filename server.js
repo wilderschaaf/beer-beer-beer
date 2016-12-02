@@ -104,6 +104,13 @@ io.on('connection', function(socket){
 
 })
 
+function parseNumRatings(s){
+	if (s.includes(",")){
+		s.replace(",","")
+	}
+	return parseFloat(s)
+}
+
 function mycb(bl, callback){
 	urlbase = 'https://www.beeradvocate.com'
 	var j = 0
@@ -138,7 +145,7 @@ function mycb(bl, callback){
 								data.eq(i).children().eq(1).text(), 
 								parseFloat(data.eq(i).children().eq(2).text()), 
 								parseFloat(data.eq(i).children().eq(3).text()), 
-								parseFloat(data.eq(i).children().eq(4).text()), 
+								parseNumRatings(data.eq(i).children().eq(4).text()), 
 								parseFloat(data.eq(i).children().eq(5).text())]))
 						}
 					 	i++;
