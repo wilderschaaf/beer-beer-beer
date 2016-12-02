@@ -185,6 +185,14 @@ app.get('/', function(req, res){
 app.get('/bsearch/', function(req, res){
 	console.log('beer: ' + req.query['beer'])
 	//res.sendFile(__dirname + "/public/home.html")
+	db.any("select * from calibeers where lower(brewery) like lower('%$1%') or lower(beername) like lower('%$1%')", [req.query['beer']])
+		.then( function (data){
+			console.log(data)
+		})
+		.catch( function (error){
+			console.error('search error:', error)
+		})
+
 	res.render('home', {
 		beer: req.query['beer']
 	})
