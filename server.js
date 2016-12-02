@@ -145,7 +145,7 @@ function mycb(bl, callback){
 								data.eq(i).children().eq(1).text(), 
 								parseFloat(data.eq(i).children().eq(2).text()), 
 								parseFloat(data.eq(i).children().eq(3).text()), 
-								parseNumRatings(data.eq(i).children().eq(4).text()), 
+								parseFloat(data.eq(i).children().eq(4).text()), 
 								parseFloat(data.eq(i).children().eq(5).text())]))
 						}
 					 	i++;
