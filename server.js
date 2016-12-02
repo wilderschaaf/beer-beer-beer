@@ -121,7 +121,7 @@ function mycb(bl, callback){
     var queries
     var len = bl.length
 	bl.forEach( function(item){
-		
+		console.log(item)
 		url = urlbase + item
 		
 		request(url, function(error, response, html){
