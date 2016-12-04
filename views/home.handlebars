@@ -6,23 +6,41 @@
 
 
 <table id='beerstab'>
+	
+	<tr class="head">
+    		<td>
+        		brewery\t
+        	</td>
+    		<td>
+        		Beer\t
+        	</td>
+        	<td>
+        		Style\t
+        	</td>
+        	<td>
+        		ABV\t
+        	</td>
+        	<td>
+        		Rating\t
+        	</td>
+    	</tr>
 
 	{{#each beers}}
     	<tr class="beer">
     		<td>
-        		{{{brewery}}}
+        		{{{brewery}}}\t
         	</td>
     		<td>
-        		{{{beername}}}
+        		{{{beername}}}\t
         	</td>
         	<td>
-        		{{{style}}}
+        		{{{style}}}\t
         	</td>
         	<td>
-        		{{{abv}}}
+        		{{{abv}}}\t
         	</td>
         	<td>
-        		{{{avgrating}}}
+        		{{{avgrating}}}\t
         	</td>
     	</tr>
   	{{/each}}
