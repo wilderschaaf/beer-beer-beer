@@ -203,7 +203,7 @@ app.get('/bsearch/', function(req, res){
 		.catch( function (error){
 			console.error('search error:', error)
 			res.render('home', {
-				beer: "Error fetching results from database"
+				beers: "Error fetching results from database"
 			})
 		})
 

@@ -5,14 +5,28 @@
 </form>	
 
 
-<div id='beerdiv'>
+<table id='beerstab'>
 
 	{{#each beers}}
-    	<div class="beer">
-        	{{{beername}}}
-    	</div>
+    	<tr class="beer">
+    		<td>
+        		{{{brewery}}}
+        	</td>
+    		<td>
+        		{{{beername}}}
+        	</td>
+        	<td>
+        		{{{style}}}
+        	</td>
+        	<td>
+        		{{{abv}}}
+        	</td>
+        	<td>
+        		{{{avgrating}}}
+        	</td>
+    	</tr>
   	{{/each}}
 
-</div>
+</table>
 
 	
