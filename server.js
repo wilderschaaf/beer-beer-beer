@@ -9,7 +9,6 @@ var path = require('path')
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(express.static(path.join(__dirname, '/public/styles/')));
 
 //making socket to talk to client
 var http = require('http').createServer(app);
