@@ -8,6 +8,9 @@ body {
 #searchbar {
 	position: fixed;
 	background-color: blue;
+	width: 100%;
+	/*padding: 0%;*/
+	margin: 0%;
 }
 
 @media (min-width: 600px) {
