@@ -6,6 +6,8 @@ var exphbs = require('express-handlebars')
 var path = require('path')
 
 
+app.use(path.join(__dirname, '/public'))
+
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
