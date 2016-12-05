@@ -5,6 +5,9 @@ body {
 #beerstab {
 	width: 100%;
 }
+#searchbar {
+	position: fixed;
+}
 
 @media (min-width: 600px) {
 	body {
