@@ -3,12 +3,13 @@ var request = require('request')
 var cheerio = require('cheerio')
 var app = express()
 var exphbs = require('express-handlebars')
+var path = require('path')
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(express.static(path.join(__dirname, '/public/styles')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 //making socket to talk to client
 var http = require('http').createServer(app);
