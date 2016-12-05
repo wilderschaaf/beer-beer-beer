@@ -6,3 +6,8 @@ body {
 	width: 50em;
 }
 
+@media (min-width: 600px) {
+	body {
+		background-color: darkred;
+	}
+}
