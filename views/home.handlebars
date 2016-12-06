@@ -6,45 +6,48 @@
     </form>	
 </div>
 
-<table cladd='table-striped'>
+<table cladd='table table-striped'>
 	
-	<tr>
-    		<th>
-    			Brewery
-        	</th>
-    		<th>
-        		Beer
-        	</th>
-        	<th>
-        		Style
-        	</th>
-        	<th>
-        		ABV
-        	</th>
-        	<th>
-        		Rating
-        	</th>
-    </tr>
-
-	{{#each beers}}
-    	<tr class="beer">
-    		<td>
-        		{{{brewery}}}
-        	</td>
-    		<td>
-        		{{{beername}}}
-        	</td>
-        	<td>
-        		{{{style}}}
-        	</td>
-        	<td>
-        		{{{abv}}}
-        	</td>
-        	<td>
-        		{{{avgrating}}}
-        	</td>
-    	</tr>
-  	{{/each}}
+    <thead>
+    	<tr>
+        		<th>
+        			Brewery
+            	</th>
+        		<th>
+            		Beer
+            	</th>
+            	<th>
+            		Style
+            	</th>
+            	<th>
+            		ABV
+            	</th>
+            	<th>
+            		Rating
+            	</th>
+        </tr>
+    </thead>
+    <tbody>
+    	{{#each beers}}
+        	<tr class="beer">
+        		<td>
+            		{{{brewery}}}
+            	</td>
+        		<td>
+            		{{{beername}}}
+            	</td>
+            	<td>
+            		{{{style}}}
+            	</td>
+            	<td>
+            		{{{abv}}}
+            	</td>
+            	<td>
+            		{{{avgrating}}}
+            	</td>
+        	</tr>
+      	{{/each}}
+    </tbody>
 
 </table>
 
