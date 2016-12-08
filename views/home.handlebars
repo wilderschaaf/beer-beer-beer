@@ -8,49 +8,50 @@
     </div>
 </nav>
 
-<table class='table table-striped'>
-	
-    <thead>
-    	<tr>
-        		<th>
-        			Brewery
-            	</th>
-        		<th>
-            		Beer
-            	</th>
-            	<th>
-            		Style
-            	</th>
-            	<th>
-            		ABV
-            	</th>
-            	<th>
-            		Rating
-            	</th>
-        </tr>
-    </thead>
-    <tbody>
-    	{{#each beers}}
-        	<tr class="beer">
-        		<td>
-            		{{{brewery}}}
-            	</td>
-        		<td>
-            		{{{beername}}}
-            	</td>
-            	<td>
-            		{{{style}}}
-            	</td>
-            	<td>
-            		{{{abv}}}
-            	</td>
-            	<td>
-            		{{{avgrating}}}
-            	</td>
-        	</tr>
-      	{{/each}}
-    </tbody>
+<div class="container">
+    <table class='table table-striped'>
+    	
+        <thead>
+        	<tr>
+            		<th>
+            			Brewery
+                	</th>
+            		<th>
+                		Beer
+                	</th>
+                	<th>
+                		Style
+                	</th>
+                	<th>
+                		ABV
+                	</th>
+                	<th>
+                		Rating
+                	</th>
+            </tr>
+        </thead>
+        <tbody>
+        	{{#each beers}}
+            	<tr class="beer">
+            		<td>
+                		{{{brewery}}}
+                	</td>
+            		<td>
+                		{{{beername}}}
+                	</td>
+                	<td>
+                		{{{style}}}
+                	</td>
+                	<td>
+                		{{{abv}}}
+                	</td>
+                	<td>
+                		{{{avgrating}}}
+                	</td>
+            	</tr>
+          	{{/each}}
+        </tbody>
 
-</table>
-
+    </table>
+</div>
 	
