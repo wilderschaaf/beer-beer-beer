@@ -111,7 +111,7 @@ function getbeerdata(){
 	var rowcount 
 	db.one('select count(*) from calibeers')
 		.then(function(data){
-			console.log(data)
+			console.log(data.count)
 		})
 		.catch(function(err){
 			console.error(err)
