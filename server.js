@@ -105,6 +105,18 @@ app.use('/scrape', function(req, res){
 	
 })
 
+function getbeerdata(){
+	urlbase = "https://www.beeradvocate.com"
+	var rowcount = db.one('select count(*) from calibeers')
+	console.log(rowcount)
+
+}
+
+app.use('/scrape2', function(req, res){
+	res.sendFile(__dirname + "/public/index.html")
+	getbeerdata()
+})
+
 io.on('connection', function(socket){
 	console.log('connected')
 
