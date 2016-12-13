@@ -108,8 +108,15 @@ app.use('/scrape', function(req, res){
 function getbeerdata(){
 	console.log("beer data")
 	urlbase = "https://www.beeradvocate.com"
-	var rowcount = db.one('select count(*) from calibeers')
-	console.log(rowcount)
+	var rowcount 
+	db.one('select count(*) from calibeers')
+		.then(function(data){
+			console.log(data)
+		})
+		.catch(function(err){
+			console.error(err)
+		})
+	//console.log(rowcount)
 
 }
 
