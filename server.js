@@ -201,7 +201,7 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log(darray[87])
+					console.log(normalize(darray)[87])
 					console.log(desc[87])
 				}
 
@@ -210,6 +210,20 @@ function beertroll(link){
 	}
 	return recreqwrapper(0, 0)
 }
+
+function normalize(arr){
+	var sum = 0
+	var len = arr.length
+	for (var i = 0; i < len; i++){
+		sum += arr[i] * arr[i]
+	}
+	sum = Math.sqrt(sum)
+	for (var i = 0; i < len; i++){
+		arr[i] = arr[i]/sum
+	}
+	return arr
+}
+
 
 function chkstrings(str1, str2){
 	res = str2.split('/')
