@@ -191,12 +191,13 @@ function beertroll(link){
 				while(data.children().eq(i).children().eq(1).children().text()!== "" && i < 25){
 					
 					text = data.children().eq(i).children().eq(1).text()
-					console.log(text)
+					//console.log(text)
 					darray = aggwords(text, darray)
 					i++
 				}	
 
 				if (count<3 && i>=24){
+					console.log(offset)
 					recreqwrapper(offset+25, count+1)
 				}
 				else{
