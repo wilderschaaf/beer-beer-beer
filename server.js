@@ -201,8 +201,8 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log(darray[105])
-					console.log(desc[105])
+					console.log(darray[87])
+					console.log(desc[87])
 				}
 
 			}
