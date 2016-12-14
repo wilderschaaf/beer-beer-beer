@@ -189,7 +189,7 @@ function beertroll(link){
 				next = 
 				i = 0
 				while(data.children().eq(i).children().eq(1).children().text()!== "" && i < 25){
-					console.log(data.children().eq(i).children().eq(1).children().text())
+					console.log(data.children().eq(i).children().eq(1).text())
 					text = data.children().eq(i).children().eq(1).children().text()
 					darray = aggwords(text, darray)
 					i++
