@@ -5,6 +5,17 @@ var app = express()
 var exphbs = require('express-handlebars')
 var path = require('path')
 
+var desc = [accessible,acidic,aftertaste,aggressive,alcoholic,almondlike,apple,artificial,assertive,astringent,backbone,bacony/bacon,balance,bananalike,barnyard,big,biscuity/biscuit,bitter,
+body,bold,boozy/booze,bourbonlike/bourbon,bready/bread,Brettanomyces/brett,bright,bubblegum,burnt,buttery/butter,caramely/caramel,catty,chalky,cheesy/cheese,chewy,Chlorophenolic,
+chocolaty/chocolate,cigarlike/cigar,citrusy/citrus,clean,clovelike/clove,cloying,coconut,coffeelike/coffee,colorful,complex,corked,cornlike/corn,crackerlike/cracker,creamy/cream,crisp,dark,
+fruit,deep,delicate,Diacetyl,dirty/dirt,dissipate,doughy/dough,fruity/fruit,dry,earthy/earth,estery/ester,farmlike,fine,firm,flat,flowery/flower,fluffy/fluff,foamy/foam,fresh,bodied,gassy,
+Geraniol,grainy/grain,grapefruity/grapefruit,grassy/grass,greasy/grease,green,harmonious,harsh,hazy/haze,head,hearty,heavy,herbal,highlights,hollow,honeylike/honey,hoppy/hops,horselike/horse,
+hot,husky,inky/ink,intense,jammy/jam,Lactobacillus,leathery/leather,legs,lemony/lemon,light,lightstruck,linalool,medicinal,mellow,melonlike/melon,Mercaptan,metallic,mild,milky/milk,
+minerally/mineral,molasses,moldy/mold,moussy,musty/must,nutty/nuts,oaky/oak,oatmeal,oily/oil,Chlorophenol,overtones,oxidation,oxidized,papery/paper,peaty/peat,peppery/pepper,perfumy/perfume,
+persistent,phenolic,powerful,rancid,refined,refreshing,resinous,rich,roasted,robust,rocky,saccharine,salty/salt,sediment,sharp,sherrylike/sherry,silky/silk,skunky/skunked,smoky/smoke,smooth,
+soapy/soap,soft,solventlike/solvent,sour,spicy/spice,stale,sticky,sulfidic,sulfitic,sweet,syrupy/syrup,tannic,tannins,tart,texture,texture,thick,thin,toasty/toast,toffee,nonenal,treacle,turbid,
+undertones,vanilla,vegetal,viscous,warming,watery/water,winelike,woody/wood,worty/wort,yeasty/yeast,young,zesty/zest]
+
 
 app.use(express.static(path.join(__dirname, '/public')))
 
@@ -111,13 +122,117 @@ function getbeerdata(){
 	var rowcount 
 	db.one('select count(*) from calibeers')
 		.then(function(data){
-			console.log(data.count)
+			rowcount = 1
+
+			for (var i = 1; i <= rowcount; i++){
+				db.one('select beerlink from calibeers where beerid=$1', i)
+					.then( funtcion(data){
+						beertroll(data.beerlink)
+					})
+					.catch( function(err){
+						console.error(err)
+					})
+			}
+
+
+
 		})
 		.catch(function(err){
 			console.error(err)
 		})
 	//console.log(rowcount)
 
+}
+
+// function recreqwrapper(url, offset, count, darray){
+// 	if (count > 3){
+// 		return
+// 	}
+// 	request(url + offset, function(error, response, html){
+// 		if (error){
+// 			console.error(error)
+// 		}
+// 		else{
+// 			//do stuff with html, call aggwords a bunch
+// 			//check if next page is an option and if reqcount < 3
+// 			if (som1 && som2){
+// 				recreqwrapper(url, offset+25, count+1, darray)
+// 			}
+
+// 		}
+// 	})
+// }
+
+//gotta n do a request block, troll through the DOM, aggregate word counts
+//create a new column in db and add the normalized feature array
+function beertroll(link){
+	url = "https://www.beeradvocate.com" + link + "?sort=topr&start="
+	var darray = Array.apply(null, Array(180)).map(Number.prototype.valueOf,0)
+	var $
+	var data
+	var next
+	var i
+	var text
+	var endcount = 25
+	function recreqwrapper(offset, count){
+		request(url + offset, function(error, response, html){
+			if (error){
+				console.error(error)
+			}
+			else{
+				//do stuff with html, call aggwords a bunch
+				//check if next page is an option and if reqcount < 3
+				$ = cheerio.load(html)
+				data = $('#rating_fullview')
+				next = 
+				i = 0
+				while(data.children().eq(i) != undefined && i < 25){
+					text = data.children().eq(i).children().eq(1).children().text()
+					darray = aggwords(text, darray)
+					i++
+				}	
+
+				if (count<3 && i>=24){
+					recreqwrapper(offset+25, count+1)
+				}
+				else{
+					//insert darray into db
+					console.log(darray)
+				}
+
+			}
+		})
+	}
+	return recreqwrapper(0, 0)
+}
+
+function chkstrings(str1, str2){
+	res = str2.split('/')
+	if (res.length == 1){
+		if (str1 == str2){
+			return true
+		}
+	}
+	else if (res.length == 2){
+		if (str1 == res[0] || str1 == res[1]){
+			return true
+		}
+	}
+	return false
+}
+
+function aggwords(text, darray){
+	var words = text.split(" ")
+	var len = words.length
+	var len2 = darray.length
+	for (var i = 0; i < len; i++){
+		for (var j = 0; j < len2; j++){
+			if (chkstrings(words[i], desc[j])){
+				darray[j] = darray[j] + 1
+			}
+		}
+	}
+	return darray
 }
 
 app.use('/scrape2', function(req, res){
