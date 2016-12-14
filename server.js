@@ -201,7 +201,7 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log('done')
+					console.log(darray)
 				}
 
 			}
@@ -226,7 +226,7 @@ function chkstrings(str1, str2){
 }
 
 function aggwords(text, darray){
-	var words = text.split(" ")
+	var words = text.split(/[ \/,\-\.\n]/)
 	var len = words.length
 	var len2 = darray.length
 	for (var i = 0; i < len; i++){
