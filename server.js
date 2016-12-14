@@ -189,6 +189,7 @@ function beertroll(link){
 				next = 
 				i = 0
 				while(data.children().eq(i) != undefined && i < 25){
+					console.log(i)
 					text = data.children().eq(i).children().eq(1).children().text()
 					darray = aggwords(text, darray)
 					i++
@@ -199,7 +200,7 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log(darray)
+					console.log('done')
 				}
 
 			}
