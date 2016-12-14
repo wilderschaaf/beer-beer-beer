@@ -124,9 +124,9 @@ function getbeerdata(){
 	var rowcount 
 	db.one('select count(*) from calibeers')
 		.then(function(data){
-			rowcount = 1
+			rowcount = 5361
 
-			for (var i = 1; i <= rowcount; i++){
+			for (var i = 5361; i <= rowcount; i++){
 				db.one('select beerlink from calibeers where beerid=$1', i)
 					.then( function(data){
 						beertroll(data.beerlink)
