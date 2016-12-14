@@ -201,7 +201,8 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log(darray)
+					console.log(darray[105])
+					console.log(desc[105])
 				}
 
 			}
@@ -213,12 +214,12 @@ function beertroll(link){
 function chkstrings(str1, str2){
 	res = str2.split('/')
 	if (res.length == 1){
-		if (str1 == str2){
+		if (str1.toLowerCase() == str2){
 			return true
 		}
 	}
 	else if (res.length == 2){
-		if (str1 == res[0] || str1 == res[1]){
+		if (str1.toLowerCase() == res[0] || str1.toLowerCase() == res[1]){
 			return true
 		}
 	}
@@ -226,9 +227,9 @@ function chkstrings(str1, str2){
 }
 
 function aggwords(text, darray){
-	var words = text.split(/[ \/,\-\.\n]/)
+	var words = text.split(/[ \/,\-\.\n\t]/)
 	var len = words.length
-	var len2 = darray.length
+	var len2 = 180
 	for (var i = 0; i < len; i++){
 		for (var j = 0; j < len2; j++){
 			if (chkstrings(words[i], desc[j])){
