@@ -180,6 +180,7 @@ function beertroll(link){
 		request(url + offset, function(error, response, html){
 			if (error){
 				console.error("request error:", error)
+				recreqwrapper(offset, count)
 			}
 			else{
 				//do stuff with html, call aggwords a bunch
