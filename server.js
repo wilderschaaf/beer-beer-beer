@@ -176,11 +176,11 @@ function beertroll(link, beerid){
 	var i
 	var text
 	var endcount = 25
-	function recreqwrapper(offset, count){
+	function recreqwrapper(offset, count, bid){
 		request(url + offset, function(error, response, html){
 			if (error){
 				console.error("request error at beerlink: "+link, error)
-				recreqwrapper(offset, count)
+				recreqwrapper(offset, count, bid)
 			}
 			else{
 				//do stuff with html, call aggwords a bunch
@@ -197,18 +197,18 @@ function beertroll(link, beerid){
 
 				if (count<3 && i>=24){
 					//console.log(offset)
-					recreqwrapper(offset+25, count+1)
+					recreqwrapper(offset+25, count+1, bid)
 				}
 				else{
 					//insert darray into db
 					
-					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), beerid])
+					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), bid])
 						.then( function(data){
-							console.log(beerid)
+							console.log(bid)
 						})
 						.catch( function(err){
 							console.error("update db error:", err)
-							console.log(beerid)
+							console.log(bid)
 						})
 					// console.log(normalize(darray)[15])
 					// console.log(desc[15])
@@ -217,7 +217,7 @@ function beertroll(link, beerid){
 			}
 		})
 	}
-	return recreqwrapper(0, 0)
+	return recreqwrapper(0, 0, beerid)
 }
 
 function normalize(arr){
