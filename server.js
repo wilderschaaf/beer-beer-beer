@@ -130,6 +130,7 @@ function getbeerdata(){
 			for (var i = 1; i <= rowcount; i++){
 				db.one('select beerlink from calibeers where beerid=$1', i)
 					.then( function(data){
+						console.log(i)
 						beertroll(data.beerlink, i)
 					})
 					.catch( function(err){
@@ -201,7 +202,7 @@ function beertroll(link, beerid){
 				}
 				else{
 					//insert darray into db
-					console.log('beerid: ' + bid)
+					//console.log('beerid: ' + bid)
 					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), bid])
 						.then( function(data){
 							console.log(data)
