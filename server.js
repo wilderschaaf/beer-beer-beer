@@ -132,7 +132,7 @@ function getbeerdata(){
 						beertroll(data.beerlink)
 					})
 					.catch( function(err){
-						console.error(err)
+						console.error("db error:",err)
 					})
 			}
 
@@ -140,7 +140,7 @@ function getbeerdata(){
 
 		})
 		.catch(function(err){
-			console.error(err)
+			console.error("db error (count):",err)
 		})
 	//console.log(rowcount)
 
@@ -179,7 +179,7 @@ function beertroll(link){
 	function recreqwrapper(offset, count){
 		request(url + offset, function(error, response, html){
 			if (error){
-				console.error(error)
+				console.error("request error:", error)
 			}
 			else{
 				//do stuff with html, call aggwords a bunch
