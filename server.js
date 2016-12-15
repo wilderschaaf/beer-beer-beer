@@ -201,10 +201,10 @@ function beertroll(link, beerid){
 				}
 				else{
 					//insert darray into db
-					
+					console.log('beerid: ' + bid)
 					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), bid])
 						.then( function(data){
-							console.log(bid)
+							console.log(data)
 						})
 						.catch( function(err){
 							console.error("update db error:", err)
