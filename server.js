@@ -168,12 +168,11 @@ function getbeerdata(){
 
 //gotta n do a request block, troll through the DOM, aggregate word counts
 //create a new column in db and add the normalized feature array
-function beertroll(link){
+function beertroll(link, beerid){
 	url = "https://www.beeradvocate.com" + link + "?sort=topr&start="
 	var darray = Array.apply(null, Array(180)).map(Number.prototype.valueOf,0)
 	var $
 	var data
-	var next
 	var i
 	var text
 	var endcount = 25
@@ -188,7 +187,6 @@ function beertroll(link){
 				//check if next page is an option and if reqcount < 3
 				$ = cheerio.load(html)
 				data = $('#rating_fullview')
-				next = 
 				i = 0
 				while(data.children().eq(i).children().eq(1).children().text()!== "" && i < 25){
 					
@@ -203,7 +201,15 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log(++globalcounter)
+					
+					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), beerid])
+						.then( function(data){
+							console.log(beerid)
+						})
+						.catch( function(err){
+							console.error("update db error:", err)
+							console.log(beerid)
+						})
 					// console.log(normalize(darray)[15])
 					// console.log(desc[15])
 				}
