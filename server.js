@@ -125,7 +125,7 @@ function getbeerdata(){
 	var rowcount 
 	db.one('select count(*) from calibeers')
 		.then(function(data){
-			rowcount = 20
+			rowcount = data.count
 
 			for (var i = 1; i <= rowcount; i++){
 				db.one('select beerlink,beerid from calibeers where beerid=$1', i)
