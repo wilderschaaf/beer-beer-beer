@@ -221,6 +221,16 @@ function beertroll(link, beerid){
 						.catch( function(err){
 							console.error("update db error:", err)
 							console.log(beerid)
+							if(beerid <= rowcount){
+								db.one('select beerlink,beerid from calibeers where beerid=$1', beerid + 1)
+									.then( function(data){
+						
+										beertroll(data.beerlink, data.beerid)
+									})
+									.catch( function(err){
+										console.error("db error:",err)
+									})
+							}
 						})
 					// console.log(normalize(darray)[15])
 					// console.log(desc[15])
