@@ -130,8 +130,8 @@ function getbeerdata(){
 			for (var i = 1; i <= rowcount; i++){
 				db.one('select beerlink,beerid from calibeers where beerid=$1', i)
 					.then( function(data){
-						console.log(data.beerid)
-						beertroll(data.beerlink, i)
+					
+						beertroll(data.beerlink, data.beerid)
 					})
 					.catch( function(err){
 						console.error("db error:",err)
@@ -177,11 +177,11 @@ function beertroll(link, beerid){
 	var i
 	var text
 	var endcount = 25
-	function recreqwrapper(offset, count, bid){
+	function recreqwrapper(offset, count){
 		request(url + offset, function(error, response, html){
 			if (error){
 				console.error("request error at beerlink: "+link, error)
-				recreqwrapper(offset, count, bid)
+				recreqwrapper(offset, count)
 			}
 			else{
 				//do stuff with html, call aggwords a bunch
@@ -198,18 +198,18 @@ function beertroll(link, beerid){
 
 				if (count<3 && i>=24){
 					//console.log(offset)
-					recreqwrapper(offset+25, count+1, bid)
+					recreqwrapper(offset+25, count+1)
 				}
 				else{
 					//insert darray into db
 					//console.log('beerid: ' + bid)
-					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), bid])
+					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), beerid])
 						.then( function(data){
-							console.log(data)
+							console.log(beerid)
 						})
 						.catch( function(err){
 							console.error("update db error:", err)
-							console.log(bid)
+							console.log(beerid)
 						})
 					// console.log(normalize(darray)[15])
 					// console.log(desc[15])
@@ -218,7 +218,7 @@ function beertroll(link, beerid){
 			}
 		})
 	}
-	return recreqwrapper(0, 0, beerid)
+	return recreqwrapper(0, 0)
 }
 
 function normalize(arr){
