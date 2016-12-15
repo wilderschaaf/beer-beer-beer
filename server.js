@@ -17,6 +17,7 @@ var desc = ['accessible','acidic','aftertaste','aggressive','alcoholic','almondl
 'sediment','sharp','sherrylike/sherry','silky/silk','skunky/skunked','smoky/smoke','smooth','soapy/soap','soft','solventlike/solvent','sour','spicy/spice','stale','sticky','sulfidic',
 'sulfitic','sweet','syrupy/syrup','tannic','tannins','tart','texture','texture','thick','thin','toasty/toast','toffee','nonenal','treacle','turbid','undertones','vanilla','vegetal','viscous',
 'warming','watery/water','winelike','woody/wood','worty/wort','yeasty/yeast','young','zesty/zest']
+var globalcounter = 0
 
 
 app.use(express.static(path.join(__dirname, '/public')))
@@ -179,7 +180,7 @@ function beertroll(link){
 	function recreqwrapper(offset, count){
 		request(url + offset, function(error, response, html){
 			if (error){
-				console.error("request error:", error)
+				console.error("request error at beerlink: "+link, error)
 				recreqwrapper(offset, count)
 			}
 			else{
@@ -202,8 +203,9 @@ function beertroll(link){
 				}
 				else{
 					//insert darray into db
-					console.log(normalize(darray)[15])
-					console.log(desc[15])
+					console.log(++globalcounter)
+					// console.log(normalize(darray)[15])
+					// console.log(desc[15])
 				}
 
 			}
