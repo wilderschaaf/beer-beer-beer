@@ -127,7 +127,6 @@ function getbeerdata(){
 		.then(function(data){
 			rowcount = data.count
 
-			for (var i = 1; i <= rowcount; i++){
 				db.one('select beerlink,beerid from calibeers where beerid=$1', i)
 					.then( function(data){
 					
@@ -136,7 +135,6 @@ function getbeerdata(){
 					.catch( function(err){
 						console.error("db error:",err)
 					})
-			}
 
 
 
@@ -206,6 +204,15 @@ function beertroll(link, beerid){
 					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), beerid])
 						.then( function(data){
 							console.log(beerid)
+							db.one('select beerlink,beerid from calibeers where beerid=$1', beerid + 1)
+								.then( function(data){
+					
+									beertroll(data.beerlink, data.beerid)
+								})
+								.catch( function(err){
+									console.error("db error:",err)
+								})
+
 						})
 						.catch( function(err){
 							console.error("update db error:", err)
