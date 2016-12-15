@@ -124,9 +124,9 @@ function getbeerdata(){
 	var rowcount 
 	db.one('select count(*) from calibeers')
 		.then(function(data){
-			rowcount = 5361
+			rowcount = data.count
 
-			for (var i = 5361; i <= rowcount; i++){
+			for (var i = 1; i <= rowcount; i++){
 				db.one('select beerlink from calibeers where beerid=$1', i)
 					.then( function(data){
 						beertroll(data.beerlink)
@@ -191,13 +191,12 @@ function beertroll(link){
 				while(data.children().eq(i).children().eq(1).children().text()!== "" && i < 25){
 					
 					text = data.children().eq(i).children().eq(1).text()
-					//console.log(text)
 					darray = aggwords(text, darray)
 					i++
 				}	
 
 				if (count<3 && i>=24){
-					console.log(offset)
+					//console.log(offset)
 					recreqwrapper(offset+25, count+1)
 				}
 				else{
