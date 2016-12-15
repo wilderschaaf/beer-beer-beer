@@ -18,6 +18,7 @@ var desc = ['accessible','acidic','aftertaste','aggressive','alcoholic','almondl
 'sulfitic','sweet','syrupy/syrup','tannic','tannins','tart','texture','texture','thick','thin','toasty/toast','toffee','nonenal','treacle','turbid','undertones','vanilla','vegetal','viscous',
 'warming','watery/water','winelike','woody/wood','worty/wort','yeasty/yeast','young','zesty/zest']
 var globalcounter = 0
+var rowcount 
 
 
 app.use(express.static(path.join(__dirname, '/public')))
@@ -122,12 +123,12 @@ app.use('/scrape', function(req, res){
 function getbeerdata(){
 	console.log("beer data")
 	urlbase = "https://www.beeradvocate.com"
-	var rowcount 
+	
 	db.one('select count(*) from calibeers')
 		.then(function(data){
 			rowcount = data.count
 
-				db.one('select beerlink,beerid from calibeers where beerid=$1', i)
+				db.one('select beerlink,beerid from calibeers where beerid=$1', 1)
 					.then( function(data){
 					
 						beertroll(data.beerlink, data.beerid)
@@ -204,14 +205,17 @@ function beertroll(link, beerid){
 					db.none('update calibeers set desclist = $1 where beerid = $2', [normalize(darray), beerid])
 						.then( function(data){
 							console.log(beerid)
-							db.one('select beerlink,beerid from calibeers where beerid=$1', beerid + 1)
-								.then( function(data){
-					
-									beertroll(data.beerlink, data.beerid)
-								})
-								.catch( function(err){
-									console.error("db error:",err)
-								})
+
+							if(beerid <= rowcount){
+								db.one('select beerlink,beerid from calibeers where beerid=$1', beerid + 1)
+									.then( function(data){
+						
+										beertroll(data.beerlink, data.beerid)
+									})
+									.catch( function(err){
+										console.error("db error:",err)
+									})
+							}
 
 						})
 						.catch( function(err){
