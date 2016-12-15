@@ -130,7 +130,7 @@ function getbeerdata(){
 			for (var i = 1; i <= rowcount; i++){
 				db.one('select beerlink from calibeers where beerid=$1', i)
 					.then( function(data){
-						beertroll(data.beerlink)
+						beertroll(data.beerlink, i)
 					})
 					.catch( function(err){
 						console.error("db error:",err)
