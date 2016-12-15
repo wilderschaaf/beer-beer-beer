@@ -17,7 +17,7 @@ var desc = ['accessible','acidic','aftertaste','aggressive','alcoholic','almondl
 'sediment','sharp','sherrylike/sherry','silky/silk','skunky/skunked','smoky/smoke','smooth','soapy/soap','soft','solventlike/solvent','sour','spicy/spice','stale','sticky','sulfidic',
 'sulfitic','sweet','syrupy/syrup','tannic','tannins','tart','texture','texture','thick','thin','toasty/toast','toffee','nonenal','treacle','turbid','undertones','vanilla','vegetal','viscous',
 'warming','watery/water','winelike','woody/wood','worty/wort','yeasty/yeast','young','zesty/zest']
-var globalcounter = 0
+var globalcounter = 1472
 var rowcount 
 
 
@@ -128,7 +128,7 @@ function getbeerdata(){
 		.then(function(data){
 			rowcount = data.count
 
-				db.one('select beerlink,beerid from calibeers where beerid=$1', 1)
+				db.one('select beerlink,beerid from calibeers where beerid=$1', globalcounter)
 					.then( function(data){
 					
 						beertroll(data.beerlink, data.beerid)
@@ -209,7 +209,7 @@ function beertroll(link, beerid){
 							if(beerid <= rowcount){
 								db.one('select beerlink,beerid from calibeers where beerid=$1', beerid + 1)
 									.then( function(data){
-						
+										globalcounter++
 										beertroll(data.beerlink, data.beerid)
 									})
 									.catch( function(err){
