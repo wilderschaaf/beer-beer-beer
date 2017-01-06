@@ -147,25 +147,6 @@ function getbeerdata(){
 
 }
 
-// function recreqwrapper(url, offset, count, darray){
-// 	if (count > 3){
-// 		return
-// 	}
-// 	request(url + offset, function(error, response, html){
-// 		if (error){
-// 			console.error(error)
-// 		}
-// 		else{
-// 			//do stuff with html, call aggwords a bunch
-// 			//check if next page is an option and if reqcount < 3
-// 			if (som1 && som2){
-// 				recreqwrapper(url, offset+25, count+1, darray)
-// 			}
-
-// 		}
-// 	})
-// }
-
 //gotta n do a request block, troll through the DOM, aggregate word counts
 //create a new column in db and add the normalized feature array
 function beertroll(link, beerid){
