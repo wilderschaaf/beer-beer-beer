@@ -370,7 +370,7 @@ app.get('/bsearch', function(req, res){
 	//res.sendFile(__dirname + "/public/home.html")
 	db.any("select * from calibeers where lower(brewery) like lower(${term}) or lower(beername) like lower(${term}) order by avgrating desc", {term: '%' + req.query['beer'] + '%'})
 		.then( function (data){
-			console.log(data)
+			//console.log(data)
 			res.render('home', {
 				beers: data
 			})
