@@ -386,7 +386,7 @@ app.get('/bsearch', function(req, res){
 })
 
 app.get('/beer/*', function(req, res){
-	console.log(req.query['action'])
+	console.log("here's the stuff "+ req)
 })
 
 
