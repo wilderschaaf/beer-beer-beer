@@ -317,7 +317,7 @@ function mycb(bl, callback){
 						beerlink = data.eq(i).children().eq(0).children().eq(0).attr('href')
 						//console.log(beerlink)
 						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseNumRatings(data.eq(i).children().eq(4).text()) > 2){
-							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", 
+							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, brorating) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
 								[brewery, beerlink, data.eq(i).children().eq(0).text(), 
 								data.eq(i).children().eq(1).text(), 
 								parseFloat(data.eq(i).children().eq(2).text()), 

@@ -68,3 +68,12 @@ WHERE
    DELETE FROM calibeers WHERE beerid NOT IN (SELECT MIN(beerid) FROM calibeers GROUP BY brewery, beername);
 
 create or replace view testview as select beername, beerid, (getSDistance(grabArray(200), desclist)) as distance from calibeers
+
+delete from calibeers 
+  where exists (select 1
+    from calibeers t2
+    where t2.beername = calibeers.beername AND
+    t2.abv = calibeers.abv AND
+    t2.avgrating = calibeers.avgrating AND
+    t2.numratings = calibeers.numratings AND
+    t2.beerid <> calibeers.beerid)
