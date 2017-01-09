@@ -21,8 +21,12 @@
     </nav>
 
     <div class='container'>
-      <h1 class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
-      <h2 class='col-md-6'>{{beer.style}}</h2>
-      <div class='col-md-6'>ABV: {{beer.abv}}</div>
-      <div class='col-md-6'>Rating: {{beer.avgrating}}</div>
+      <div class='row'>
+        <h1 class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
+        <h2 class='col-md-6'>{{beer.style}}</h2>
+      </div>
+      <div class='row'>
+        <div class='col-md-6'>ABV: {{beer.abv}}</div>
+        <div class='col-md-6'>Rating: {{beer.avgrating}}</div>
+      </div>
     </div>
