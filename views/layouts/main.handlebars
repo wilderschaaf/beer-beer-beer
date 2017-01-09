@@ -21,7 +21,7 @@
 		$(document).ready(function($) {
 		    $(".clickable-row").click(function() {
 		        //window.location = $(this).data("href");
-                $('<form action='+$(this).data("href")+'></form>').append($('<input name="beerid" value='+$(this).data("beerid")+'></input>')).appendTo('body').submit();
+                $('<form action='+$(this).data("href")+'></form>').append($('<input class="hidden" name="beerid" value='+$(this).data("beerid")+'></input>')).appendTo('body').submit();
 		    });
 		});
     </script>
