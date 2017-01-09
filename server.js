@@ -391,9 +391,25 @@ app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function (data){
-			res.render('beer', {
-				beer: data
-			})
+			db.none("create or replace view testview as select beername, beerid, style, abv, avgrating, (getSDistance(grabArray(200), desclist)) as distance from calibeers")
+				.then( function (data2){
+					db.many("select top 5 from testview order by distance")
+						.then( function (data3){
+							res.render('beer', {
+								beer: data,
+								simbeers: data3
+							})
+							console.log(data3)
+							db.none("drop view testview")
+						})
+						.catch( function (err){
+							console.error(err)
+						})
+				})
+				.catch( function (err){
+					console.error(err)
+				})
+			
 		})
 		.catch( function (err){
 			console.error(err)
