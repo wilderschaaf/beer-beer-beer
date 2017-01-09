@@ -393,7 +393,7 @@ app.get('/beer/[0-9]*', function(req, res){
 		.then( function (data){
 			db.none("create or replace view testview as select beername, beerid, style, abv, avgrating, (getSDistance(grabArray(200), desclist)) as distance from calibeers")
 				.then( function (data2){
-					db.many("select top 5 from testview order by distance")
+					db.many("select * from testview order by distance limit 5")
 						.then( function (data3){
 							res.render('beer', {
 								beer: data,
