@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 app.use('/bsearch',express.static(path.join(__dirname, '/public')))
 
-app.use('/beer/*', express.static(path.join(__dirname, '/public')))
+app.use('/beer', express.static(path.join(__dirname, '/public')))
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
