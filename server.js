@@ -387,13 +387,13 @@ app.get('/bsearch', function(req, res){
 
 app.get('/beer/*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
-	db.one("select * from calibeers where beerid=$1", {req.query['beerid']})
-		.then( function(data){
+	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
+		.then( function (data){
 			res.render('beer', {
 				beer: data
 			})
 		})
-		.catch( function(err){
+		.catch( function (err){
 			console.error(err)
 		})
 
