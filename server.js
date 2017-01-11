@@ -391,7 +391,7 @@ function getTop(arr){
 	var out = []
 	var out2 = []
 	for (var i = 0; i < 180; i++){
-		if (out.length < 5){
+		if (out.length < 10){
 			out[i] = arr[i]
 			out2[i] = i
 		}
