@@ -387,6 +387,22 @@ app.get('/bsearch', function(req, res){
 	
 })
 
+function getTop(arr){
+	var out = []
+	for (var i = 0; i < 180; i++){
+		if (out.length < 5){
+			out[i] = arr[i]
+		}
+		else{
+			for (var j = 0; j < 5; j++){
+				if (out[j]<arr[i]){
+					out[j] = arr[i]
+				}
+			}
+		}
+	}
+}
+
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
@@ -395,7 +411,7 @@ app.get('/beer/[0-9]*', function(req, res){
 				.then( function (data2){
 					db.many("select * from testview order by distance limit 5 offset 1")
 						.then( function (data3){
-							console.log(data.desclist)
+							console.log(getTop(data.desclist))
 							res.render('beer', {
 								beer: data,
 								simbeers: data3
