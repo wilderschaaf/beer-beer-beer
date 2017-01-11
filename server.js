@@ -405,7 +405,7 @@ function getTop(arr){
 			}
 		}
 	}
-	var outdict
+	var outdict = {}
 	for (var i = 0; i < 5; i++){
 		outdict[desc[out2[i]]] = out[i]
 	}
