@@ -396,7 +396,7 @@ function getTop(arr){
 			out2[i] = i
 		}
 		else{
-			for (var j = 0; j < 5; j++){
+			for (var j = 0; j < 10; j++){
 				if (out[j]<arr[i]){
 					out[j] = arr[i]
 					out2[j] = i
@@ -406,8 +406,8 @@ function getTop(arr){
 		}
 	}
 	var outdict = {}
-	for (var i = 0; i < 5; i++){
-		outdict[desc[out2[i]]] = out[i]*50
+	for (var i = 0; i < 10; i++){
+		outdict[desc[out2[i]]] = out[i]*50 + 10
 	}
 	return outdict
 }
