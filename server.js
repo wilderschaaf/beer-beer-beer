@@ -389,18 +389,22 @@ app.get('/bsearch', function(req, res){
 
 function getTop(arr){
 	var out = []
+	var out2 = []
 	for (var i = 0; i < 180; i++){
 		if (out.length < 5){
 			out[i] = arr[i]
+			out2[i] = i
 		}
 		else{
 			for (var j = 0; j < 5; j++){
 				if (out[j]<arr[i]){
 					out[j] = arr[i]
+					out2[j] = i
 				}
 			}
 		}
 	}
+	return out
 }
 
 app.get('/beer/[0-9]*', function(req, res){
