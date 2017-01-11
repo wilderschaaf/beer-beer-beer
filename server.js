@@ -395,6 +395,7 @@ app.get('/beer/[0-9]*', function(req, res){
 				.then( function (data2){
 					db.many("select * from testview order by distance limit 5 offset 1")
 						.then( function (data3){
+							console.log(data.desclist)
 							res.render('beer', {
 								beer: data,
 								simbeers: data3
