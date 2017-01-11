@@ -32,10 +32,12 @@
       <div class='row'>{{beer.desclist}}</div>
     </div>
 
-    {{#each descs}}
-      <div></div>
-      <div style="width: {{this}}vw; height: 3vh; background-color: #000; color: #fff">{{@key}}</div>
-    {{/each}}
+    <div class='container'>
+      {{#each descs}}
+        <div></div>
+        <div style="width: {{this}}vw; height: 3vh; background-color: #000; color: #fff">{{@key}}</div>
+      {{/each}}
+    </div>
 
     <div class='container'>
     <table class='table table-striped table-hover'>
