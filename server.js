@@ -400,6 +400,7 @@ function getTop(arr){
 				if (out[j]<arr[i]){
 					out[j] = arr[i]
 					out2[j] = i
+					break
 				}
 			}
 		}
