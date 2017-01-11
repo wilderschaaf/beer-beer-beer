@@ -399,7 +399,7 @@ app.get('/beer/[0-9]*', function(req, res){
 								beer: data,
 								simbeers: data3
 							})
-							console.log(data3)
+							//console.log(data3)
 							db.none("drop view testview")
 						})
 						.catch( function (err){
