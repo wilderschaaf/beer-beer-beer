@@ -405,7 +405,11 @@ function getTop(arr){
 			}
 		}
 	}
-	return out
+	var outdict
+	for (var i = 0; i < 5; i++){
+		outdict[desc[out2[i]]] = out[i]
+	}
+	return outdict
 }
 
 app.get('/beer/[0-9]*', function(req, res){
