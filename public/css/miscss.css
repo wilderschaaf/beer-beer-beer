@@ -6,7 +6,8 @@ div.bar {
 		margin-left: 17%
 }
 
-@media (min-device-width : 320px) {
+@media (min-width: 320px) 
+and (max-width: 600px) {
 	div.bar {
 		height: 3vh; 
 		background-color: #f00; 
