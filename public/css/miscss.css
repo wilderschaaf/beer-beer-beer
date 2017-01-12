@@ -1,6 +1,12 @@
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px) {
+div.bar {
+		height: 3vh; 
+		background-color: #000; 
+		color: #fff; 
+		padding-left: .5vw; 
+		margin-left: 17%
+}
+
+@media (min-device-width : 320px) {
 	div.bar {
 		height: 3vh; 
 		background-color: #f00; 
@@ -10,10 +16,3 @@ and (max-device-width : 568px) {
 	}
 }
 
-div.bar {
-		height: 3vh; 
-		background-color: #000; 
-		color: #fff; 
-		padding-left: .5vw; 
-		margin-left: 17%
-	}
