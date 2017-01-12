@@ -1,0 +1,17 @@
+@media (min-width: 992px) {
+	div.bar {
+		height: 3vh; 
+		background-color: #000; 
+		color: #fff; 
+		padding-left: .5vw; 
+		margin-left: 17%
+	}
+}
+
+div.bar {
+		height: 3vh; 
+		background-color: #000; 
+		color: #fff; 
+		padding-left: .5vw; 
+		margin-left: 33.666666667%
+	}
