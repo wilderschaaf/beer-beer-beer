@@ -407,7 +407,7 @@ function getTop(arr){
 	}
 	var outdict = {}
 	for (var i = 0; i < 10; i++){
-		outdict[desc[out2[i]]] = out[i]*50 + 10
+		outdict[desc[out2[i]]] = out[i]*50 
 	}
 	return outdict
 }
