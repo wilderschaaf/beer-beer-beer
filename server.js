@@ -46,9 +46,9 @@ const conString = 'postgres://gpguzsrnfsmpgo:9996edfb1e4970a620c051c55185a261cb4
 
 var db = pgp(conString)
 
-
+//scraping in VT data
 function usecallback(callback){
-	url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=CA&brewery=Y'
+	url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=VT&brewery=Y'
 	
 	var brewlinks = []
 	request(url, function(error, response, html){
@@ -76,8 +76,8 @@ function usecallback(callback){
 	})
 
 	var j 
-	for(j=20;j<=720;j+=20){
-		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=CA&brewery=Y&sort=name'
+	for(j=20;j<=80;j+=20){
+		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=VT&brewery=Y&sort=name'
 
 		request(url, function(error, response, html){
 			console.log(++j-740)
