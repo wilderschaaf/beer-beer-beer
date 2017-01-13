@@ -104,7 +104,7 @@ function usecallback(callback){
 				})
 
 			}
-			if(j-100==8){
+			if(j-100==4){
 				callback(brewlinks, donecb)
 			}
 			
