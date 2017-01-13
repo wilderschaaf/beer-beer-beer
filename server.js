@@ -80,7 +80,7 @@ function usecallback(callback){
 		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=VT&brewery=Y&sort=name'
 
 		request(url, function(error, response, html){
-			console.log(++j-740)
+			console.log(++j-100)
 			if(error){
 				console.error(error)
 			}
@@ -104,7 +104,7 @@ function usecallback(callback){
 				})
 
 			}
-			if(j-740==36){
+			if(j-100==8){
 				callback(brewlinks, donecb)
 			}
 			
