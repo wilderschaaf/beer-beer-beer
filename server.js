@@ -42,7 +42,7 @@ var pgp = require('pg-promise')()
 
 
 const pg = require('pg')  
-const conString = 'postgres://kgudnzufnlwdsn:RR_dmEqabj1m2Y67M745Msx3WV@ec2-54-225-246-33.compute-1.amazonaws.com:5432/d6pq465ojdv75c' // make sure to match your own database's credentials
+const conString = 'postgres://gpguzsrnfsmpgo:9996edfb1e4970a620c051c55185a261cb4727398e9442f00edd3147dd0b649c@ec2-23-23-225-116.compute-1.amazonaws.com:5432/d99ibit2lngmvm' // make sure to match your own database's credentials
 
 var db = pgp(conString)
 
