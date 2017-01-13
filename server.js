@@ -48,35 +48,35 @@ var db = pgp(conString)
 
 //scraping in VT data
 function usecallback(callback){
-	url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=VT&brewery=Y'
+	//url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=VT&brewery=Y'
 	
 	var brewlinks = []
-	request(url, function(error, response, html){
+	// request(url, function(error, response, html){
 
-		if(error){
-			console.error(error)
-		}
-		else{
-			var $ = cheerio.load(html)
+	// 	if(error){
+	// 		console.error(error)
+	// 	}
+	// 	else{
+	// 		var $ = cheerio.load(html)
 
 			
-			$('#ba-content').filter(function(){
+	// 		$('#ba-content').filter(function(){
 
-				var data = $(this).children("table").children("tr")
+	// 			var data = $(this).children("table").children("tr")
 
-				var i 
-				for (i = 3; i<= 41; i+=2){
-					brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
-				}
+	// 			var i 
+	// 			for (i = 3; i<= 41; i+=2){
+	// 				brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
+	// 			}
 
 				
-			})
+	// 		})
 
-		}
-	})
+	// 	}
+	// })
 
 	var j 
-	for(j=20;j<=80;j+=20){
+	for(j=0;j<=80;j+=20){
 		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=VT&brewery=Y&sort=name'
 
 		request(url, function(error, response, html){
