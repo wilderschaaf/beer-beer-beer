@@ -48,8 +48,8 @@ var db = pgp(conString)
 
 //scraping in VT data
 function usecallback(callback){
-	var state = 'SD'
-	var top = 20
+	var state = 'TN'
+	var top = 80
 	var brewlinks = []
 
 	var j 
@@ -268,7 +268,7 @@ function mycb(bl, callback){
 	var data
     var brewery
     var beerlink
-    var state = 'South Dakota'
+    var state = 'Tennessee'
     var $
     var i 
     var queries
