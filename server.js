@@ -17,7 +17,7 @@ var desc = ['accessible','acidic','aftertaste','aggressive','alcoholic','almondl
 'sediment','sharp','sherrylike/sherry','silky/silk','skunky/skunked','smoky/smoke','smooth','soapy/soap','soft','solventlike/solvent','sour','spicy/spice','stale','sticky','sulfidic',
 'sulfitic','sweet','syrupy/syrup','tannic','tannins','tart','texture','texture','thick','thin','toasty/toast','toffee','nonenal','treacle','turbid','undertones','vanilla','vegetal','viscous',
 'warming','watery/water','winelike','woody/wood','worty/wort','yeasty/yeast','young','zesty/zest']
-var globalcounter = 9097
+var globalcounter = 9271
 var rowcount 
 
 
@@ -48,39 +48,16 @@ var db = pgp(conString)
 
 //scraping in VT data
 function usecallback(callback){
-	//url = 'https://www.beeradvocate.com/place/list/?c_id=US&s_id=VT&brewery=Y'
-	
+	var state = 'AL'
+	var top = 40
 	var brewlinks = []
-	// request(url, function(error, response, html){
-
-	// 	if(error){
-	// 		console.error(error)
-	// 	}
-	// 	else{
-	// 		var $ = cheerio.load(html)
-
-			
-	// 		$('#ba-content').filter(function(){
-
-	// 			var data = $(this).children("table").children("tr")
-
-	// 			var i 
-	// 			for (i = 3; i<= 41; i+=2){
-	// 				brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
-	// 			}
-
-				
-	// 		})
-
-	// 	}
-	// })
 
 	var j 
-	for(j=0;j<=80;j+=20){
-		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id=VT&brewery=Y&sort=name'
+	for(j=0;j<=top;j+=20){
+		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id='+state+'&brewery=Y&sort=name'
 
 		request(url, function(error, response, html){
-			console.log(++j-100)
+			console.log(++j-(top+20))
 			if(error){
 				console.error(error)
 			}
@@ -104,7 +81,7 @@ function usecallback(callback){
 				})
 
 			}
-			if(j-100==5){
+			if(j-(top+20)==(top+20)/20){
 				callback(brewlinks, donecb)
 			}
 			
@@ -291,6 +268,7 @@ function mycb(bl, callback){
 	var data
     var brewery
     var beerlink
+    var state = 'Alabama'
     var $
     var i 
     var queries
@@ -317,13 +295,14 @@ function mycb(bl, callback){
 						beerlink = data.eq(i).children().eq(0).children().eq(0).attr('href')
 						//console.log(beerlink)
 						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseNumRatings(data.eq(i).children().eq(4).text()) > 2){
-							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, brorating) SELECT $1, $2, $3, $4, $5, $6, $7, $8 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
+							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, brorating, state) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
 								[brewery, beerlink, data.eq(i).children().eq(0).text(), 
 								data.eq(i).children().eq(1).text(), 
 								parseFloat(data.eq(i).children().eq(2).text()), 
 								parseFloat(data.eq(i).children().eq(3).text()), 
 								parseNumRatings(data.eq(i).children().eq(4).text()), 
-								parseFloat(data.eq(i).children().eq(5).text())]))
+								parseFloat(data.eq(i).children().eq(5).text()),
+								state]))
 						}
 					 	i++;
 					}
