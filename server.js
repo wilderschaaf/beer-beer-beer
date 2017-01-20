@@ -72,7 +72,7 @@ function usecallback(callback){
 					var i 
 					for (i = 3; i<= 41; i+=2){
 						if(data.eq(i).children().eq(0).children("a").eq(0).attr() == undefined){
-							break;
+							break
 						}
 						brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
 					}
