@@ -394,7 +394,8 @@ function getTop(arr){
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	console.log("and " + req.query['stid'])
-	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
+	var quer = (req.query['stid'] == 'undefined') ? "select * from calibeers where beerid=$(id)":"select * from calibeers where beerid=$(id) and state=$(stid)"
+	db.one(quer, {id: req.query['beerid'], stid: req.query['stid']})
 		.then( function (data){
 			db.none("create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers", {id: req.query['beerid']})
 				.then( function (data2){
