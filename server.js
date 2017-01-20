@@ -394,10 +394,10 @@ function getTop(arr){
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	console.log("and " + req.query['stid'])
-	var quer = (req.query['stid'] == 'undefined') ? "select * from calibeers where beerid=$(id)":"select * from calibeers where beerid=$(id) and state=$(stid)"
-	db.one(quer, {id: req.query['beerid'], stid: req.query['stid']})
+	var quer = (req.query['stid'] == 'undefinde') ? "create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers":"create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where state=$(stid)"
+	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function (data){
-			db.none("create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers", {id: req.query['beerid']})
+			db.none(quer, {id: req.query['beerid'], stid: req.query['stid']})
 				.then( function (data2){
 					db.many("select * from testview order by distance limit 5 offset 1")
 						.then( function (data3){
