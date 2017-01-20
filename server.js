@@ -393,6 +393,7 @@ function getTop(arr){
 
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
+	console.log("and " + req.query['stid'])
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function (data){
 			db.none("create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers", {id: req.query['beerid']})
