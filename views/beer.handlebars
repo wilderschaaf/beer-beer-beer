@@ -97,12 +97,8 @@
         <option value="WY">Wyoming</option>
       </select>
 
-      <script>
-      $('<form id="filter_form" action="/beer/{{beerid}}"></form>').append($('<input class="hidden" name="beerid" value="{{beerid}}"></input>'))
-                .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").text()+'></input>'));
-      </script>
-      
-      <button type='submit' form='filter_form'>Filter</button>
+  
+      <button class='clickable_filter' data-href="/beer/{{data.beerid}}" data-beerid='{{data.beerid}}'>Filter</button>
 
     </div>
 
