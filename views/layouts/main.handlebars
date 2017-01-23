@@ -28,6 +28,16 @@
                 .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").text()+'></input>')).submit();
 		    });
 		});
+
+        $(document).ready(function($) {
+            $(".clickable-filter").click(function() {
+                //window.location = $(this).data("href");
+                console.log('something something something');
+                console.log($('.state-select').find(":selected").text());
+                $('<form action='+$(this).data("href")+'></form>').append($('<input class="hidden" name="beerid" value='+$(this).data("beerid")+'></input>'))
+                .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").text()+'></input>')).submit();
+            });
+        });
     </script>
 
 </body>
