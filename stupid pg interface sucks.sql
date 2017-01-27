@@ -7,7 +7,7 @@ DECLARE
 BEGIN
   FOREACH x IN ARRAY $1
   LOOP
-    s := s + (x - $2[i]) * (x - $2[i]);
+    s := s + @(x - $2[i]);
     i := i + 1; 
   END LOOP;
   RETURN s;
@@ -77,3 +77,10 @@ delete from calibeers
     t2.avgrating = calibeers.avgrating AND
     t2.numratings = calibeers.numratings AND
     t2.beerid <> calibeers.beerid)
+
+
+
+set client_encoding="UTF8"\g
+select * from calibeers order by beerid desc\g
+
+update calibeers set state='OR' where state='Oregon'
