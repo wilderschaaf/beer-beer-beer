@@ -399,7 +399,7 @@ app.get('/beer/[0-9]*', function(req, res){
 		.then( function (data){
 			db.none(quer, {id: req.query['beerid'], stid: req.query['stid']})
 				.then( function (data2){
-					db.many("select * from testview order by distance limit 5 offset 1")
+					db.many("select * from testview order by distance limit 5 offset 0")
 						.then( function (data3){
 							console.log(getTop(data.desclist))
 							res.render('beer', {
