@@ -28,6 +28,7 @@ app.use('/bsearch',express.static(path.join(__dirname, '/public')))
 app.use('/beer', express.static(path.join(__dirname, '/public')))
 
 var hbs = exphbs.create({
+	defaultLayout: 'main',
 	helpers: {
 		json: function(context) {
 		    return JSON.stringify(context)
