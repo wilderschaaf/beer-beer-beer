@@ -426,7 +426,7 @@ app.get('/beer/[0-9]*', function(req, res){
 							console.log(getTop(data.desclist))
 							res.render('beer', {
 								beer: data,
-								simbeers: data3,
+								simbeers: {{{json data3}}},
 								descs: getTop(data.desclist)
 							})
 							db.none("drop view testview")
