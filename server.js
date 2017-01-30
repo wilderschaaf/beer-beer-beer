@@ -394,7 +394,7 @@ function getTop(arr){
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	console.log("and " + req.query['stid'])
-	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where beerid != $(id)":"create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where state=$(stid) and beerid != $(id)"
+	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, desclist, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where beerid != $(id)":"create or replace view testview as select brewery, beername, beerid, style, abv, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where state=$(stid) and beerid != $(id)"
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function (data){
 			db.none(quer, {id: req.query['beerid'], stid: req.query['stid']})

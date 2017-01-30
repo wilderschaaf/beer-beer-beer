@@ -7,7 +7,7 @@ DECLARE
 BEGIN
   FOREACH x IN ARRAY $1
   LOOP
-    s := s + @(x - $2[i]);
+    s := s + |/ @(x - $2[i]);
     i := i + 1; 
   END LOOP;
   RETURN s;
