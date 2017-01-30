@@ -27,9 +27,6 @@ app.use('/bsearch',express.static(path.join(__dirname, '/public')))
 
 app.use('/beer', express.static(path.join(__dirname, '/public')))
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
-
 var hbs = exphbs.create({
 	helpers: {
 		json: function(context) {
@@ -38,6 +35,8 @@ var hbs = exphbs.create({
 	}
 })
 
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 
 //making socket to talk to client
