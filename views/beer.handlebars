@@ -135,7 +135,9 @@
                     Distance: {{{distance}}}
                 </td>
                 <td style='padding-left: 0%'>
-                    {{{desclist}}}['hoppy/hops']
+                    {{#each desclist}}
+                      {{@key}}
+                    {{/each}}
                 </td>
               </tr>
             {{/each}}
