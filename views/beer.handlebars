@@ -114,7 +114,7 @@
         </thead>
         <tbody>
           {{#each simbeers}}
-              <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist="{{{desclist}}}">
+              <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist="{{{json desclist}}}">
                 <td style='padding-left: 0%'>
                     {{{beername}}}
                 </td>
@@ -137,6 +137,7 @@
                 <td style='padding-left: 0%'>
                     {{#each desclist}}
                       {{@key}}
+                      {{this}}
                     {{/each}}
                 </td>
               </tr>

@@ -30,6 +30,10 @@ app.use('/beer', express.static(path.join(__dirname, '/public')))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+exphbs.registerHelper('json', function(context) {
+    return JSON.stringify(context);
+});
+
 
 //making socket to talk to client
 var http = require('http').createServer(app);
