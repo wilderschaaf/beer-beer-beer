@@ -396,7 +396,7 @@ function getSame(dict, arr){
 	for (x in dict){
 		outdict[x] = arr[desc.findIndex(function(d){
 			return d == x
-		})]
+		})]*50
 	}
 
 	return outdict
