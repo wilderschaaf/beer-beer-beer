@@ -27,7 +27,11 @@ app.use('/bsearch',express.static(path.join(__dirname, '/public')))
 
 app.use('/beer', express.static(path.join(__dirname, '/public')))
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({defaultLayout: 'main', helpers: {
+	json: function(context) {
+	    return JSON.stringify(context)
+	}
+}}));
 app.set('view engine', 'handlebars');
 
 
@@ -393,7 +397,6 @@ function getTop(arr){
 
 function getSame(dict, arr){
 	var outdict = {}
-	console.log(arr)
 	for (x in dict){
 		outdict[x] = arr[desc.findIndex(function(d){
 			return d == x
