@@ -391,6 +391,23 @@ function getTop(arr){
 	return outdict
 }
 
+function getSame(dict, arr){
+	var outdict = {}
+	for (x in dict){
+		outdict[x] = arr[desc.findIndex(function(d){
+			return d == x
+		})]
+	}
+
+	return outdict
+}
+
+function changeDescs(obbiej, dict){
+	for (var i = 0; i < 5; i++){
+		obbiej[i].desclist = getSame(dict, obbiej[i].desclist)
+	}
+}
+
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	console.log("and " + req.query['stid'])
@@ -401,6 +418,7 @@ app.get('/beer/[0-9]*', function(req, res){
 				.then( function (data2){
 					db.many("select * from testview order by distance limit 5 offset 0")
 						.then( function (data3){
+							changeDescs(data3, getTop(data.desclist))
 							console.log(getTop(data.desclist))
 							res.render('beer', {
 								beer: data,
