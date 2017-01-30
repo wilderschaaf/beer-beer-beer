@@ -30,11 +30,11 @@ app.use('/beer', express.static(path.join(__dirname, '/public')))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-var hbs = exphbs.create{{
+var hbs = exphbs.create({
 	helpers: {
 		json: function(context) {
 		    return JSON.stringify(context)
-		})
+		}
 	}
 })
 
