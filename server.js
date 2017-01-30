@@ -429,11 +429,11 @@ app.get('/beer/[0-9]*', function(req, res){
 							db.none("drop view testview")
 						})
 						.catch( function (err){
-							console.error(err)
+							console.error("select * from testview... error: " + err)
 						})
 				})
 				.catch( function (err){
-					console.error(err)
+					console.error("create testview... Error: " + err)
 				})
 			
 		})
