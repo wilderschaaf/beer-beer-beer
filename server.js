@@ -30,6 +30,9 @@ app.use('/beer', express.static(path.join(__dirname, '/public')))
 app.engine('handlebars', exphbs({defaultLayout: 'main', helpers: {
 	json: function(context) {
 	    return JSON.stringify(context)
+	},
+	first: function(context) {
+		return context.split('/')[0]
 	}
 }}));
 app.set('view engine', 'handlebars');

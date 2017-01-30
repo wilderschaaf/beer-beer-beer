@@ -35,8 +35,8 @@
 
     <div class='container' style:'padding: 0%'>
       {{#each descs}}
-        <div class='col-md-2 col-xs-6' style='background-color: #000; color: #fff; padding: 0%; height: 3vh'>{{@key}}</div>
-        <div id='{{@key}}bar' class='bar' style="width: {{this}}vw"></div>
+        <div class='col-md-2 col-xs-6' style='background-color: #000; color: #fff; padding: 0%; height: 3vh'>{{{first @key}}}</div>
+        <div id='{{{first @key}}}bar' class='bar' style="width: {{this}}vw"></div>
       {{/each}}
     </div>
     <div style='height: 4vh'></div>
