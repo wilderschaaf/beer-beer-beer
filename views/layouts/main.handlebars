@@ -31,6 +31,7 @@
                 console.log($(this).data("desclist"))
                 for (x in $(this).data("desclist")){
                     console.log($(this).data("desclist")[x])
+                    $("#"+x+"bar").animate({width: $(this).data("desclist")[x]})
                 }
 		    });
 		});
