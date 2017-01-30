@@ -412,7 +412,7 @@ function changeDescs(obbiej, dict){
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	console.log("and " + req.query['stid'])
-	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, desclist, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where beerid != $(id)":"create or replace view testview as select brewery, beername, beerid, style, desclist, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance from calibeers where state=$(stid) and beerid != $(id)"
+	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance, desclist from calibeers where beerid != $(id)":"create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance, desclist from calibeers where state=$(stid) and beerid != $(id)"
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function (data){
 			db.none(quer, {id: req.query['beerid'], stid: req.query['stid']})
@@ -429,11 +429,11 @@ app.get('/beer/[0-9]*', function(req, res){
 							db.none("drop view testview")
 						})
 						.catch( function (err){
-							console.error("select * from testview... error: " + err)
+							console.error("select * from testview... error: ", err)
 						})
 				})
 				.catch( function (err){
-					console.error("create testview... Error: " + err)
+					console.error("create testview... Error: ", err)
 				})
 			
 		})
