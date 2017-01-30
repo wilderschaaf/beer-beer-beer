@@ -393,6 +393,7 @@ function getTop(arr){
 
 function getSame(dict, arr){
 	var outdict = {}
+	console.log(arr)
 	for (x in dict){
 		outdict[x] = arr[desc.findIndex(function(d){
 			return d == x
