@@ -114,8 +114,7 @@
         </thead>
         <tbody>
           {{#each simbeers}}
-              {desclist: {{{json desclist}}}}
-              <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist="{{{desclist}}}">
+              <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist="{{{json desclist}}}">
                 <td style='padding-left: 0%'>
                     {{{beername}}}
                 </td>
