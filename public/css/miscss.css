@@ -21,7 +21,7 @@ div.compbar {
 		height: 3vh; 
 		background-color: #f00; 
 		color: #fff;
-		right: 0vm;
+		margin-right: 0vm;
 }
 
 @media (min-width: 320px) 
@@ -30,7 +30,7 @@ and (max-width: 600px) {
 		height: 3vh; 
 		background-color: #f00; 
 		color: #fff; 
-		right: 0vm;
+		margin-right: 0vm;
 	}
 }
 
