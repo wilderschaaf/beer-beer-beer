@@ -23,14 +23,13 @@
         <div id='compholder' class='hidden container col-md-6' style='margin-left: 0vw; margin-right: 0vw;'>
             <div id='compcontainer' class='container' style='padding: 0%; width: 50vw'>
               <div class='row'>
-                <h1 class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
-                <h2 class='col-md-6'>{{beer.style}}</h2>
+                <h1 id='beername' class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
+                <h2 id='beerstyle' class='col-md-6'>{{beer.style}}</h2>
               </div>
               <div class='row'>
-                <h4 class='col-md-3'>{{beer.brewery}}</h4>
-                <h4 class='col-md-3'>ABV: {{beer.abv}}</h4>
-                <h4 class='col-md-3'>Rating: {{beer.avgrating}}</h4>
-                <h4 class='col-md-3'></h4>
+                <h4 id='brewery' class='col-md-4'>{{beer.brewery}}</h4>
+                <h4 id='rating' class='col-md-4'>Rating: {{beer.avgrating}}</h4>
+                <h4 class='col-md-4'></h4>
               </div>
             </div>
 
