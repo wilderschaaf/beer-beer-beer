@@ -20,7 +20,7 @@ and (max-width: 600px) {
 div.compbar {
 		height: 3vh; 
 		background-color: #f00; 
-		color: #fff; 
+		color: #fff;
 }
 
 @media (min-width: 320px) 
