@@ -31,7 +31,7 @@
                 console.log($(this).data("desclist"))
                 for (x in $(this).data("desclist")){
                     console.log($(this).data("desclist")[x])
-                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'vw', 'right: 0vm'})
+                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'vw', 'right': '0vm'})
                     
                 }
                 $("#constholder").animate({'width': '50vw'})
