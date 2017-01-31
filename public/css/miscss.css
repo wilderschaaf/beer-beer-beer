@@ -17,3 +17,18 @@ and (max-width: 600px) {
 	}
 }
 
+div.compbar {
+		height: 3vh; 
+		background-color: #f00; 
+		color: #fff; 
+}
+
+@media (min-width: 320px) 
+and (max-width: 600px) {
+	div.bar {
+		height: 3vh; 
+		background-color: #f00; 
+		color: #fff; 
+	}
+}
+
