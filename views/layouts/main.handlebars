@@ -40,7 +40,9 @@
                 $("#constholder").animate({'width': '50vw'})
                 $("#maincontainer").animate({'width': '50vw'})
                 $("#compholder").removeClass('hidden')
-		    });
+		    }).mouseexit(function(){
+                $("#compholder").addClass('hidden')
+            });
 		});
 
         $(document).ready(function($) {
