@@ -59,17 +59,18 @@
 
                 
                 
-		    }).mouseleave(function(){
-                console.log(hoverElm)
-                if(!$(hoverElm).hasClass('clickable-row')){
-                    $("#compholder").animate({'margin-left':'-50vw'}, function (){
-                        $("#maincontainer").animate({'width': '100vw'}, function (){
-                            $("#compholder").addClass('hidden')
-                        })
-                    })
-                }
-            });
+		    })
 		});
+
+        $(document).ready(function($){
+            $('#simtab').mouseleave(function(){
+                $("#compholder").animate({'margin-left':'-50vw'}, function (){
+                    $("#maincontainer").animate({'width': '100vw'}, function (){
+                        $("#compholder").addClass('hidden')
+                    })
+                })
+            });
+        })
 
         $(document).ready(function($) {
             $(".clickable-filter").click(function() {
