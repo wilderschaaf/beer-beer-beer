@@ -19,51 +19,53 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div class='row' style='height: 50vh'>
-        <div id='compholder' class='hidden container col-md-6' style='margin-left: -50vw; margin-right: 0vw;'>
-            <div id='compcontainer' class='container' style='padding: 0%; width: 50vw'>
-              <div class='row'>
-                <h1 id='beername' class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
-                <h2 id='beerstyle' class='col-md-6'>{{beer.style}}</h2>
-              </div>
-              <div class='row'>
-                <h4 id='brewery' class='col-md-4'>{{beer.brewery}}</h4>
-                <h4 id='rating' class='col-md-4'>Rating: {{beer.avgrating}}</h4>
-                <h4 class='col-md-4'></h4>
-              </div>
-            </div>
+    <div class='container'>
+        <div class='row' style='height: 50vh'>
+            <div id='compholder' class='hidden container col-md-6' style='margin-left: -50vw; margin-right: 0vw;'>
+                <div id='compcontainer' class='container' style='padding: 0%; width: 50vw'>
+                  <div class='row'>
+                    <h1 id='beername' class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
+                    <h2 id='beerstyle' class='col-md-6'>{{beer.style}}</h2>
+                  </div>
+                  <div class='row'>
+                    <h4 id='brewery' class='col-md-4'>{{beer.brewery}}</h4>
+                    <h4 id='rating' class='col-md-4'>Rating: {{beer.avgrating}}</h4>
+                    <h4 class='col-md-4'></h4>
+                  </div>
+                </div>
 
-            <div class='container' style='padding: 0%; width: 50vw;'>
-                
-                {{#each descs}}
-                    <div id='{{{first @key}}}bar' class='compbar' style="width: 0vw;"></div>
-                   
-                {{/each}}
-                
+                <div class='container' style='padding: 0%; width: 50vw;'>
+                    
+                    {{#each descs}}
+                        <div id='{{{first @key}}}bar' class='compbar' style="width: 0vw;"></div>
+                       
+                    {{/each}}
+                    
+                </div>
             </div>
-        </div>
-        <div id='constholder' class='col-md-6' style='margin-left: 0vw;  margin-right: 0vw; position: relative'>
-            <div id='maincontainer' class='container' style='padding: 0%; overflow: hidden'>
-              <div class='row'>
-                <h1 class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
-                <h2 class='col-md-6'>{{beer.style}}</h2>
-              </div>
-              <div class='row'>
-                <h4 class='col-md-3'>{{beer.brewery}}</h4>
-                <h4 class='col-md-3'>ABV: {{beer.abv}}</h4>
-                <h4 class='col-md-3'>Rating: {{beer.avgrating}}</h4>
-                <h4 class='col-md-3'></h4>
-              </div>
-            </div>
+            <div id='constholder' class='col-md-6' style='margin-left: 0vw;  margin-right: 0vw; position: relative'>
+                <div id='maincontainer' class='container' style='padding: 0%; overflow: hidden'>
+                  <div class='row'>
+                    <h1 class='col-md-6' style='background-color: #000; color: #fff'>{{beer.beername}}</h1>
+                    <h2 class='col-md-6'>{{beer.style}}</h2>
+                  </div>
+                  <div class='row'>
+                    <h4 class='col-md-3'>{{beer.brewery}}</h4>
+                    <h4 class='col-md-3'>ABV: {{beer.abv}}</h4>
+                    <h4 class='col-md-3'>Rating: {{beer.avgrating}}</h4>
+                    <h4 class='col-md-3'></h4>
+                  </div>
+                </div>
 
-            <div class='container' style='padding: 0%; width: 50vw;'>
-                
-                {{#each descs}}
-                    <!-- <div id='{{{first @key}}}bar' class='compbar' style="width: 0vw"></div> -->
-                    <div class='col-md-2 col-xs-6' style='margin-left: 0vw; background-color: #000; color: #fff; padding: 0%; height: 3vh'>{{{first @key}}}</div>
-                    <div class='bar' style="width: {{this}}vw"></div>
-                {{/each}}
-                
+                <div class='container' style='padding: 0%; width: 50vw;'>
+                    
+                    {{#each descs}}
+                        <!-- <div id='{{{first @key}}}bar' class='compbar' style="width: 0vw"></div> -->
+                        <div class='col-md-2 col-xs-6' style='margin-left: 0vw; background-color: #000; color: #fff; padding: 0%; height: 3vh'>{{{first @key}}}</div>
+                        <div class='bar' style="width: {{this}}vw"></div>
+                    {{/each}}
+                    
+                </div>
             </div>
         </div>
     </div>
