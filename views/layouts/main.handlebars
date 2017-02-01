@@ -45,7 +45,7 @@
                 console.log($(this).data("desclist"))
                 for (x in $(this).data("desclist")){
                     console.log($(this).data("desclist")[x])
-                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'vw', 'margin-left': (50-$(this).data("desclist")[x])+'vw'})
+                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'vw', 'margin-left': (40-$(this).data("desclist")[x])+'vw'})
                     
                 }
 
@@ -53,7 +53,7 @@
                 $("#maincontainer").animate({'width': '50vw'}, function (){
                     //$("#constholder").animate({'width': '50vw'})
                     
-                    $("#compholder").outerHeight($('#maincontainer').height()).animate({'margin-left':'0vw'})
+                    $("#compholder").animate({'margin-left':'0vw'})
                 })
 
 
