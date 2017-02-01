@@ -19,8 +19,8 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        var hoverElm = null
-        $("*").on("mouseenter", function() { hoverElm = this })
+        var $hoverElm = null
+        $("*").on("mouseenter", function() { $hoverElm = this })
 
         $(document).ready(function($) {
             $(".clickable-row").click(function() {
