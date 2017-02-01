@@ -19,6 +19,8 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
+        var hoverElm
+        $("*").on("mouseenter", function() { hoverElm = this })
 
         $(document).ready(function($) {
             $(".clickable-row").click(function() {
@@ -29,6 +31,8 @@
                 .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").val()+'></input>')).submit();
             });
         });
+
+
 
 		$(document).ready(function($) {
 		    $(".clickable-row").mouseenter(function() {
@@ -56,12 +60,13 @@
                 
                 
 		    }).mouseleave(function(){
-                $("#compholder").animate({'margin-left':'-50vw'}, function (){
-                    $("#maincontainer").animate({'width': '100vw'}, function (){
-                        $("#compholder").addClass('hidden')
+                if(!hoverElm.hasClass('clickable-row')){
+                    $("#compholder").animate({'margin-left':'-50vw'}, function (){
+                        $("#maincontainer").animate({'width': '100vw'}, function (){
+                            $("#compholder").addClass('hidden')
+                        })
                     })
-                })
-                
+                }
             });
 		});
 
