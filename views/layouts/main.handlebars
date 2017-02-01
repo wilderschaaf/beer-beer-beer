@@ -52,7 +52,8 @@
                 $("#compholder").removeClass('hidden')
                 $("#maincontainer").animate({'width': '100%'}, function (){
                     //$("#constholder").animate({'width': '50vw'})
-                    
+                    $('#maincontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))})
+                    $('#compcontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))})
                     $("#compholder").animate({'margin-left':'0vw'})
                 })
 
