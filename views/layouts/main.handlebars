@@ -50,11 +50,11 @@
                 }
 
                 $("#compholder").removeClass('hidden')
-                $("#maincontainer").animate({'width': '100%'}, function (){
+                $("#maincontainer").animate({'width': '100%'}, 200, function (){
                     //$("#constholder").animate({'width': '50vw'})
-                    $('#maincontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))})
-                    $('#compcontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))})
-                    $("#compholder").animate({'margin-left':'0vw'})
+                    $('#maincontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
+                    $('#compcontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
+                    $("#compholder").animate({'margin-left':'0vw'}, 200)
                 })
 
 
