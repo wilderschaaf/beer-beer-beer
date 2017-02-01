@@ -44,10 +44,15 @@
                     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'vw', 'margin-left': (50-$(this).data("desclist")[x])+'vw'})
                     
                 }
-                $("#constholder").animate({'width': '50vw'})
-                $("#maincontainer").animate({'width': '50vw'}, function (){
-                    $("#compholder").removeClass('hidden')
+
+                $("#compholder").removeClass('hidden')
+                $("#compholder").animate({'margin-left':'0vw'}, function (){
+                    $("#constholder").animate({'width': '50vw'})
+                    $("#maincontainer").animate({'width': '50vw'})
                 })
+
+
+                
                 
 		    }).mouseleave(function(){
                 $("#compholder").addClass('hidden')
