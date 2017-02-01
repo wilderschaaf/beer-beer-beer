@@ -42,9 +42,9 @@
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
 
-                console.log($(this).data("desclist"))
+                //console.log($(this).data("desclist"))
                 for (x in $(this).data("desclist")){
-                    console.log($(this).data("desclist")[x])
+                    //console.log($(this).data("desclist")[x])
                     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'})
                     
                 }
@@ -66,7 +66,7 @@
         $(document).ready(function($){
             $('#simtab').mouseleave(function(){
                 $("#compholder").animate({'margin-left':'-50vw'}, function (){
-                    $("#maincontainer").animate({'width': '100vw'}, function (){
+                    $("#maincontainer").animate({'width': '80vw'}, function (){
                         $("#compholder").addClass('hidden')
                     })
                 })
@@ -76,8 +76,8 @@
         $(document).ready(function($) {
             $(".clickable-filter").click(function() {
                 //window.location = $(this).data("href");
-                console.log('something something something');
-                console.log($('.state-select').find(":selected").text());
+                //console.log('something something something');
+                //console.log($('.state-select').find(":selected").text());
                 $('<form action='+$(this).data("href")+'></form>').append($('<input class="hidden" name="beerid" value='+$(this).data("beerid")+'></input>'))
                 .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").val()+'></input>')).submit();
             });
