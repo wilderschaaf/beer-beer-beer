@@ -393,7 +393,7 @@ function getTop(arr){
 	}
 	var outdict = {}
 	for (var i = 0; i < 10; i++){
-		outdict[desc[out2[i]]] = out[i]*50 
+		outdict[desc[out2[i]]] = out[i]*100
 	}
 	return outdict
 }
@@ -403,7 +403,7 @@ function getSame(dict, arr){
 	for (x in dict){
 		outdict[x] = arr[desc.findIndex(function(d){
 			return d == x
-		})]*50
+		})]*100
 	}
 
 	return outdict

@@ -45,7 +45,7 @@
                 console.log($(this).data("desclist"))
                 for (x in $(this).data("desclist")){
                     console.log($(this).data("desclist")[x])
-                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (100 - $(this).data("desclist")[x])+'%'})
+                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99 - $(this).data("desclist")[x])+'%'})
                     
                 }
 
