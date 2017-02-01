@@ -56,10 +56,12 @@
                 
                 
 		    }).mouseleave(function(){
-                $("#compholder").animate({'margin-left':'-50vw'})
-                $("#maincontainer").animate({'width': '100vw'}, function (){
-                    $("#compholder").addClass('hidden')
+                $("#compholder").animate({'margin-left':'-50vw'} function (){
+                    $("#maincontainer").animate({'width': '100vw'}, function (){
+                        $("#compholder").addClass('hidden')
+                    })
                 })
+                
             });
 		});
 
