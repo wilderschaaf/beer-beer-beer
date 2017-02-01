@@ -46,9 +46,10 @@
                 }
 
                 $("#compholder").removeClass('hidden')
-                $("#compholder").animate({'margin-left':'0vw'}, function (){
+                $("#maincontainer").animate({'width': '50vw'}, function (){
                     //$("#constholder").animate({'width': '50vw'})
-                    $("#maincontainer").animate({'width': '50vw'})
+                    
+                    $("#compholder").animate({'margin-left':'0vw'})
                 })
 
 
