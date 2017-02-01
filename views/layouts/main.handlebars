@@ -19,8 +19,8 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        var $hoverElm = null
-        $("*").on("mouseenter", function() { $hoverElm = this })
+        var hoverElm = null
+        $("*").on("mouseenter", function() { hoverElm = this })
 
         $(document).ready(function($) {
             $(".clickable-row").click(function() {
@@ -60,8 +60,8 @@
                 
                 
 		    }).mouseleave(function(){
-                console.log($hoverElm)
-                if(!$hoverElm.hasClass('clickable-row')){
+                console.log(hoverElm)
+                if(!$(hoverElm).hasClass('clickable-row')){
                     $("#compholder").animate({'margin-left':'-50vw'}, function (){
                         $("#maincontainer").animate({'width': '100vw'}, function (){
                             $("#compholder").addClass('hidden')
