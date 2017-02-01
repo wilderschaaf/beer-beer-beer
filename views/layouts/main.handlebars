@@ -45,8 +45,10 @@
                     
                 }
                 $("#constholder").animate({'width': '50vw'})
-                $("#maincontainer").animate({'width': '50vw'})
-                $("#compholder").removeClass('hidden')
+                $("#maincontainer").animate({'width': '50vw'}, function (){
+                    $("#compholder").removeClass('hidden')
+                })
+                
 		    }).mouseleave(function(){
                 $("#compholder").addClass('hidden')
             });
