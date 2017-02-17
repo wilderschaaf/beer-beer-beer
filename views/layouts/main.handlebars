@@ -84,8 +84,10 @@
                 //window.location = $(this).data("href");
                 //console.log('something something something');
                 //console.log($('.state-select').find(":selected").text());
-                $('<form action='+$(this).data("href")+'></form>').append($('<input class="hidden" name="beerid" value='+$(this).data("beerid")+'></input>'))
-                .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").val()+'></input>')).submit();
+                var sform = $('<form action='+$(this).data("href")+'></form>').append($('<input class="hidden" name="beerid" value='+$(this).data("beerid")+'></input>'))
+                .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").val()+'></input>'));
+                $('body').append(sform);
+                sform.submit();
             });
         });
     </script>
