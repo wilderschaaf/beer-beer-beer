@@ -52,6 +52,7 @@
                 }
 
                 $("#compholder").removeClass('hidden')
+                $(":animated").finish()
                 $("#maincontainer").animate({'width': '100%'}, 200, function (){
                     //$("#constholder").animate({'width': '50vw'})
                     $('#maincontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
