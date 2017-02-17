@@ -67,13 +67,13 @@
 
         $(document).ready(function($){
             $('#simtab').mouseleave(function(){
-                $(":animated").promise().done(function() {
+                $(":animated").finish()
                     $("#compholder").animate({'margin-left':'-50vw'}, 200, function (){
                         $("#maincontainer").animate({'width': '80vw'}, 200, function (){
                             $("#compholder").addClass('hidden')
                         })
                     })
-                })
+                
             });
         })
 
