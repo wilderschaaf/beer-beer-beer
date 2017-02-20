@@ -19,7 +19,7 @@ and (max-width: 600px) {
 
 div.compbar {
 		height: 3vh; 
-		background-image: url('fonts/beerbottle.png') no-repeat;
+		background-image: url('fonts/beerbottle.png');
 		background-color: #f00; 
 		color: #fff;
 		margin-right: 0vm;
@@ -29,7 +29,7 @@ div.compbar {
 and (max-width: 600px) {
 	div.bar {
 		height: 3vh; 
-		background-image: url('fonts/beerbottle.png') no-repeat;
+		background-image: url('fonts/beerbottle.png');
 		background-color: #f00; 
 		color: #fff; 
 		margin-right: 0vm;
