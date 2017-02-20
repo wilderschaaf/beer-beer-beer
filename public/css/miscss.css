@@ -21,6 +21,7 @@ div.compbar {
 		height: 3vh; 
 		background-image: url('beerbottle.png');
 		background-repeat: repeat-x; 
+		background-size: 100%;
 		background-color: #f00; 
 		color: #fff;
 		margin-right: 0vm;
@@ -32,6 +33,7 @@ and (max-width: 600px) {
 		height: 3vh; 
 		background-image: url('beerbottle.png');
 		background-repeat: repeat-x;
+		background-size: 100%;
 		background-color: #f00; 
 		color: #fff; 
 		margin-right: 0vm;
