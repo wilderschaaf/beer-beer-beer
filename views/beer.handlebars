@@ -24,12 +24,12 @@
             <div id='compholder' class='gradback hidden col-md-6' style='margin-left: -50vw; padding: 0%;'>
                 <div id='compcontainer' class='container' style='padding: 0%; width: 100%;'>
                   <div class='row'>
-                    <h1 id='beername' class='col-md-6' style='background-color: #fff; color: #000'></h1>
-                    <h2 id='beerstyle' class='col-md-6' style='color: #fff'></h2>
+                    <div id='beername' class='col-md-6' style='font-size: 1.5em; background-color: #fff; color: #000'></div>
+                    <div id='beerstyle' class='col-md-6' style='font-size: 1.5em; color: #fff'></div>
                   </div>
                   <div class='row'>
-                    <h4 id='brewery' class='col-md-4' style='color: #fff'></h4>
-                    <h4 id='rating' class='col-md-4' style='color: #fff'></h4>
+                    <div id='brewery' class='col-md-4' style='font-size: 1.0em; color: #fff'></div>
+                    <div id='rating' class='col-md-4' style='font-size: 1.0em; color: #fff'></div>
                     <h4 class='col-md-4'></h4>
                   </div>
                 </div>
@@ -47,12 +47,12 @@
                 <div id='maincontainer' class='container' style='padding: 0%; overflow: hidden;'>
                   <div class='row'>
                     <div class='col-md-6' style='font-size: 1.5em; background-color: #000; color: #fff'>{{beer.beername}}</div>
-                    <h2 class='col-md-6'>{{beer.style}}</h2>
+                    <div class='col-md-6' style='font-size: 1.5em'>{{beer.style}}</div>
                   </div>
                   <div class='row'>
-                    <h4 class='col-md-3'>{{beer.brewery}}</h4>
-                    <h4 class='col-md-3'>ABV: {{beer.abv}}</h4>
-                    <h4 class='col-md-3'>Rating: {{beer.avgrating}}</h4>
+                    <div class='col-md-3' style='font-size: 1.0em'>{{beer.brewery}}</div>
+                    <div class='col-md-3' style='font-size: 1.0em'>ABV: {{beer.abv}}</div>
+                    <div class='col-md-3' style='font-size: 1.0em'>Rating: {{beer.avgrating}}</div>
                     <h4 class='col-md-3'></h4>
                   </div>
                 </div>
