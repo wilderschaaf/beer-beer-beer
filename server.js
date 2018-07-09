@@ -275,7 +275,7 @@ function mycb(bl, callback){
 	var data
     var brewery
     var beerlink
-    var state = 'Wyoming'
+    var state = 'California'
     var $
     var i 
     var queries
