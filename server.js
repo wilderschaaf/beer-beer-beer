@@ -56,7 +56,7 @@ var db = pgp(conString)
 //scraping in VT data
 function usecallback(callback){
 	var state = 'CA'
-	var top = 40
+	var top = 820
 	var brewlinks = []
 
 	var j 
