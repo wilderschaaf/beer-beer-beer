@@ -282,7 +282,7 @@ function mycb(bl, callback){
     var len = bl.length
 	bl.forEach( function(item){
 		url = urlbase + item
-		
+		console.log(item)
 		request(url, function(error, response, html){
 			if(error){
 				console.error(error)
