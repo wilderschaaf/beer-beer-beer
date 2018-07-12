@@ -284,7 +284,9 @@ function mycb(bl, callback){
     console.log(bl)
 	bl.forEach( function(item){
 		url = urlbase + item
-		console.log(item)
+		if (item == "/beer/profile/43153/"){
+			console.log(item)
+		}
 		request(url, function(error, response, html){
 			if(error){
 				console.error(error)
