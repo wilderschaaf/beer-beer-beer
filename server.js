@@ -311,7 +311,7 @@ function mycb(bl, callback){
 					// console.log(data.eq(0).children().eq(4).text()+"__")
 					//console.log(data.eq(i).children()[0])
 					//data[i] != undefined
-					while (false){
+					while (data[i]!=undefined){
 						beerlink = data.eq(i).children().eq(0).attr('href')
 						// if (brewery == "Arrogant Brewing"){
 						// 	console.log(beerlink)
