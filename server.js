@@ -303,12 +303,12 @@ function mycb(bl, callback){
 					//data = $('#ba-content').find("table").eq(1).children()
 					data = $('table.sortable').eq(0).children().eq(1).children().eq(0).children()
 					queries = []
-					i = 3
-					console.log(data.eq(0).children().eq(0).text())
+					i = 0
+					console.log(data.eq(100).children().eq(0).text())
 					//console.log(data.eq(i).children()[0])
-					
-					while (data.eq(i).children()[0] != undefined){
-						beerlink = data.eq(i).children().eq(0).children().eq(0).attr('href')
+					//data.eq(i).children().eq(0) != undefined
+					while (false){
+						beerlink = data.eq(i).children().eq(0).attr('href')
 						// if (brewery == "Arrogant Brewing"){
 						// 	console.log(beerlink)
 						// }
