@@ -303,7 +303,7 @@ function mycb(bl, callback){
 					data = $('#ba-content').find("table").eq(1).children()
 					queries = []
 					i = 3
-					console.log($('.sortable .tablesorter .tablesorter-default .tablesorter7da7467a9355f').children())
+					console.log($('.tablesorter-default').eq(0).children())
 					//console.log(data.eq(i).children()[0])
 					
 					while (data.eq(i).children()[0] != undefined){
