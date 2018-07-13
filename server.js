@@ -304,7 +304,11 @@ function mycb(bl, callback){
 					data = $('table.sortable').eq(0).children().eq(1).children()
 					queries = []
 					i = 0
+					console.log("--"+data.eq(0).children().eq(0).text())
 					console.log(data.eq(0).children().eq(1).text())
+					console.log(data.eq(0).children().eq(2).text())
+					console.log(data.eq(0).children().eq(3).text())
+					console.log(data.eq(0).children().eq(4).text()+"__")
 					//console.log(data.eq(i).children()[0])
 					//data[i] != undefined
 					while (false){
@@ -314,13 +318,12 @@ function mycb(bl, callback){
 						// }
 						//console.log(beerlink)
 						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseNumRatings(data.eq(i).children().eq(4).text()) > 2){
-							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, brorating, state) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
+							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, state) SELECT $1, $2, $3, $4, $5, $6, $7, $8 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
 								[brewery, beerlink, data.eq(i).children().eq(0).text(), 
 								data.eq(i).children().eq(1).text(), 
 								parseFloat(data.eq(i).children().eq(2).text()), 
-								parseFloat(data.eq(i).children().eq(3).text()), 
-								parseNumRatings(data.eq(i).children().eq(4).text()), 
-								parseFloat(data.eq(i).children().eq(5).text()),
+								parseFloat(data.eq(i).children().eq(4).text()), 
+								parseNumRatings(data.eq(i).children().eq(3).text()), 
 								state]))
 						}
 					 	i++;
