@@ -301,10 +301,10 @@ function mycb(bl, callback){
 					brewery = $('.titleBar').text().trim()
 					
 					//data = $('#ba-content').find("table").eq(1).children()
-					data = $('table.sortable').eq(0).children().eq(1).children().eq(0).children()
+					data = $('table.sortable').eq(0).children().eq(1).children()
 					queries = []
 					i = 0
-					console.log(data[0])
+					console.log(data.eq(0).children.eq(0).text())
 					//console.log(data.eq(i).children()[0])
 					//data[i] != undefined
 					while (false){
