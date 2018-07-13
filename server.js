@@ -299,7 +299,7 @@ function mycb(bl, callback){
 					
 					$ = cheerio.load(html)
 					brewery = $('.titleBar').text().trim()
-					console.log(brewery)
+					
 					data = $('#ba-content').find("table").children()
 					queries = []
 					i = 3
@@ -308,7 +308,6 @@ function mycb(bl, callback){
 						if (brewery == "Arrogant Brewing"){
 							console.log(beerlink)
 						}
-
 						//console.log(beerlink)
 						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(3).text())) && parseNumRatings(data.eq(i).children().eq(4).text()) > 2){
 							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, brorating, state) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
