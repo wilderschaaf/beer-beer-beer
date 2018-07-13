@@ -305,7 +305,7 @@ function mycb(bl, callback){
 					while (data.eq(i).children()[0] != undefined){
 						beerlink = data.eq(i).children().eq(0).children().eq(0).attr('href')
 						if (item == "/beer/profile/43153/"){
-							console.log(beerlink)
+							console.log("Wilder")
 						}
 
 						//console.log(beerlink)
