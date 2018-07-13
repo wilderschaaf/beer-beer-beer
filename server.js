@@ -300,7 +300,7 @@ function mycb(bl, callback){
 					$ = cheerio.load(html)
 					brewery = $('.titleBar').text().trim()
 					
-					data = $('#ba-content').find("table").children()
+					data = $('#ba-content').find("table").eq(1).children()
 					queries = []
 					i = 3
 					
