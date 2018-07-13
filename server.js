@@ -304,7 +304,7 @@ function mycb(bl, callback){
 					data = $('table.sortable').eq(0).children().eq(1).children()
 					queries = []
 					i = 0
-					console.log(data[20])
+					console.log(data[40])
 					// console.log(data.eq(0).children().eq(1).text())
 					// console.log(data.eq(0).children().eq(2).text())
 					// console.log(data.eq(0).children().eq(3).text())
