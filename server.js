@@ -368,6 +368,13 @@ app.get('/', function(req, res){
 
 })
 
+
+app.get('/scrapehome',function(req, res){
+
+	res.sendFile(__dirname + "/public/scrape1.html")
+	
+})
+
 app.get('/bsearch', function(req, res){
 	//console.log('beer: ' + req.query['beer'])
 	//res.sendFile(__dirname + "/public/home.html")
