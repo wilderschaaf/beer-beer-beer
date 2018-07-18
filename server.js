@@ -55,8 +55,8 @@ const conString = 'postgres://gpguzsrnfsmpgo:9996edfb1e4970a620c051c55185a261cb4
 var db = pgp(conString)
 
 //scraping in VT data
-function usecallback(callback){
-	var state = 'CA'
+function usecallback(callback, st, state){
+	state = st
 	var top = 820
 	var brewlinks = []
 
@@ -90,7 +90,7 @@ function usecallback(callback){
 
 			}
 			if(j-(top+20)==(top+20)/20){
-				callback(brewlinks, donecb)
+				callback(brewlinks, donecb, state)
 			}
 			
 		})
@@ -103,7 +103,7 @@ app.use('/scrape', function(req, res){
 
 
 	res.sendFile(__dirname + "/public/scrape1.html")
-	usecallback(mycb)
+	usecallback(mycb, req.query['st'],req.query['state'])
 	
 })
 
@@ -270,13 +270,12 @@ function parseNumRatings(s){
 	return parseFloat(s)
 }
 
-function mycb(bl, callback){
+function mycb(bl, callback, state){
 	urlbase = 'https://www.beeradvocate.com'
 	var j = 0
 	var data
     var brewery
     var beerlink
-    var state = 'California'
     var $
     var i 
     var queries
@@ -372,7 +371,7 @@ app.get('/', function(req, res){
 app.get('/scrapehome',function(req, res){
 
 	res.sendFile(__dirname + "/public/scrape1.html")
-	
+
 })
 
 app.get('/bsearch', function(req, res){
