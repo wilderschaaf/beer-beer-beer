@@ -303,7 +303,6 @@ function mycb(bl, callback, state){
 					data = $('table.sortable').eq(0).children().eq(1).children()
 					queries = []
 					i = 0
-					console.log(data[40])
 					// console.log(data.eq(0).children().eq(1).text())
 					// console.log(data.eq(0).children().eq(2).text())
 					// console.log(data.eq(0).children().eq(3).text())
@@ -312,6 +311,7 @@ function mycb(bl, callback, state){
 					//data[i] != undefined
 					while (data[i]!=undefined){
 						beerlink = data.eq(i).children().eq(0).attr('href')
+						console.log(beerlink)
 						// if (brewery == "Arrogant Brewing"){
 						// 	console.log(beerlink)
 						// }
