@@ -17,6 +17,73 @@ var desc = ['accessible','acidic','aftertaste','aggressive','alcoholic','almondl
 'sediment','sharp','sherrylike/sherry','silky/silk','skunky/skunked','smoky/smoke','smooth','soapy/soap','soft','solventlike/solvent','sour','spicy/spice','stale','sticky','sulfidic',
 'sulfitic','sweet','syrupy/syrup','tannic','tannins','tart','texture','texture','thick','thin','toasty/toast','toffee','nonenal','treacle','turbid','undertones','vanilla','vegetal','viscous',
 'warming','watery/water','winelike','woody/wood','worty/wort','yeasty/yeast','young','zesty/zest']
+
+var statelist = ["Alabama",
+"Alaska",
+"Arizona",
+"Arkansas",
+"California",
+"Colorado",
+"Connecticut",
+"Delaware",
+"Florida",
+"Georgia",
+"Hawaii",
+"Idaho",
+"Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+
+var stateabrevlist = ["AL",
+"AK",
+"AZ",
+"AR",
+"CA",
+"CO",
+"CT",
+"DE",
+"FL",
+"GA",
+"HI",
+"ID",
+"IL",
+"IN",
+"IA",
+"KS",
+"KY",
+"LA",
+"ME",
+"MD",
+"MA",
+"MI",
+"MN",
+"MS",
+"MO",
+"MT",
+"NE",
+"NV",
+"NH",
+"NJ",
+"NM",
+"NY",
+"NC",
+"ND",
+"OH",
+"OK",
+"OR",
+"PA",
+"RI",
+"SC",
+"SD",
+"TN",
+"TX",
+"UT",
+"VT",
+"VA",
+"WA",
+"WV",
+"WI",
+"WY"]
+var scrapercounter = 0;
+
 var globalcounter = 1
 
 var rowcount 
@@ -103,7 +170,7 @@ app.use('/scrape', function(req, res){
 
 
 	res.sendFile(__dirname + "/public/scrape1.html")
-	usecallback(mycb, req.query['st'],req.query['state'])
+	usecallback(mycb, stateabrevlist[scrapercounter],statelist[scrapercounter])
 	
 })
 
@@ -311,7 +378,7 @@ function mycb(bl, callback, state){
 					//data[i] != undefined
 					while (data[i]!=undefined){
 						beerlink = data.eq(i).children().eq(0).find("a").eq(0).attr('href')
-						console.log(beerlink)
+						//console.log(beerlink)
 						// if (brewery == "Arrogant Brewing"){
 						// 	console.log(beerlink)
 						// }
@@ -351,9 +418,14 @@ function mycb(bl, callback, state){
 }
 
 function donecb(){
-	console.log("done call back----------------------------------------------------------------------")
-	io.emit('done scraping')
-
+	console.log("done call back--------------------------------going next")
+	io.emit('going next')
+	if (scrapercounter<50){
+		usecallback(mycb, stateabrevlist[++scrapercounter],statelist[++scrapercounter])
+	}
+	else{
+		console.log("done for real")
+	}	
 }
 
 //code for implementing the UI portion of the app-----------------
