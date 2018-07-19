@@ -84,7 +84,7 @@ var stateabrevlist = ["AL",
 "WY"]
 var scrapercounter = 0;
 
-var globalcounter = 6069
+var globalcounter = 7577
 
 var rowcount 
 
