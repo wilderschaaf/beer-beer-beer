@@ -322,6 +322,7 @@ function aggwords(text, darray){
 
 app.use('/scrape2', function(req, res){
 	res.sendFile(__dirname + "/public/index.html")
+	globalcounter = parseInt(req.query['globalcounter'])
 	getbeerdata()
 })
 
