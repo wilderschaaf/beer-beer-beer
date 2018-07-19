@@ -421,7 +421,8 @@ function donecb(){
 	console.log("done call back--------------------------------going next")
 	io.emit('going next')
 	if (scrapercounter<50){
-		usecallback(mycb, stateabrevlist[++scrapercounter],statelist[++scrapercounter])
+		scrapercounter++
+		usecallback(mycb, stateabrevlist[scrapercounter],statelist[scrapercounter])
 		console.log("counter: "+scrapercounter)
 	}
 	else{
