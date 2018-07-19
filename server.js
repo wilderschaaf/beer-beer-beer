@@ -422,6 +422,7 @@ function donecb(){
 	io.emit('going next')
 	if (scrapercounter<50){
 		usecallback(mycb, stateabrevlist[++scrapercounter],statelist[++scrapercounter])
+		console.log("counter: "+scrapercounter)
 	}
 	else{
 		console.log("done for real")
