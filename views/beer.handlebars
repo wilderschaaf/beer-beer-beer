@@ -131,13 +131,13 @@
       <button class='clickable-filter' data-href="/beer/{{beer.beerid}}" data-beerid='{{beer.beerid}}'>Filter</button>
 
     </div>
-
-    <form action="/review">
-    
-      <input type="text" name="beerid" value={{beer.beerid}}><br>
-      <input type="submit" value="Submit">
-    </form>
-
+    <div class='container'>
+        <form action="/beer/review">
+        
+          <input type="text" name="beerid" value={{beer.beerid}}><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
     <div class='container'>
     <table id='simtab' class='table table-striped table-hover'>
       
