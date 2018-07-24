@@ -545,6 +545,16 @@ app.get('/beer/[0-9]*', function(req, res){
 
 })
 
+//let's do some reviewing stuff
+
+app.get('/beer/review', function(req, res){
+	res.render('review',{
+		beerid: req.query['beerid']
+	})
+
+})
+
+
 
 //----------------------------------------------------------------
 	
