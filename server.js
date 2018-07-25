@@ -552,7 +552,8 @@ app.get('/beer/review', function(req, res){
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function(data){
 			res.render('review',{
-				beer: data
+				beer: data,
+				descriptors: desclist
 			})
 		})
 		.catch(function(err){

@@ -33,6 +33,13 @@
 
 <div class='container'>
     Let's start here.
-    {{{beer.desclist}}}
+
+    <div class='container'>
+      <select class='state-select'>
+        {{#each descriptors}}
+          <option value="{{this}}">{{{this}}}</option>
+        {{/each}}
+      </select>
+
 </div>
 	
