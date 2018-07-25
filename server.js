@@ -512,7 +512,7 @@ function changeDescs(obbiej, dict){
 }
 
 app.get('/beer/[0-9]*', function(req, res){
-	console.log("here's the stuff "+ req.query['beerid'])
+	console.log("here's the stuff "+ req.query['beerid']+" and: " + req.query['style'])
 	console.log("and " + req.query['stid'])
 	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance, desclist from calibeers where beerid != $(id) and style = $(style)":"create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance, desclist from calibeers where state=$(stid) and beerid != $(id) and style = $(style)"
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
