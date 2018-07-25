@@ -548,9 +548,17 @@ app.get('/beer/[0-9]*', function(req, res){
 //let's do some reviewing stuff
 
 app.get('/beer/review', function(req, res){
-	res.render('review',{
-		beerid: req.query['beerid']
-	})
+	
+	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
+		.then( function(data){
+			res.render('review',{
+				beer: data
+			})
+		})
+		.catch(function(err){
+			console.error(err)
+		})
+	
 
 })
 
