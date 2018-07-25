@@ -553,7 +553,7 @@ app.get('/beer/review', function(req, res){
 		.then( function(data){
 			res.render('review',{
 				beer: data,
-				descriptors: desclist
+				descriptors: desc
 			})
 		})
 		.catch(function(err){
