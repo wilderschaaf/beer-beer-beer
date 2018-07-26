@@ -31,6 +31,9 @@
       </div>
     </nav>
 
+
+
+
 <div class='container'>
     Let's start here.
 
@@ -42,4 +45,68 @@
       </select>
 
 </div>
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3-starPlot.js"></script>
+<script>
+
+var margin = {
+  top: 36,
+  right: 50,
+  bottom: 20,
+  left: 50
+};
+var width = 240 - margin.left - margin.right;
+var height = 240 - margin.top - margin.bottom;
+var labelMargin = 8;
+
+var scale = d3.scale.linear()
+  .domain([0, 100])
+  .range([0, 100])
+var keys = Object.keys({{{top}}})
+
+var star = d3.starPlot()
+      .width(width)
+      .accessors([
+        function(d) { return scale(d.keys[0]); },
+        function(d) { return scale(d.keys[1]); },
+        function(d) { return scale(d.keys[2]); },
+        function(d) { return scale(d.keys[3]); },
+        function(d) { return scale(d.keys[4]); },
+        function(d) { return scale(d.keys[5]); },
+        function(d) { return scale(d.keys[6]); },
+        function(d) { return scale(d.keys[7]); },
+        function(d) { return scale(d.keys[8]); },
+        function(d) { return scale(d.keys[9]); },
+        
+      ])
+      .labels([
+        d.keys[0],
+        d.keys[1],
+        d.keys[2],
+        d.keys[3],
+        d.keys[4],
+        d.keys[5],
+        d.keys[6],
+        d.keys[7],
+        d.keys[8],
+        d.keys[9],
+       
+      ])
+      .title("plot here")
+      .margin(margin)
+      .labelMargin(labelMargin)
+
+d3.select('#target').append('svg')
+        .attr('class', 'chart')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', width + margin.top + margin.bottom)
+        .append('g')
+          .datum(top)
+          .call(star)
+    });
+
+</script>
+<div id='target'></div>
 	
