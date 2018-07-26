@@ -491,7 +491,7 @@ function getTop(arr){
 	for (var i = 0; i < 10; i++){
 		outdict[desc[out2[i]]] = out[i]*100
 	}
-	return outdict
+	return [outdict,out2]
 }
 
 function getSame(dict, arr){
@@ -514,19 +514,19 @@ function changeDescs(obbiej, dict){
 app.get('/beer/[0-9]*', function(req, res){
 	console.log("here's the stuff "+ req.query['beerid'])
 	console.log("and " + req.query['stid'])
-	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance, desclist from calibeers where beerid != $(id)":"create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (getSDistance(grabArray($(id)), desclist)) as distance, desclist from calibeers where state=$(stid) and beerid != $(id)"
+	var quer = (req.query['stid'] == 'undefined' || req.query['stid'] == 'US' || req.query['stid'] == '') ? "create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (gettopSDistance(grabArray($(id)), desclist, $(topi))) as distance, desclist from calibeers where beerid != $(id)":"create or replace view testview as select brewery, beername, beerid, style, avgrating, state, (gettopSDistance(grabArray($(id)), desclist, $(topi))) as distance, desclist from calibeers where state=$(stid) and beerid != $(id)"
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function (data){
-			db.none(quer, {id: req.query['beerid'], stid: req.query['stid'], style: data.style})
+			db.none(quer, {id: req.query['beerid'], stid: req.query['stid'], style: data.style, topi: getTop(data.desclist)[1]})
 				.then( function (data2){
 					db.many("select * from testview order by distance limit 5 offset 0")
 						.then( function (data3){
-							changeDescs(data3, getTop(data.desclist))
-							console.log(getTop(data.desclist))
+							changeDescs(data3, getTop(data.desclist)[0])
+							console.log(getTop(data.desclist)[0])
 							res.render('beer', {
 								beer: data,
 								simbeers: data3,
-								descs: getTop(data.desclist)
+								descs: getTop(data.desclist)[0]
 							})
 							db.none("drop view testview")
 						})
@@ -554,7 +554,7 @@ app.get('/beer/review', function(req, res){
 			res.render('review',{
 				beer: data,
 				descriptors: desc,
-				top: getTop(data.desclist)
+				top: getTop(data.desclist)[0]
 			})
 		})
 		.catch(function(err){
