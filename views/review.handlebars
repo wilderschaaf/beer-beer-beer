@@ -65,7 +65,7 @@ var scale = d3.scale.linear()
   .domain([0, 100])
   .range([0, 100])
 var keys = Object.keys({{{top}}})
-
+console.log(keys)
 var star = d3.starPlot()
       .width(width)
       .accessors([
