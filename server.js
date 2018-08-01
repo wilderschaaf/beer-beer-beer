@@ -523,7 +523,7 @@ app.get('/beer/[0-9]*', function(req, res){
 						.then( function (data3){
 							changeDescs(data3, getTop(data.desclist)[0])
 							console.log(getTop(data.desclist)[0])
-							res.render('beer', {
+							res.render('beerstar', {
 								beer: data,
 								simbeers: data3,
 								descs: getTop(data.desclist)[0]

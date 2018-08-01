@@ -1,0 +1,192 @@
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Search Beers</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form action="/bsearch" class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" name='beer' class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    <div class='containter'>
+        <div id='target'></div>
+    </div>
+
+    <div class='container'>
+      <select class='state-select'>
+        <option value='US'>US</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizona</option>
+        <option value="AR">Arkansas</option>
+        <option value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delaware</option>
+        <option value="DC">District Of Columbia</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NH">New Hampshire</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+      </select>
+
+  
+      <button class='clickable-filter' data-href="/beer/{{beer.beerid}}" data-beerid='{{beer.beerid}}' data-style='{{beer.style}}'>Filter</button>
+
+    </div>
+    <div class='container'>
+        <form action="/beer/review">
+        
+          <input type="text" name="beerid" value={{beer.beerid}}><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class='container'>
+    <table id='simtab' class='table table-striped table-hover'>
+      
+        <thead>
+          <tr>
+                <th style='padding-left: 0%'>
+                  <h4>Most Similar Beers</h4>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          {{#each simbeers}}
+              <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist={{{json desclist}}}>
+                <td style='padding-left: 0%'>
+                    {{{beername}}}
+                </td>
+                
+                <td style='padding-left: 0%'>
+                    {{{brewery}}}
+                </td>
+                <td style='padding-left: 0%'>
+                    {{{state}}}
+                </td>
+                <td style='padding-left: 0%'>
+                    {{{style}}}
+                </td>
+                <td style='padding-left: 0%'>
+                    Rating: {{{avgrating}}}
+                </td>
+                <td style='padding-left: 0%'>
+                    Distance: {{{distance}}}
+                </td>
+              </tr>
+            {{/each}}
+        </tbody>
+
+    </table>
+</div>
+
+<script src="js/d3.v3.min.js"></script>
+<script src="js/d3-starPlot.js"></script>
+<script>
+
+var margin = {
+  top: 36,
+  right: 50,
+  bottom: 20,
+  left: 50
+};
+var width = 440 - margin.left - margin.right;
+var height = 440 - margin.top - margin.bottom;
+var labelMargin = 8;
+
+var scale = d3.scale.linear()
+  .domain([0, 100])
+  .range([0, 100])
+console.log({{{json descs}}})
+var keys = Object.keys({{{json descs}}}).sort()
+console.log(keys)
+var star = d3.starPlot()
+      .width(width)
+      .accessors([
+        function(d) { return scale(d[keys[0]]); },
+        function(d) { return scale(d[keys[1]]); },
+        function(d) { return scale(d[keys[2]]); },
+        function(d) { return scale(d[keys[3]]); },
+        function(d) { return scale(d[keys[4]]); },
+        function(d) { return scale(d[keys[5]]); },
+        function(d) { return scale(d[keys[6]]); },
+        function(d) { return scale(d[keys[7]]); },
+        function(d) { return scale(d[keys[8]]); },
+        function(d) { return scale(d[keys[9]]); },
+        
+      ])
+      .labels([
+        keys[0],
+        keys[1],
+        keys[2],
+        keys[3],
+        keys[4],
+        keys[5],
+        keys[6],
+        keys[7],
+        keys[8],
+        keys[9],
+       
+      ])
+      .title("plot here")
+      .margin(margin)
+      .labelMargin(labelMargin)
+
+d3.select('#target').append('svg')
+        .attr('class', 'chart')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', width + margin.top + margin.bottom)
+        .append('g')
+          .datum({{{json descs}}})
+          .call(star)
+
+</script>
