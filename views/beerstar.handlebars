@@ -23,6 +23,18 @@
     <div class='row'>
         <div class='col-md-6'>
             <div class='containter'>
+                <div id='maincontainer' class='container' style='padding: 0%; overflow: hidden;'>
+                  <div class='row'>
+                    <div class='col-md-6' style='font-size: 1.5vw; background-color: #000; color: #fff'>{{beer.beername}}</div>
+                    <div class='col-md-6' style='font-size: 1.5vw'>{{beer.style}}</div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-3' style='font-size: 1.0vw'>{{beer.brewery}}</div>
+                    <div class='col-md-3' style='font-size: 1.0vw'>ABV: {{beer.abv}}</div>
+                    <div class='col-md-3' style='font-size: 1.0vw'>Rating: {{beer.avgrating}}</div>
+                    <h4 class='col-md-3'></h4>
+                  </div>
+                </div>
                 <div id='target'></div>
             </div>
 
@@ -118,12 +130,12 @@
                             <td style='padding-left: 0%'>
                                 {{{state}}}
                             </td>
-                            <td style='padding-left: 0%'>
+                            <!-- <td style='padding-left: 0%'>
                                 {{{style}}}
-                            </td>
-                            <td style='padding-left: 0%'>
+                            </td> -->
+                            <!-- <td style='padding-left: 0%'>
                                 Rating: {{{avgrating}}}
-                            </td>
+                            </td> -->
                             <!-- <td style='padding-left: 0%'>
                                 Distance: {{{distance}}}
                             </td> -->
