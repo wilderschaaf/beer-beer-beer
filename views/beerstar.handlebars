@@ -38,7 +38,55 @@
                 <div id='target'></div>
             </div>
 
-            <div class='container'>
+            
+        </div>
+   <!--  <div class='container'>
+        <form action="/beer/review">
+        
+          <input type="text" name="beerid" value={{beer.beerid}}><br>
+          <input type="submit" value="Submit">
+        </form>
+    </div> -->
+        <div class='col-md-6'>
+            <!-- <div class='container'> -->
+                <table id='simtab' class='table table-striped table-hover'>
+                  
+                    <thead>
+                      <tr>
+                            <th style='padding-left: 0%'>
+                              <h4>Most Similar Beers</h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {{#each simbeers}}
+                          <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist={{{json desclist}}}>
+                            <td style='padding-left: 0%'>
+                                {{{beername}}}
+                            </td>
+                            
+                            <!-- <td style='padding-left: 0%'>
+                                {{{brewery}}}
+                            </td> -->
+                            <td style='padding-left: 0%'>
+                                {{{state}}}
+                            </td>
+                            <!-- <td style='padding-left: 0%'>
+                                {{{style}}}
+                            </td> -->
+                            <!-- <td style='padding-left: 0%'>
+                                Rating: {{{avgrating}}}
+                            </td> -->
+                            <!-- <td style='padding-left: 0%'>
+                                Distance: {{{distance}}}
+                            </td> -->
+                          </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+
+                <div class='container'>
               <select class='state-select'>
                 <option value='US'>US</option>
                 <option value="AL">Alabama</option>
@@ -98,52 +146,6 @@
               <button class='clickable-filter' data-href="/beer/{{beer.beerid}}" data-beerid='{{beer.beerid}}' data-style='{{beer.style}}'>Filter</button>
 
             </div>
-        </div>
-   <!--  <div class='container'>
-        <form action="/beer/review">
-        
-          <input type="text" name="beerid" value={{beer.beerid}}><br>
-          <input type="submit" value="Submit">
-        </form>
-    </div> -->
-        <div class='col-md-6'>
-            <!-- <div class='container'> -->
-                <table id='simtab' class='table table-striped table-hover'>
-                  
-                    <thead>
-                      <tr>
-                            <th style='padding-left: 0%'>
-                              <h4>Most Similar Beers</h4>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {{#each simbeers}}
-                          <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist={{{json desclist}}}>
-                            <td style='padding-left: 0%'>
-                                {{{beername}}}
-                            </td>
-                            
-                            <!-- <td style='padding-left: 0%'>
-                                {{{brewery}}}
-                            </td> -->
-                            <td style='padding-left: 0%'>
-                                {{{state}}}
-                            </td>
-                            <!-- <td style='padding-left: 0%'>
-                                {{{style}}}
-                            </td> -->
-                            <!-- <td style='padding-left: 0%'>
-                                Rating: {{{avgrating}}}
-                            </td> -->
-                            <!-- <td style='padding-left: 0%'>
-                                Distance: {{{distance}}}
-                            </td> -->
-                          </tr>
-                        {{/each}}
-                    </tbody>
-
-                </table>
             <!-- </div> -->
         </div>
     </div>
