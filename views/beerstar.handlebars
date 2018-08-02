@@ -173,7 +173,7 @@ $(document).ready(function($) {
                 }
                 
                 console.log(accesslist)
-                star.accessors2(accesslist)
+                star.accessors2(accesslist).secondset(true)
                 d3.select('#target').append('svg')
                     .attr('class', 'chart')
                     .attr('width', width + margin.left + margin.right)

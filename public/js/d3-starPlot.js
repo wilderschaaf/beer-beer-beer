@@ -198,6 +198,12 @@ d3.starPlot = function() {
     return chart;
   };
 
+  chart.secondset = function(_) {
+    if (!arguments.length) return secondset;
+    secondset = _;
+    return chart;
+  };
+
   chart.labels = function(_) {
     if (!arguments.length) return labels;
     labels = _;
