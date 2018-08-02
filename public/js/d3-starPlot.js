@@ -167,6 +167,7 @@ d3.starPlot = function() {
   chart.accessors2 = function(_) {
     if (!arguments.length) return accessors2;
     accessors2 = _;
+    console.log(accessors2)
     return chart;
   };
 
