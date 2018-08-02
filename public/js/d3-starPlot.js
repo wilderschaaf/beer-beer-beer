@@ -199,9 +199,9 @@ d3.starPlot = function() {
   };
 
   chart.secondset = function(_) {
-    console.log('check')
     if (!arguments.length) return secondset;
     secondset = _;
+    console.log(secondset)
     return chart;
   };
 
