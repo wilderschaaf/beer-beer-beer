@@ -10,8 +10,10 @@ d3.starPlot = function() {
       includeGuidelines = true,
       includeLabels = true,
       accessors = [],
+      accessors2 = [],
       labels = [],
       title = nop,
+      secondset = false,
 
       g,
       datum,
@@ -55,6 +57,24 @@ d3.starPlot = function() {
 
       r += radians;
     })
+    r = 0;
+    if(secondset){
+      accessors2.forEach(function(d, i) {
+        var l, x, y;
+
+        l = radius;
+        x = l * Math.cos(r);
+        y = l * Math.sin(r);
+        g.append('line')
+          .attr('class', 'star-axis')
+          .attr('x1', origin[0])
+          .attr('y1', origin[1])
+          .attr('x2', origin[0] + x)
+          .attr('y2', origin[1] + y)
+
+        r += radians;
+      })
+    }
   }
 
   function drawLabels() {
@@ -87,6 +107,8 @@ d3.starPlot = function() {
     var path = d3.svg.line.radial()
 
     var pathData = [];
+
+    
     var r = Math.PI / 2;
     accessors.forEach(function(d) {
       pathData.push([
@@ -107,6 +129,27 @@ d3.starPlot = function() {
       .attr('y', -(margin.top / 2))
       .text(title(datum))
       .style('text-anchor', 'middle')
+
+    if(secondset){
+      path = d3.svg.line.radial()
+
+      pathData = [];
+
+      
+      r = Math.PI / 2;
+      accessors2.forEach(function(d) {
+        pathData.push([
+          scale(d(datum)),
+          r
+        ])
+        r += radians;
+      });
+
+      g.append('path')
+        .attr('class', 'star-path')
+        .attr('transform', 'translate(' + origin[0] + ',' + origin[1] + ')')
+        .attr('d', path(pathData) + 'Z');
+    } 
   }
 
   function nop() {
@@ -118,6 +161,12 @@ d3.starPlot = function() {
     accessors = _;
     radii = accessors.length;
     radians = 2 * Math.PI / radii;
+    return chart;
+  };
+
+  chart.accessors2 = function(_) {
+    if (!arguments.length) return accessors2;
+    accessors2 = _;
     return chart;
   };
 
