@@ -61,7 +61,7 @@ d3.starPlot = function() {
     if(secondset){
       accessors2.forEach(function(d, i) {
         var l, x, y;
-
+        console.log(d)
         l = radius;
         x = l * Math.cos(r);
         y = l * Math.sin(r);
