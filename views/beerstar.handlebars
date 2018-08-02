@@ -212,7 +212,7 @@ d3.select('#target').append('svg')
           .datum({{{json descs}}})
           .call(star)
 
-$(document).ready(function($) {
+
             $(".clickable-row").mouseenter(function() {
 
                 $("#beername").text($(this).find('td').eq(0).text())
@@ -232,6 +232,6 @@ $(document).ready(function($) {
                 console.log(accesslist)
                 star.accessors2(accesslist)
             })
-        });
+     
 
 </script>
