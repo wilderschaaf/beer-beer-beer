@@ -155,6 +155,27 @@
 <script>
 var hoverElm = null
 $(".clickable-row").on("mouseenter", function() { hoverElm = this; console.log("hit") })
+$(document).ready(function($) {
+            $(".clickable-row").mouseenter(function() {
+
+                $("#beername").text($(this).find('td').eq(0).text())
+                $("#beerstyle").text($(this).find('td').eq(3).text()) 
+                $("#brewery").text($(this).find('td').eq(1).text()) 
+                $("#rating").text($(this).find('td').eq(4).text())
+
+                console.log($(this).data("desclist"))
+                var accesslist = [];
+                //$(":animated").finish()
+                for (x in $(this).data("desclist")){
+                    //console.log($(this).data("desclist")[x])
+                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
+                    accesslist.append($(this).data("desclist")[x])
+                }
+                
+                console.log(accesslist)
+                star.accessors2(accesslist)
+            })
+        });
 
 var margin = {
   top: 36,
@@ -212,26 +233,6 @@ d3.select('#target').append('svg')
           .datum({{{json descs}}})
           .call(star)
 
-$(document).ready(function($) {
-            $(".clickable-row").mouseenter(function() {
 
-                $("#beername").text($(this).find('td').eq(0).text())
-                $("#beerstyle").text($(this).find('td').eq(3).text()) 
-                $("#brewery").text($(this).find('td').eq(1).text()) 
-                $("#rating").text($(this).find('td').eq(4).text())
-
-                console.log($(this).data("desclist"))
-                var accesslist = [];
-                //$(":animated").finish()
-                for (x in $(this).data("desclist")){
-                    //console.log($(this).data("desclist")[x])
-                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
-                    accesslist.append($(this).data("desclist")[x])
-                }
-                
-                console.log(accesslist)
-                star.accessors2(accesslist)
-            })
-        });
 
 </script>
