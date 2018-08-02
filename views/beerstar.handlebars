@@ -210,4 +210,38 @@ d3.select('#target').append('svg')
           .datum({{{json descs}}})
           .call(star)
 
+$(document).ready(function($) {
+            $(".clickable-row").mouseenter(function() {
+
+                $("#beername").text($(this).find('td').eq(0).text())
+                $("#beerstyle").text($(this).find('td').eq(3).text()) 
+                $("#brewery").text($(this).find('td').eq(1).text()) 
+                $("#rating").text($(this).find('td').eq(4).text())
+
+                //console.log($(this).data("desclist"))
+                var accesslist = [];
+                $(":animated").finish()
+                for (x in $(this).data("desclist")){
+                    //console.log($(this).data("desclist")[x])
+                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
+                    accesslist.append($(this).data("desclist")[x])
+                }
+                
+
+                star.accessors2(accesslist)
+                // $("#compholder").removeClass('hidden')
+
+                // $("#maincontainer").animate({'width': '100%'}, 200, function (){
+                //     //$("#constholder").animate({'width': '50vw'})
+                //     $('#maincontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
+                //     $('#compcontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
+                //     $("#compholder").animate({'margin-left':'0vw'}, 200)
+                // })
+
+                
+                
+                
+            })
+        });
+
 </script>
