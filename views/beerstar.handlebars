@@ -169,11 +169,11 @@ $(document).ready(function($) {
                 for (x in $(this).data("desclist")){
                     //console.log($(this).data("desclist")[x])
                     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
-                    accesslist.push(function(d){return scale(d[x]);})
+                    //accesslist.push(function(d){return scale(d[x]);})
                 }
                 
-                console.log(accesslist)
-                star.secondset(true).accessors(accesslist)
+                //console.log(accesslist)
+                star.secondset(true)
                 d3.select('#target').append('svg')
                     .attr('class', 'chart')
                     .attr('width', width + margin.left + margin.right)
