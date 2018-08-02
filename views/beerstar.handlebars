@@ -154,7 +154,8 @@
 <script src="js/d3-starPlot.js"></script>
 <script>
 var hoverElm = null
-        $("*").on("mouseenter", function() { hoverElm = this })
+$("*").on("mouseenter", function() { hoverElm = this })
+
 var margin = {
   top: 36,
   right: 50,
@@ -230,18 +231,6 @@ $(document).ready(function($) {
                 
                 console.log(accesslist)
                 star.accessors2(accesslist)
-                // $("#compholder").removeClass('hidden')
-
-                // $("#maincontainer").animate({'width': '100%'}, 200, function (){
-                //     //$("#constholder").animate({'width': '50vw'})
-                //     $('#maincontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
-                //     $('#compcontainer').animate({'height': (Math.max($('#maincontainer').height(), $('compcontainer').height()))}, 200)
-                //     $("#compholder").animate({'margin-left':'0vw'}, 200)
-                // })
-
-                
-                
-                
             })
         });
 
