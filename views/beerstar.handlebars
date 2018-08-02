@@ -153,7 +153,8 @@
 <script src="js/d3.v3.min.js"></script>
 <script src="js/d3-starPlot.js"></script>
 <script>
-
+var hoverElm = null
+        $("*").on("mouseenter", function() { hoverElm = this })
 var margin = {
   top: 36,
   right: 50,
