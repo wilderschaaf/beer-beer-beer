@@ -219,9 +219,9 @@ $(document).ready(function($) {
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
 
-                //console.log($(this).data("desclist"))
+                console.log($(this).data("desclist"))
                 var accesslist = [];
-                $(":animated").finish()
+                //$(":animated").finish()
                 for (x in $(this).data("desclist")){
                     //console.log($(this).data("desclist")[x])
                     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
