@@ -154,7 +154,7 @@
 <script src="js/d3-starPlot.js"></script>
 <script>
 var hoverElm = null
-$("*").on("mouseenter", function() { hoverElm = this; console.log("hit") })
+$(".clickable-row").on("mouseenter", function() { hoverElm = this; console.log("hit") })
 
 var margin = {
   top: 36,
@@ -212,7 +212,7 @@ d3.select('#target').append('svg')
           .datum({{{json descs}}})
           .call(star)
 
-
+$(document).ready(function($) {
             $(".clickable-row").mouseenter(function() {
 
                 $("#beername").text($(this).find('td').eq(0).text())
@@ -232,6 +232,6 @@ d3.select('#target').append('svg')
                 console.log(accesslist)
                 star.accessors2(accesslist)
             })
-     
+        });
 
 </script>
