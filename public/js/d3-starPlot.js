@@ -131,7 +131,6 @@ d3.starPlot = function() {
       .style('text-anchor', 'middle')
 
     if(secondset){
-      console.log('check')
       path = d3.svg.line.radial()
 
       pathData = [];
@@ -200,6 +199,7 @@ d3.starPlot = function() {
   };
 
   chart.secondset = function(_) {
+    console.log('check')
     if (!arguments.length) return secondset;
     secondset = _;
     return chart;
