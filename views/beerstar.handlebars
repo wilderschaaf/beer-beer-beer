@@ -169,7 +169,7 @@ $(document).ready(function($) {
                 for (x in $(this).data("desclist")){
                     //console.log($(this).data("desclist")[x])
                     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
-                    accesslist.append($(this).data("desclist")[x])
+                    accesslist.push($(this).data("desclist")[x])
                 }
                 
                 console.log(accesslist)
