@@ -175,7 +175,8 @@ $(document).ready(function($) {
                 
                 //console.log(accesslist)
                 star.secondset(true)
-                    
+                  
+                $('#target').empty()  
                 d3.select('#target').append('svg')
                     .attr('class', 'chart')
                     .attr('width', width + margin.left + margin.right)
