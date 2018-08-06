@@ -28,8 +28,8 @@ d3.starPlot = function() {
   function chart(selection) {
 
     datum = selection.datum();
-    console.log(datum)
-    console.log(datum[1])
+   // console.log(datum)
+    //console.log(datum[1])
     g = selection
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
@@ -153,7 +153,7 @@ d3.starPlot = function() {
       .attr('y', -(margin.top / 2))
       .text(title(datum[0]))
       .style('text-anchor', 'middle')
-    console.log("here i am")
+    //console.log("here i am")
   }
 
   function nop() {
@@ -171,7 +171,7 @@ d3.starPlot = function() {
   chart.accessors2 = function(_) {
     if (!arguments.length) return accessors2;
     accessors2 = _;
-    console.log(accessors2)
+    //console.log(accessors2)
     return chart;
   };
 
@@ -206,7 +206,7 @@ d3.starPlot = function() {
   chart.secondset = function(_) {
     if (!arguments.length) return secondset;
     secondset = _;
-    console.log(secondset)
+    //console.log(secondset)
     return chart;
   };
 

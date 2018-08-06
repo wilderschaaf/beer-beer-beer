@@ -170,9 +170,9 @@ var labelMargin = 8;
 var scale = d3.scale.linear()
   .domain([0, 100])
   .range([0, 100])
-console.log({{{json descs}}})
+//console.log({{{json descs}}})
 
-console.log(keys)
+//console.log(keys)
 var star = d3.starPlot()
       .width(width)
       .accessors([
@@ -230,7 +230,7 @@ $(document).ready(function($) {
                 var list = $(this).data("desclist")
                
                 var accesslist = [{{{json descs}}}, list]
-                 console.log(accesslist)
+                // console.log(accesslist)
                 //$(":animated").finish()
                 // for (x in $(this).data("desclist")){
                 //     //console.log($(this).data("desclist")[x])
