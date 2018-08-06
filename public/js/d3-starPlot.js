@@ -26,12 +26,8 @@ d3.starPlot = function() {
         .range([0, radius])
 
   function chart(selection) {
-    if(secondset){
-      datum = selection.data();
-    }
-    else{
-      datum = selection.datum();
-    }
+
+    datum = selection.data();
     console.log(datum[0])
     g = selection
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
@@ -117,7 +113,7 @@ d3.starPlot = function() {
     var r = Math.PI / 2;
     accessors.forEach(function(d) {
       pathData.push([
-        scale(d(datum)),
+        scale(d(datum[0])),
         r
       ])
       r += radians;
@@ -132,7 +128,7 @@ d3.starPlot = function() {
       .attr('class', 'star-title')
       .attr('x', origin[0])
       .attr('y', -(margin.top / 2))
-      .text(title(datum))
+      .text(title(datum[0]))
       .style('text-anchor', 'middle')
 
     if(secondset){
@@ -144,7 +140,7 @@ d3.starPlot = function() {
       r = Math.PI / 2;
       accessors2.forEach(function(d) {
         pathData.push([
-          scale(d(datum)),
+          scale(d(datum[1])),
           r
         ])
         r += radians;

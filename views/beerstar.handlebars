@@ -237,7 +237,7 @@ d3.select('#target').append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', width + margin.top + margin.bottom)
         .append('g')
-          .datum({{{json descs}}})
+          .data([{{{json descs}}}])
           .call(star)
 
 
