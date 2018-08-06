@@ -156,39 +156,6 @@
 var keys = Object.keys({{{json descs}}}).sort()
 var hoverElm = null
 $(".clickable-row").on("mouseenter", function() { hoverElm = this; console.log("hit") })
-$(document).ready(function($) {
-            $(".clickable-row").mouseenter(function() {
-
-                $("#beername").text($(this).find('td').eq(0).text())
-                $("#beerstyle").text($(this).find('td').eq(3).text()) 
-                $("#brewery").text($(this).find('td').eq(1).text()) 
-                $("#rating").text($(this).find('td').eq(4).text())
-
-                $('#target').empty()  
-                var list = $(this).data("desclist")
-               
-                var accesslist = [{{{json descs}}}, list]
-                 console.log(accesslist)
-                //$(":animated").finish()
-                // for (x in $(this).data("desclist")){
-                //     //console.log($(this).data("desclist")[x])
-                //     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
-                //     //accesslist.push(function(d){return scale(d[x]);})
-                // }
-                
-                //console.log(accesslist)
-                star.secondset(true)
-                  
-                
-                d3.select('#target').append('svg')
-                    .attr('class', 'chart')
-                    .attr('width', width + margin.left + margin.right)
-                    .attr('height', width + margin.top + margin.bottom)
-                    .append('g')
-                      .data(accesslist)
-                      .call(star)
-            })
-        });
 
 var margin = {
   top: 36,
@@ -250,6 +217,41 @@ var star = d3.starPlot()
       .title("plot here")
       .margin(margin)
       .labelMargin(labelMargin)
+
+$(document).ready(function($) {
+            $(".clickable-row").mouseenter(function() {
+
+                $("#beername").text($(this).find('td').eq(0).text())
+                $("#beerstyle").text($(this).find('td').eq(3).text()) 
+                $("#brewery").text($(this).find('td').eq(1).text()) 
+                $("#rating").text($(this).find('td').eq(4).text())
+
+                $('#target').empty()  
+                var list = $(this).data("desclist")
+               
+                var accesslist = [{{{json descs}}}, list]
+                 console.log(accesslist)
+                //$(":animated").finish()
+                // for (x in $(this).data("desclist")){
+                //     //console.log($(this).data("desclist")[x])
+                //     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
+                //     //accesslist.push(function(d){return scale(d[x]);})
+                // }
+                
+                //console.log(accesslist)
+                star.secondset(true)
+                  
+                
+                d3.select('#target').append('svg')
+                    .attr('class', 'chart')
+                    .attr('width', width + margin.left + margin.right)
+                    .attr('height', width + margin.top + margin.bottom)
+                    .append('g')
+                      .data(accesslist)
+                      .call(star)
+            })
+        });
+
 
 d3.select('#target').append('svg')
         .attr('class', 'chart')
