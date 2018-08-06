@@ -136,7 +136,7 @@ d3.starPlot = function() {
 
       pathData = [];
 
-      
+      console.log("here i am")
       r = Math.PI / 2;
       accessors2.forEach(function(d) {
         pathData.push([
