@@ -132,6 +132,12 @@ d3.starPlot = function() {
           r
         ])
         r += radians;
+
+        g.append('path')
+          .attr('class', 'star-path')
+          .attr('transform', 'translate(' + origin[0] + ',' + origin[1] + ')')
+          .attr('d', path2(pathData2) + 'Z');
+        } 
     });
     g.append('path')
       .attr('class', 'star-path')
@@ -147,11 +153,7 @@ d3.starPlot = function() {
     console.log("here i am")
     
 
-    g.append('path')
-        .attr('class', 'star-path')
-        .attr('transform', 'translate(' + origin[0] + ',' + origin[1] + ')')
-        .attr('d', path2(pathData2) + 'Z');
-    } 
+    
   }
 
   function nop() {
