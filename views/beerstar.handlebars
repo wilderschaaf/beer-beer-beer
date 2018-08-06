@@ -164,7 +164,7 @@ $(document).ready(function($) {
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
 
-                
+                $('#target').empty()  
                 var list = $(this).data("desclist")
                
                 var accesslist = [{{{json descs}}}, list]
@@ -179,7 +179,7 @@ $(document).ready(function($) {
                 //console.log(accesslist)
                 star.secondset(true)
                   
-                $('#target').empty()  
+                
                 d3.select('#target').append('svg')
                     .attr('class', 'chart')
                     .attr('width', width + margin.left + margin.right)
