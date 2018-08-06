@@ -109,6 +109,9 @@ d3.starPlot = function() {
     var path = d3.svg.line.radial()
 
     var pathData = [];
+    var path2 = d3.svg.line.radial()
+
+    var pathData2 = [];
 
     
     var r = Math.PI / 2;
@@ -120,6 +123,16 @@ d3.starPlot = function() {
       r += radians;
     });
 
+    if(true){
+      
+      r = Math.PI / 2;
+      accessors2.forEach(function(d) {
+        pathData2.push([
+          scale(d(datum[1])),
+          r
+        ])
+        r += radians;
+    });
     g.append('path')
       .attr('class', 'star-path')
       .attr('transform', 'translate(' + origin[0] + ',' + origin[1] + ')')
@@ -132,25 +145,12 @@ d3.starPlot = function() {
       .text(title(datum[0]))
       .style('text-anchor', 'middle')
     console.log("here i am")
-    if(true){
-      path = d3.svg.line.radial()
+    
 
-      pathData = [];
-
-      
-      r = Math.PI / 2;
-      accessors2.forEach(function(d) {
-        pathData.push([
-          scale(d(datum[1])),
-          r
-        ])
-        r += radians;
-      });
-
-      g.append('path')
+    g.append('path')
         .attr('class', 'star-path')
         .attr('transform', 'translate(' + origin[0] + ',' + origin[1] + ')')
-        .attr('d', path(pathData) + 'Z');
+        .attr('d', path2(pathData2) + 'Z');
     } 
   }
 
