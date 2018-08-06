@@ -167,7 +167,7 @@ $(document).ready(function($) {
                 
                 var list = $(this).data("desclist")
                 console.log(list)
-                //var accesslist = [];
+                var accesslist = [{{{json descs}}}, list]
                 //$(":animated").finish()
                 // for (x in $(this).data("desclist")){
                 //     //console.log($(this).data("desclist")[x])
@@ -184,7 +184,7 @@ $(document).ready(function($) {
                     .attr('width', width + margin.left + margin.right)
                     .attr('height', width + margin.top + margin.bottom)
                     .append('g')
-                      .data([{{{json descs}}},list])
+                      .data(accesslist)
                       .call(star)
             })
         });
