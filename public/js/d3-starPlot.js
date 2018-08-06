@@ -26,7 +26,12 @@ d3.starPlot = function() {
         .range([0, radius])
 
   function chart(selection) {
-    datum = selection.datum();
+    if(secondset){
+      datum = selection.data();
+    }
+    else{
+      datum = selection.datum();
+    }
     console.log(datum[0])
     g = selection
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
