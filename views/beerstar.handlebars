@@ -164,14 +164,16 @@ $(document).ready(function($) {
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
 
-                console.log($(this).data("desclist"))
-                var accesslist = [];
+                
+                var list = $(this).data("desclist")
+                console.log(list)
+                //var accesslist = [];
                 //$(":animated").finish()
-                for (x in $(this).data("desclist")){
-                    //console.log($(this).data("desclist")[x])
-                    $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
-                    //accesslist.push(function(d){return scale(d[x]);})
-                }
+                // for (x in $(this).data("desclist")){
+                //     //console.log($(this).data("desclist")[x])
+                //     $("#"+x.split('/')[0]+"bar").animate({width: $(this).data("desclist")[x]+'%', 'margin-left': (99.5 - $(this).data("desclist")[x])+'%'}, 200)
+                //     //accesslist.push(function(d){return scale(d[x]);})
+                // }
                 
                 //console.log(accesslist)
                 star.secondset(true)
@@ -182,7 +184,7 @@ $(document).ready(function($) {
                     .attr('width', width + margin.left + margin.right)
                     .attr('height', width + margin.top + margin.bottom)
                     .append('g')
-                      .data([{{{json descs}}},$(this).data("desclist")])
+                      .data([{{{json descs}}},list])
                       .call(star)
             })
         });
