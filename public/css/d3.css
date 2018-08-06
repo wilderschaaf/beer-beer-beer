@@ -19,12 +19,12 @@ body {
   fill: #731;
 }
 .star-axis {
-  stroke: #ccc;
+  stroke: #724;
   stroke-width: 2px;
   stroke-dasharray: 4 5;
 }
 .star-path {
-  stroke: #444;
+  stroke: #087;
   stroke-width: 2px;
   fill: #709CB1;
   fill-opacity: 0.6;
