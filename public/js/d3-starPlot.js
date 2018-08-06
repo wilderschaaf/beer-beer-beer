@@ -53,6 +53,7 @@ d3.starPlot = function() {
       y = l * Math.sin(r);
       g.append('line')
         .attr('class', 'star-axis')
+        .attr('stroke', 'red')
         .attr('x1', origin[0])
         .attr('y1', origin[1])
         .attr('x2', origin[0] + x)
