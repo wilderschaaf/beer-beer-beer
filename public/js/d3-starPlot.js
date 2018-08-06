@@ -99,6 +99,7 @@ d3.starPlot = function() {
   }
 
   function drawChart() {
+    console.log("here i am")
     g.append('circle')
       .attr('class', 'star-origin')
       .attr('cx', origin[0])
@@ -136,7 +137,7 @@ d3.starPlot = function() {
 
       pathData = [];
 
-      console.log("here i am")
+      
       r = Math.PI / 2;
       accessors2.forEach(function(d) {
         pathData.push([
