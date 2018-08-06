@@ -13,7 +13,7 @@ d3.starPlot = function() {
       accessors2 = [],
       labels = [],
       title = nop,
-      secondset = true,
+      secondset = false,
 
       g,
       datum,
@@ -123,7 +123,7 @@ d3.starPlot = function() {
       r += radians;
     });
 
-    if(true){
+    if(secondset){
       
       r = Math.PI / 2;
       accessors2.forEach(function(d) {
