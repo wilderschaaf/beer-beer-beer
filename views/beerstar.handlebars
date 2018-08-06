@@ -179,7 +179,7 @@ $(document).ready(function($) {
                     .attr('width', width + margin.left + margin.right)
                     .attr('height', width + margin.top + margin.bottom)
                     .append('g')
-                      .datum($(this).data("desclist"))
+                      .data([{{{json descs}}},$(this).data("desclist")])
                       .call(star)
             })
         });
