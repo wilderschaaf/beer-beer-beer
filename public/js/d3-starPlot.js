@@ -131,7 +131,7 @@ d3.starPlot = function() {
       .text(title(datum[0]))
       .style('text-anchor', 'middle')
 
-    if(secondset){
+    if(true){
       path = d3.svg.line.radial()
 
       pathData = [];
