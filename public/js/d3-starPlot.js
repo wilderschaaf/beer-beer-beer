@@ -99,7 +99,7 @@ d3.starPlot = function() {
   }
 
   function drawChart() {
-    console.log("here i am")
+
     g.append('circle')
       .attr('class', 'star-origin')
       .attr('cx', origin[0])
@@ -131,7 +131,7 @@ d3.starPlot = function() {
       .attr('y', -(margin.top / 2))
       .text(title(datum[0]))
       .style('text-anchor', 'middle')
-
+    console.log("here i am")
     if(true){
       path = d3.svg.line.radial()
 
