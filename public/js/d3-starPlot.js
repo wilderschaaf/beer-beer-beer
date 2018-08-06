@@ -71,6 +71,7 @@ d3.starPlot = function() {
         g.append('line')
           .attr('class', 'star-axis')
           .attr('stroke','green')
+          .attr('fill', 'green')
           .attr('x1', origin[0])
           .attr('y1', origin[1])
           .attr('x2', origin[0] + x)
