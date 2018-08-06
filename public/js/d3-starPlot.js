@@ -27,7 +27,7 @@ d3.starPlot = function() {
 
   function chart(selection) {
 
-    datum = selection.data();
+    datum = selection.datum();
     console.log(datum)
     console.log(datum[1])
     g = selection
