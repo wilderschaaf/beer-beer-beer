@@ -28,7 +28,7 @@ d3.starPlot = function() {
   function chart(selection) {
 
     datum = selection.data();
-    console.log(datum[0])
+    console.log(datum)
     console.log(datum[1])
     g = selection
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
