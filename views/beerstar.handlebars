@@ -175,19 +175,7 @@ $(document).ready(function($) {
                 
                 //console.log(accesslist)
                 star.secondset(true)
-                    .accessors2([
-                        function(d) { return scale(d[keys[0]]); },
-                        function(d) { return scale(d[keys[1]]); },
-                        function(d) { return scale(d[keys[2]]); },
-                        function(d) { return scale(d[keys[3]]); },
-                        function(d) { return scale(d[keys[4]]); },
-                        function(d) { return scale(d[keys[5]]); },
-                        function(d) { return scale(d[keys[6]]); },
-                        function(d) { return scale(d[keys[7]]); },
-                        function(d) { return scale(d[keys[8]]); },
-                        function(d) { return scale(d[keys[9]]); },
-                        
-                      ])
+                    
                 d3.select('#target').append('svg')
                     .attr('class', 'chart')
                     .attr('width', width + margin.left + margin.right)
@@ -228,6 +216,19 @@ var star = d3.starPlot()
         function(d) { return scale(d[keys[8]]); },
         function(d) { return scale(d[keys[9]]); },
         
+      ])
+      .accessors2([
+        function(d) { return scale(d[keys[0]]); },
+        function(d) { return scale(d[keys[1]]); },
+        function(d) { return scale(d[keys[2]]); },
+        function(d) { return scale(d[keys[3]]); },
+        function(d) { return scale(d[keys[4]]); },
+        function(d) { return scale(d[keys[5]]); },
+        function(d) { return scale(d[keys[6]]); },
+        function(d) { return scale(d[keys[7]]); },
+        function(d) { return scale(d[keys[8]]); },
+        function(d) { return scale(d[keys[9]]); },
+                        
       ])
       .labels([
         keys[0],
