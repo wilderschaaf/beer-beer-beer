@@ -13,7 +13,7 @@ d3.starPlot = function() {
       accessors2 = [],
       labels = [],
       title = nop,
-      secondset = false,
+      secondset = true,
 
       g,
       datum,
