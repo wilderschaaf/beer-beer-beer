@@ -60,7 +60,7 @@
                     </thead>
                     <tbody>
                       {{#each simbeers}}
-                          <tr class="clickable-row" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist={{{json desclist}}}>
+                          <tr class="clickable-row-comp" data-href="/beer/{{beerid}}" data-beerid="{{beerid}}" data-desclist={{{json desclist}}}>
                             <td style='padding-left: 0%'>
                                 {{{beername}}}
                             </td>
@@ -218,7 +218,7 @@ var star = d3.starPlot()
       .labelMargin(labelMargin)
 
 $(document).ready(function($) {
-            $(".clickable-row").mouseenter(function() {
+            $(".clickable-row-comp").click(function() {
 
                 $("#beername").text($(this).find('td').eq(0).text())
                 $("#beerstyle").text($(this).find('td').eq(3).text()) 
