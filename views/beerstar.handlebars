@@ -37,13 +37,13 @@
                <!--  </div> -->
                 <div id='target'></div>
                 <div class='row'>
-                  <div class='hidden col-md-6' style='font-size: 1.5vw; background-color: #000; color: #fff'></div>
-                  <div class='hidden col-md-6' style='font-size: 1.5vw'></div>
+                  <div id='beername' class='hidden col-md-6' style='font-size: 1.5vw; background-color: #000; color: #fff'></div>
+                  <div id='beerstyle' class='hidden col-md-6' style='font-size: 1.5vw'></div>
                 </div>
                 <div class='row'>
-                  <div class='hidden col-md-3' style='font-size: 1.0vw'></div>
-                  <div class='hidden col-md-3' style='font-size: 1.0vw'>ABV: </div>
-                  <div class='hidden col-md-3' style='font-size: 1.0vw'>Rating: </div>
+                  <div id='brewery' class='hidden col-md-3' style='font-size: 1.0vw'></div>
+                  <!-- <div class='hidden col-md-3' style='font-size: 1.0vw'>ABV: </div> -->
+                  <div id='rating' class='hidden col-md-3' style='font-size: 1.0vw'>Rating: </div>
                   <h4 class='hidden col-md-3'></h4>
                 </div>
             </div>
@@ -234,6 +234,11 @@ $(document).ready(function($) {
                 $("#beerstyle").text($(this).find('td').eq(3).text()) 
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
+
+                $("#beername").removeclass('hidden')
+                $("#beerstyle").removeclass('hidden')
+                $("#brewery").removeclass('hidden')
+                $("#rating").removeclass('hidden')
 
                 $('#target').empty()  
                 var list = $(this).data("desclist")
