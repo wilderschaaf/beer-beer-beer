@@ -142,7 +142,7 @@ d3.starPlot = function() {
 
     g.append('path')
         .attr('stroke', 'green')
-        .attr('class', 'star-path')
+        .attr('class', 'star-path2')
         .attr('transform', 'translate(' + origin[0] + ',' + origin[1] + ')')
         .attr('d', path2(pathData2) + 'Z');
     } 

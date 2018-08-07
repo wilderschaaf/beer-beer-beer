@@ -30,3 +30,10 @@ body {
   fill-opacity: 0.6;
 }
 
+.star-path2 {
+  stroke: #863;
+  stroke-width: 2px;
+  fill: #709CB1;
+  fill-opacity: 0.6;
+}
+
