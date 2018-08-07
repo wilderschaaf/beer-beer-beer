@@ -235,10 +235,10 @@ $(document).ready(function($) {
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
 
-                $("#beername").removeclass('hidden')
-                $("#beerstyle").removeclass('hidden')
-                $("#brewery").removeclass('hidden')
-                $("#rating").removeclass('hidden')
+                $("#beername").removeClass('hidden')
+                $("#beerstyle").removeClass('hidden')
+                $("#brewery").removeClass('hidden')
+                $("#rating").removeClass('hidden')
 
                 $('#target').empty()  
                 var list = $(this).data("desclist")
