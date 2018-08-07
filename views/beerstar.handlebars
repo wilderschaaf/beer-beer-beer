@@ -167,6 +167,10 @@ var keys = Object.keys({{{json descs}}}).sort()
 var hoverElm = null
 $(".clickable-row").on("mouseenter", function() { hoverElm = this; console.log("hit") })
 
+var vals = keys.map(function (key) {return {{{json descs}}}[key]})
+
+var max = Math.max.apply(null, vals)
+
 var margin = {
   top: 36,
   right: 50,
@@ -178,7 +182,7 @@ var height = 440 - margin.top - margin.bottom;
 var labelMargin = 8;
 
 var scale = d3.scale.linear()
-  .domain([0, 100])
+  .domain([0, max])
   .range([0, 100])
 //console.log({{{json descs}}})
 
