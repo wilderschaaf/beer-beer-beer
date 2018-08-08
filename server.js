@@ -473,12 +473,12 @@ function getTop(arr){
 	var out = []
 	var out2 = []
 	for (var i = 0; i < 180; i++){
-		if (out.length < 10){
+		if (out.length < 15){
 			out[i] = arr[i]
 			out2[i] = i
 		}
 		else{
-			for (var j = 0; j < 10; j++){
+			for (var j = 0; j < 15; j++){
 				if (out[j]<arr[i]){
 					out[j] = arr[i]
 					out2[j] = i
@@ -488,7 +488,7 @@ function getTop(arr){
 		}
 	}
 	var outdict = {}
-	for (var i = 0; i < 10; i++){
+	for (var i = 0; i < 15; i++){
 		outdict[desc[out2[i]]] = out[i]*100
 	}
 	return [outdict,out2]
