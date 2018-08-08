@@ -164,6 +164,7 @@
 <script src="js/d3-starPlot.js"></script>
 <script>
 var keys = Object.keys({{{json descs}}}).sort()
+console.log({{{json descs}}})
 var hoverElm = null
 $(".clickable-row").on("mouseenter", function() { hoverElm = this; console.log("hit") })
 
@@ -262,7 +263,6 @@ $(document).ready(function($) {
                   $(this).siblings(".highlighted").eq(0).removeClass('highlighted')
                 }
                 
-                console.log($(this).siblings(".highlighted").eq(0))
                 $(this).addClass('highlighted')
 
 
