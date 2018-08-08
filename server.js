@@ -522,7 +522,7 @@ app.get('/beer/[0-9]*', function(req, res){
 					db.many("select * from testview order by distance limit 10 offset 0")
 						.then( function (data3){
 							changeDescs(data3, getTop(data.desclist)[0])
-							console.log(getTop(data.desclist)[0])
+							console.log(data.desclist)
 							res.render('beerstar', {
 								beer: data,
 								simbeers: data3,
