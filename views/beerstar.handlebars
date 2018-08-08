@@ -244,8 +244,8 @@ $(document).ready(function($) {
                 $("#brewery").removeClass('hidden')
                 $("#rating").removeClass('hidden')
 
-                $(this).siblings(".highlighted").removeClass('hightlighted')
-                console.log($(this).siblings(".highlighted")['0'])
+                $(this).siblings(".highlighted")['0'].removeClass('hightlighted')
+                //console.log($(this).siblings(".highlighted")['0'])
                 $(this).addClass('highlighted')
 
 
