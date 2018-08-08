@@ -506,7 +506,7 @@ function getSame(dict, arr){
 }
 
 function changeDescs(obbiej, dict){
-	for (var i = 0; i < 5; i++){
+	for (var i = 0; i < 10; i++){
 		obbiej[i].desclist = getSame(dict, obbiej[i].desclist)
 	}
 }
