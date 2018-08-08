@@ -36,7 +36,17 @@
             });
         });
 
-
+        $(document).ready(function($) {
+            $(".clickable-row-high").click(function() {
+                //window.location = $(this).data("href");
+                console.log('something something something');
+                console.log($('.state-select').find(":selected").text());
+                var bform = $('<form action='+$('.highlighted').data("href")+'></form>').append($('<input class="hidden" name="beerid" value='+$('.highlighted').data("beerid")+'></input>'))
+                .append($('<input class="hidden" name="stid" value='+$('.state-select').find(":selected").val()+'></input>'));
+                $('body').append(bform);
+                bform.submit();
+            });
+        });
 
 		// $(document).ready(function($) {
 		//     $(".clickable-row").mouseenter(function() {
