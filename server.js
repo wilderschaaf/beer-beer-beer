@@ -477,7 +477,7 @@ function getTop(arr){
 		// 	out[i] = arr[i]
 		// 	out2[i] = i
 		// }
-			if (i == 170){
+			if (i == 160){
 				continue
 			}
 			for (var j = 0; j < 15; j++){
