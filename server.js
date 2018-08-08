@@ -488,6 +488,7 @@ function getTop(arr){
 		
 	}
 	console.log(out)
+	console.log(out2)
 	var outdict = {}
 	for (var i = 0; i < 15; i++){
 		outdict[desc[out2[i]]] = out[i]*100
