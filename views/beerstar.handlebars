@@ -244,8 +244,8 @@ $(document).ready(function($) {
                 $("#brewery").removeClass('hidden')
                 $("#rating").removeClass('hidden')
 
-                if ($(this).siblings(".highlighted").length >0){
-                  $(this).siblings(".highlighted")['0'].removeClass('hightlighted')
+                if ($(this).siblings(".highlighted").length > 0){
+                  $(this).siblings(".highlighted").eq(0).removeClass('hightlighted')
                 }
                 
                 //console.log($(this).siblings(".highlighted")['0'])
