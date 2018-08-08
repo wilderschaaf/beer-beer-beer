@@ -479,7 +479,7 @@ function getTop(arr){
 		}
 		else{
 			for (var j = 0; j < 15; j++){
-				if (out[j]<arr[i]){
+				if (out[j]<=arr[i]){
 					out[j] = arr[i]
 					out2[j] = i
 					break
