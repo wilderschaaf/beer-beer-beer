@@ -489,8 +489,8 @@ function getTop(arr){
 			}
 		
 	}
-	console.log(out)
-	console.log(out2)
+	// console.log(out)
+	// console.log(out2)
 	var outdict = {}
 	for (var i = 0; i < 15; i++){
 		//console.log(desc[out2[i]])
