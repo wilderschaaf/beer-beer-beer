@@ -470,14 +470,14 @@ app.get('/bsearch', function(req, res){
 })
 
 function getTop(arr){
-	var out = []
+	var out = Array.apply(null, Array(15)).map(Number.prototype.valueOf,0);
 	var out2 = []
 	for (var i = 0; i < 180; i++){
-		if (out.length < 15){
-			out[i] = arr[i]
-			out2[i] = i
-		}
-		else{
+		// if (out.length < 15){
+		// 	out[i] = arr[i]
+		// 	out2[i] = i
+		// }
+		
 			for (var j = 0; j < 15; j++){
 				if (out[j]<=arr[i]){
 					out[j] = arr[i]
@@ -485,7 +485,7 @@ function getTop(arr){
 					break
 				}
 			}
-		}
+		
 	}
 	var outdict = {}
 	for (var i = 0; i < 15; i++){
