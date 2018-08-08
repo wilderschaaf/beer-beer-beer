@@ -519,7 +519,7 @@ app.get('/beer/[0-9]*', function(req, res){
 		.then( function (data){
 			db.none(quer, {id: req.query['beerid'], stid: req.query['stid'], style: data.style, topi: getTop(data.desclist)[1]})
 				.then( function (data2){
-					db.many("select * from testview order by distance limit 5 offset 0")
+					db.many("select * from testview order by distance limit 10 offset 0")
 						.then( function (data3){
 							changeDescs(data3, getTop(data.desclist)[0])
 							console.log(getTop(data.desclist)[0])
