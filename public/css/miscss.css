@@ -56,6 +56,7 @@ and (max-width: 600px) {
   position: relative;
   width: 66.66666667%;
   float: left;
+  padding: 8px 16px;
 }
 .custom-select select {
   display: none; /*hide original SELECT element:*/
