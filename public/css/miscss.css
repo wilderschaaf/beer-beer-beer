@@ -62,7 +62,7 @@ and (max-width: 600px) {
   display: none; /*hide original SELECT element:*/
 }
 .select-selected {
-  background-color: DodgerBlue;
+  background-color: Black;
 }
 /*style the arrow inside the select element:*/
 .select-selected:after {
@@ -91,7 +91,7 @@ and (max-width: 600px) {
 /*style items (options):*/
 .select-items {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: Black;
   top: 100%;
   left: 0;
   right: 0;
