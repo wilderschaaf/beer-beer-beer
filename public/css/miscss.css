@@ -56,7 +56,7 @@ and (max-width: 600px) {
   font-family: Arial;
 }
 .custom-select select {
-  display: none; /*hide original SELECT element:*/
+  /*display: none; hide original SELECT element:*/
 }
 .select-selected {
   background-color: DodgerBlue;
