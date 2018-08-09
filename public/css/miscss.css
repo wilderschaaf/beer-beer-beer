@@ -54,6 +54,7 @@ and (max-width: 600px) {
 .custom-select {
   position: relative;
   font-family: Arial;
+  width: 66.66666667%;
 }
 .custom-select select {
   display: none; /*hide original SELECT element:*/
