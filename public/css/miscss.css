@@ -45,7 +45,8 @@ select.state-select {
 }
 
 .beer-button {
-	background-color: #333;
+	background-color: #000;
+	color: #fff;
 }
 .gradback {
     background: black; /* For browsers that do not support gradients */
