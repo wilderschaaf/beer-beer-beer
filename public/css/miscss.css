@@ -51,11 +51,11 @@ and (max-width: 600px) {
 
 
 /*the container must be positioned relative:*/
-.state-select {
+.custom-select {
   position: relative;
   font-family: Arial;
 }
-.state-select select {
+.custom-select select {
   display: none; /*hide original SELECT element:*/
 }
 .select-selected {
