@@ -51,7 +51,7 @@ and (max-width: 600px) {
 
 
 /*the container must be positioned relative:*/
-select.state-select {
+.state-select {
   position: relative;
   font-family: Arial;
 }
