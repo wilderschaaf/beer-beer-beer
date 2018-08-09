@@ -40,6 +40,10 @@ and (max-width: 600px) {
 	}
 }
 
+select.state-select {
+	width: 100vm;
+}
+
 .gradback {
     background: black; /* For browsers that do not support gradients */
     /*background: -webkit-linear-gradient(left, white, #334);*/ /* For Safari 5.1 to 6.0 */
