@@ -93,6 +93,7 @@ and (max-width: 600px) {
 /*style items (options):*/
 .select-items {
   position: absolute;
+  margin-left: 15px;
   background-color: Black;
   top: 100%;
   left: 0;
