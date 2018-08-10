@@ -113,7 +113,7 @@ and (max-width: 600px) {
   display: none;
 }
 .select-items div:hover, .same-as-selected {
-  background-color: rgba(3, 3, 3, 0.1);
+  background-color: #1DC;
 }
 
 .gradback {
