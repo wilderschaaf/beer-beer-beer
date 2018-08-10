@@ -6,7 +6,7 @@ d3.starPlot = function() {
         bottom: 0,
         left: 0
       },
-      labelMargin = 30,
+      labelMargin = 40,
       includeGuidelines = true,
       includeLabels = true,
       accessors = [],
@@ -97,6 +97,7 @@ d3.starPlot = function() {
         .text(labels[i])
         .style('text-anchor', 'middle')
         .style('dominant-baseline', 'central')
+        .style('font-size', '1em')
 
       r += radians;
     })
