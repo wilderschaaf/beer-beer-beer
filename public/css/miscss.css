@@ -71,7 +71,6 @@ and (max-width: 600px) {
   content: "";
   top: 14px;
   right: 10px;
-  padding-left: 15px;
   width: 0;
   height: 0;
   border: 6px solid transparent;
@@ -86,6 +85,7 @@ and (max-width: 600px) {
 .select-items div,.select-selected {
   color: #ffffff;
   padding: 8px 16px;
+  padding-left: 15px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
@@ -94,7 +94,6 @@ and (max-width: 600px) {
 .select-items {
   position: absolute;
   background-color: Black;
-  padding-left: 15px;
   top: 100%;
   left: 0;
   right: 0;
