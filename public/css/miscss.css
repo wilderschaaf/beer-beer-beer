@@ -53,6 +53,7 @@ and (max-width: 600px) {
 	color: #fff;
 	height: 100%;
 	padding: 8px 16px;
+	padding-right: 15px;
 }
 
 
