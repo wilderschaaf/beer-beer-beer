@@ -71,6 +71,7 @@ and (max-width: 600px) {
   content: "";
   top: 14px;
   right: 10px;
+  padding-left: 15px;
   width: 0;
   height: 0;
   border: 6px solid transparent;
