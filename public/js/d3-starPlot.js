@@ -97,7 +97,6 @@ d3.starPlot = function() {
         .text(labels[i])
         .style('text-anchor', 'middle')
         .style('dominant-baseline', 'central')
-        .style('font-size', '1em')
 
       r += radians;
     })
