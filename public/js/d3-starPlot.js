@@ -6,7 +6,7 @@ d3.starPlot = function() {
         bottom: 0,
         left: 0
       },
-      labelMargin = 40,
+      labelMargin = 20,
       includeGuidelines = true,
       includeLabels = true,
       accessors = [],
