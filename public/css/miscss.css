@@ -58,6 +58,7 @@ and (max-width: 600px) {
 	height: 100%;
 	padding: 8px 16px;
   width: 33.333%;
+  padding-right: 15px;
 }
 
 
