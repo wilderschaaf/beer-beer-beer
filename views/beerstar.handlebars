@@ -274,10 +274,12 @@ $(document).ready(function($) {
                 $("#brewery").text($(this).find('td').eq(1).text()) 
                 $("#rating").text($(this).find('td').eq(4).text())
 
-                $("#beername").removeClass('hidden')
-                $("#beerstyle").removeClass('hidden')
-                $("#brewery").removeClass('hidden')
-                $("#rating").removeClass('hidden')
+                // $("#beername").removeClass('hidden')
+                // $("#beerstyle").removeClass('hidden')
+                // $("#brewery").removeClass('hidden')
+                // $("#rating").removeClass('hidden')
+
+                $("#compbeerdiv").removeClass('hidden')
 
                 if ($(this).siblings(".highlighted").length > 0){
                   $(this).siblings(".highlighted").eq(0).removeClass('highlighted')
