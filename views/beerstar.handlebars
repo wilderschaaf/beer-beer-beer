@@ -37,23 +37,30 @@
                     <div class='col-md-3' style='font-size: 1.0vw'>Rating: {{beer.avgrating}}</div>
                     <h4 class='col-md-3'></h4>
                   </div> -->
-                <div>
+                <div id='beerdiv'>
                   <div style='font-size: 1.5vw; background-color: #000; color: #fff'>{{beer.beername}}</div>
                   <div style='font-size: 1.5vw'>{{beer.style}}</div>
                   <div style='font-size: 1.0vw'>{{beer.brewery}}</div>
                   <div style='font-size: 1.0vw'>ABV: {{beer.abv}}</div>
                   <div style='font-size: 1.0vw'>Rating: {{beer.avgrating}}</div>
                 </div>
+                <div id='compbeerdiv' class='hidden'>
+                  <div id='beername' style='font-size: 1.5vw; background-color: #1DC; color: #fff'></div>
+                  <div id='beerstyle' style='font-size: 1.5vw'></div>
+                  <div id='brewery' style='font-size: 1.0vw'></div>
+                  <!-- <div class='hidden col-md-3' style='font-size: 1.0vw'>ABV: </div> -->
+                  <div id='rating' style='font-size: 1.0vw'>Rating: </div>
+                </dib>
                <!--  </div> -->
                 <div id='target'></div>
-                <div class='row clickable-row-high'>
+                <!-- <div class='row clickable-row-high'>
                   <div id='beername' class='hidden col-md-6' style='font-size: 1.5vw; background-color: #1DC; color: #fff'></div>
                   <div id='beerstyle' class='hidden col-md-6' style='font-size: 1.5vw'></div>
                 </div>
                 <div class='row'>
-                  <div id='brewery' class='hidden col-md-6' style='font-size: 1.0vw'></div>
+                  <div id='brewery' class='hidden col-md-6' style='font-size: 1.0vw'></div> -->
                   <!-- <div class='hidden col-md-3' style='font-size: 1.0vw'>ABV: </div> -->
-                  <div id='rating' class='hidden col-md-6' style='font-size: 1.0vw'>Rating: </div>
+                  <!-- <div id='rating' class='hidden col-md-6' style='font-size: 1.0vw'>Rating: </div> -->
                  <!--  <h4 class='hidden col-md-3'></h4> -->
                 </div>
             </div>
