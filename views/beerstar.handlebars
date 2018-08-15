@@ -44,7 +44,7 @@
                   <div style='font-size: 1.0vw'>ABV: {{beer.abv}}</div>
                   <div style='font-size: 1.0vw'>Rating: {{beer.avgrating}}</div>
                 </div>
-                <div id='compbeerdiv' class='hidden'>
+                <div id='compbeerdiv' class='hidden col-md-6'>
                   <div id='beername' style='font-size: 1.5vw; background-color: #1DC; color: #fff'></div>
                   <div id='beerstyle' style='font-size: 1.5vw'></div>
                   <div id='brewery' style='font-size: 1.0vw'></div>
@@ -280,6 +280,7 @@ $(document).ready(function($) {
                 // $("#rating").removeClass('hidden')
 
                 $("#compbeerdiv").removeClass('hidden')
+                $("#beerdiv").addClass('col-md-6')
 
                 if ($(this).siblings(".highlighted").length > 0){
                   $(this).siblings(".highlighted").eq(0).removeClass('highlighted')
