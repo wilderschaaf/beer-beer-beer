@@ -84,9 +84,9 @@ var stateabrevlist = ["AL",
 "WY"]
 var scrapercounter = 0;
 
-var globalcounter = 63620
+var globalcounter = 0;
 
-var rowcount 
+var rowcount
 
 
 app.use(express.static(path.join(__dirname, '/public')))
@@ -116,7 +116,7 @@ var pgp = require('pg-promise')()
 
 
 
-const pg = require('pg')  
+const pg = require('pg')
 const conString = 'postgres://gpguzsrnfsmpgo:9996edfb1e4970a620c051c55185a261cb4727398e9442f00edd3147dd0b649c@ec2-23-23-225-116.compute-1.amazonaws.com:5432/d99ibit2lngmvm' // make sure to match your own database's credentials
 
 var db = pgp(conString)
@@ -127,7 +127,7 @@ function usecallback(callback, st, state){
 	var top = 820
 	var brewlinks = []
 
-	var j 
+	var j
 	for(j=0;j<=top;j+=20){
 		url = 'https://www.beeradvocate.com/place/list/?start='+j.toString()+'&&c_id=US&s_id='+state+'&brewery=Y&sort=name'
 
@@ -139,12 +139,12 @@ function usecallback(callback, st, state){
 			else{
 				var $ = cheerio.load(html)
 
-				
+
 				$('#ba-content').filter(function(){
 
 					var data = $(this).children("table").children("tr")
 
-					var i 
+					var i
 					for (i = 3; i<= 41; i+=2){
 						if(data.eq(i).children().eq(0).children("a").eq(0).attr() == undefined){
 							break
@@ -152,18 +152,18 @@ function usecallback(callback, st, state){
 						brewlinks.push(data.eq(i).children().eq(0).children("a").eq(0).attr().href)
 					}
 
-					
+
 				})
 
 			}
 			if(j-(top+20)==(top+20)/20){
 				callback(brewlinks, donecb, state)
 			}
-			
+
 		})
 	}
-	
-	
+
+
 }
 
 app.use('/scrape', function(req, res){
@@ -171,20 +171,20 @@ app.use('/scrape', function(req, res){
 
 	res.sendFile(__dirname + "/public/scrape1.html")
 	usecallback(mycb, stateabrevlist[scrapercounter],statelist[scrapercounter])
-	
+
 })
 
 function getbeerdata(){
 	console.log("beer data")
 	urlbase = "https://www.beeradvocate.com"
-	
+
 	db.one('select count(*) from calibeers')
 		.then(function(data){
 			rowcount = data.count
 
 				db.one('select beerlink,beerid from calibeers where beerid=$1', globalcounter)
 					.then( function(data){
-					
+
 						beertroll(data.beerlink, data.beerid)
 					})
 					.catch( function(err){
@@ -224,11 +224,11 @@ function beertroll(link, beerid){
 				data = $('#rating_fullview')
 				i = 0
 				while(data.children().eq(i).children().eq(1).children().text()!== "" && i < 25){
-					
+
 					text = data.children().eq(i).children().eq(1).text()
 					darray = aggwords(text, darray)
 					i++
-				}	
+				}
 
 				if (count<3 && i>=24){
 					//console.log(offset)
@@ -259,7 +259,7 @@ function beertroll(link, beerid){
 							if(beerid <= rowcount){
 								db.one('select beerlink,beerid from calibeers where beerid=$1', beerid + 1)
 									.then( function(data){
-						
+
 										beertroll(data.beerlink, data.beerid)
 									})
 									.catch( function(err){
@@ -345,7 +345,7 @@ function mycb(bl, callback, state){
     var brewery
     var beerlink
     var $
-    var i 
+    var i
     var queries
     var len = bl.length
     console.log(bl)
@@ -359,14 +359,14 @@ function mycb(bl, callback, state){
 				console.error(error)
 			}
 			else{
-				
-					
-					
+
+
+
 				db.tx(function(t){
-					
+
 					$ = cheerio.load(html)
 					brewery = $('.titleBar').text().trim()
-					
+
 					//data = $('#ba-content').find("table").eq(1).children()
 					data = $('table.sortable').eq(0).children().eq(1).children()
 					queries = []
@@ -385,12 +385,12 @@ function mycb(bl, callback, state){
 						// }
 						//console.log(beerlink)
 						 if (!Number.isNaN(parseFloat(data.eq(i).children().eq(4).text())) && parseNumRatings(data.eq(i).children().eq(3).text()) > 2){
-							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, state) SELECT $1, $2, $3, $4, $5, $6, $7, $8 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)", 
-								[brewery, beerlink, data.eq(i).children().eq(0).text(), 
-								data.eq(i).children().eq(1).text(), 
-								parseFloat(data.eq(i).children().eq(2).text()), 
-								parseFloat(data.eq(i).children().eq(4).text()), 
-								parseNumRatings(data.eq(i).children().eq(3).text()), 
+							queries.push(t.none("INSERT INTO calibeers (brewery, beerlink, beername, style, abv, avgrating, numratings, state) SELECT $1, $2, $3, $4, $5, $6, $7, $8 where not exists (select beername, abv, avgrating from calibeers where beername = $3 AND abv = $5 AND avgrating = $6)",
+								[brewery, beerlink, data.eq(i).children().eq(0).text(),
+								data.eq(i).children().eq(1).text(),
+								parseFloat(data.eq(i).children().eq(2).text()),
+								parseFloat(data.eq(i).children().eq(4).text()),
+								parseNumRatings(data.eq(i).children().eq(3).text()),
 								state]))
 						}
 					 	i++;
@@ -410,11 +410,11 @@ function mycb(bl, callback, state){
 						console.log(brewery)
 						console.error("Caught this chode:", err)
 					})
-				
+
 			}
-			
+
 		})
-	
+
 	})
 }
 
@@ -428,7 +428,7 @@ function donecb(){
 	}
 	else{
 		console.log("done for real")
-	}	
+	}
 }
 
 //code for implementing the UI portion of the app-----------------
@@ -466,7 +466,7 @@ app.get('/bsearch', function(req, res){
 			})
 		})
 
-	
+
 })
 
 function getTop(arr){
@@ -487,7 +487,7 @@ function getTop(arr){
 					break
 				}
 			}
-		
+
 	}
 	// console.log(out)
 	// console.log(out2)
@@ -542,7 +542,7 @@ app.get('/beer/[0-9]*', function(req, res){
 				.catch( function (err){
 					console.error("create testview... Error: ", err)
 				})
-			
+
 		})
 		.catch( function (err){
 			console.error(err)
@@ -553,7 +553,7 @@ app.get('/beer/[0-9]*', function(req, res){
 //let's do some reviewing stuff
 
 app.get('/beer/review', function(req, res){
-	
+
 	db.one("select * from calibeers where beerid=$(id)", {id: req.query['beerid']})
 		.then( function(data){
 			res.render('review',{
@@ -565,14 +565,14 @@ app.get('/beer/review', function(req, res){
 		.catch(function(err){
 			console.error(err)
 		})
-	
+
 
 })
 
 
 
 //----------------------------------------------------------------
-	
+
 http.listen(PORT, function(){
 	console.log('Got ears on', PORT)
 })
